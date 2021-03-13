@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://gitlab.com/soict-it4409/20202/nhom05/social-network/issues"
   },
-  "homepage": "https://gitlab.com/soict-it4409/20202/nhom05/social-network#readme"
+  "homepage": "https://gitlab.com/soict-it4409/20202/nhom05/social-network#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.19"
+  }
 }
