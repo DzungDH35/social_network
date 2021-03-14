@@ -1,0 +1,171 @@
+.global-container {
+    min-width: 100vw;
+    min-height: 100vh;
+    background: #f6f8f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form {
+    width: 480px; /* adjust later, need responsive care */
+    min-height: 300px; /* adjust later, need responsive care */
+    padding: 64px 48px 40px 48px; /* adjust later, need responsive care */
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px 0 rgba(21,27,38,.08);
+    color: #6f7782;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.signup-form__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header__logo {
+    width: auto;
+    height: 100px;
+}
+
+.signup-form__header > div {
+    margin-top: 40px;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.signup-form__body {
+    margin-top: 60px; /* adjust later, need responsive care */
+    font-size: 12px;
+}
+
+.input-wrapper--col {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-input-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-wrapper--ml {
+    margin-left: 16px;
+}
+
+.input-wrapper--mt {
+    margin-top: 16px;
+}
+
+.input-wrapper--col > input, .option-wrapper {
+    margin-top: 8px;
+}
+
+.input-wrapper--col > input {
+    padding: 4px 12px;
+    border: 1px solid #cbd4db;
+    border-radius: 6px;
+    height: 36px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.input-wrapper--col > input:focus {
+    outline: none;
+    border-color: rgb(132, 141, 149);
+    box-shadow: inset 0 1px #e8ecee;
+}
+
+.input-with-eye {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    padding: 0 12px;
+    height: 36px;
+    border: 1px solid #cbd4db;
+    border-radius: 6px;
+}
+
+.input-with-eye > input {
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+}
+
+.input-with-eye > i {
+    width: 15px;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.option-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.option-wrapper > select {
+    width: 115px;
+    padding: 4px 12px;
+    border: 1px solid #cbd4db;
+    border-radius: 6px;
+    height: 36px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.option-wrapper > select:focus {
+    outline: none;
+    border-color: rgb(132, 141, 149);
+    box-shadow: inset 0 1px #e8ecee;
+}
+
+.option > label {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.body__terms {
+    width: 100%;
+    margin-top: 24px;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.body__submit-button {
+    margin-top: 32px;
+    background-color: #8c1515;
+    border: 1px solid #8c1515;
+    font-family: inherit;
+    font-size: 14px;
+    color: #fff;
+    width: 100%;
+    height: 36px;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+}
+
+.body__submit-button:hover {
+    background-color: #ad2020;
+    transition: .2s;
+}
+
+.signup-form__footer {
+    text-align: center;
+    margin-top: 24px;
+}
+
+a {
+    color: #8c1515;
+}
+
+a:hover {
+    color: #e51111;
+    transition: .2s;
+}
