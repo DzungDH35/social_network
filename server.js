@@ -3,13 +3,17 @@ const app = express()
 const port = 8000;
 const path = require('path');
 const bodyParser = require('body-parser');
-var client = require('./client/client');
-var api = require('./server/api');
+const client = require('./client/client');
+const api = require('./server/api');
+const morgan = require('morgan')
+const user = require('./server/models/user')
+const db = require('./server/database');
 
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '/client/login')));
-app.use(express.static(path.join(__dirname, '/public')))
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '/client/public')))
+app.use(morgan('dev'));
 
 app.use('/', client);
 app.use('/api', api);
