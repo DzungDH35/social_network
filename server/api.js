@@ -1,11 +1,10 @@
 var express = require('express');
 
 var router = express.Router();
-var login = require('./api/login.api');
-var register = require('./api/register.api')
+var account = require('./api/account.api');
 
-router.use('/login', login);
-router.use('/register', register);
+
+router.use('/', account);
 
 
 module.exports = router;
