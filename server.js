@@ -9,7 +9,6 @@ require('dotenv').config();
 require('./config/passport')(passport);
 require('./config/db');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/client/public')))
 app.use(morgan('dev'));
