@@ -6,8 +6,8 @@ require('dotenv').config();
 const user = require('../server/models/user');
 
 const jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.SECRETKEY
+    secretOrKey: process.env.SECRETKEY || 'heheboiz',
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 };
 
 const strategy = new JwtStrategy(jwtOptions, (jwt_payload, done) => {
