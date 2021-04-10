@@ -22,4 +22,3 @@ app.use('/', require('./client/client'));
 app.use('/api', require('./server/api'));
 
 app.listen(process.env.PORT, () => console.log('Server running at http://127.0.0.1:'+ process.env.PORT +'/'))
-

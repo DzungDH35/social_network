@@ -22,9 +22,10 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
 
     const {userName, name, email, pwd: plainText} = req.body;
-    pwd = bcrypt.hashSync(plainText, 4);
+    console.log(req.body);
 
     try {
+        pwd = bcrypt.hashSync(plainText, 4);
         const savedUser = await User.create({
             userName,
             email,
