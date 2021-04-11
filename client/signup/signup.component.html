@@ -20,32 +20,32 @@
                     <div class="body__group-of-inputs">
                         <div class="name-input-wrapper">
                             <div class="input-wrapper--col">
-                                <div>Họ và tên đệm</div>
-                                <input type="text" name="firstname" required>
-                                <div class="alert-area" id="name-alert">
+                                <div>Họ và tên (*)</div>
+                                <input type="text" name="fullname" required>
+                                <div class="alert-area">
                                     <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
                                     <div class="alert-message">Họ tên không hợp lệ</div>
                                 </div>
                             </div>
                             <div class="input-wrapper--col input-wrapper--ml">
-                                <div>Tên</div>
-                                <input type="text" name="lastname" required>
-                                <div class="alert-area" id="name-alert">
+                                <div>Tên đăng nhập (*)</div>
+                                <input type="text" name="username" required>
+                                <div class="alert-area">
                                     <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
-                                    <div class="alert-message">Tên không hợp lệ</div>
+                                    <div class="alert-message">Tên đăng nhập không hợp lệ</div>
                                 </div>
                             </div>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
-                            <div>Email của bạn</div>
+                            <div>Email của bạn (*)</div>
                             <input type="email" name="email" required>
-                            <div class="alert-area" id="email-alert">
+                            <div class="alert-area">
                                 <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
                                 <div class="alert-message">Định dạng email không hợp lệ</div>
                             </div>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
-                            <div>Mật khẩu</div>
+                            <div>Mật khẩu (*)</div>
                             <div class="input-with-eye">
                                 <input type="password" name="password" required>
                                 <i class="fas fa-eye-slash"></i>
@@ -57,7 +57,7 @@
                             <div class="input-note">Sử dụng 8 ký tự trở lên, có đầy đủ chữ cái thường, viết hoa, chữ số và kí tự đặc biệt. Ví dụ: helloWorld@123</div>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
-                            <div>Xác nhận mật khẩu</div>
+                            <div>Xác nhận mật khẩu (*)</div>
                             <div class="input-with-eye">
                                 <input type="password" name="cf-password" required>
                                 <i class="fas fa-eye-slash"></i>
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
-                            <div>Ngày/Tháng/Năm sinh</div>
+                            <div>Ngày/Tháng/Năm sinh (*)</div>
                             <div class="option-wrapper">
                                 <select id="date" required>
                                 </select>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
-                            <div>Giới tính</div>
+                            <div>Giới tính (*)</div>
                             <div class="option-wrapper">
                                 <div class="option">
                                     <input id="male" name="gender" type="radio" value="male" checked>

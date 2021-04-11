@@ -3,6 +3,11 @@ function isNameValid(name) {
     return validNameFormat.test(name);
 }
 
+function isUserNameValid(username) {
+    let validUsernameFormat = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
+    return validUsernameFormat.test(username);
+}
+
 function isEmailValid(email) {
     let validEmailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     return validEmailFormat.test(email);

@@ -25,8 +25,8 @@ function alertAreaHandler(isInputInvalid, alertArea) {
 function submitHandler() {
     const uri = "/api/register";
     const submittedData = {
-        userName: lastName.value,
-        name: lastName.value,
+        userName: usrName.value,
+        name: fullName.value,
         email: emailAddr.value,
         pwd: password.value
         // date: document.getElementById('date').value,
