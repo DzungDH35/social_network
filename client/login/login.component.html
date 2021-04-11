@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./login.component.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script src="./login.component.js"></script>
+    
     <title>Đăng nhập</title>
 </head>
 <body>
@@ -14,15 +14,16 @@
         <img src="logo.png" alt="Hình ảnh Logo BKSN">
         <div class="form-login">
             <form id="login-form">
-                <input type="text" name="username" placeholder="Tên đăng nhập">
-                <input type="text" name="pwd" placeholder="Mật khẩu">
-                <input id ="loginbtn" type="submit" value="Đăng nhập" onclick=><br>
+                <input type="text" id="username" name="username" placeholder="Tên đăng nhập">
+                <input type="text" id="pwd" name="pwd" placeholder="Mật khẩu">
+                <input type="submit" id ="loginbtn" value="Đăng nhập" onclick=""><br>
                 <a href="#">Bạn chưa có tài khoản?</a>
             </form>
         </div>
     </div>
     <div class="footer">
-
+        
     </div>
+    <script src="./login.component.js"></script>
 </body>
 </html>
