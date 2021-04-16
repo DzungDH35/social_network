@@ -4,16 +4,16 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./reset.css">
-        <link rel="stylesheet" href="./signup.component.css">
+        <link rel="stylesheet" href="/css/register.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        
         <title>Đăng ký</title>
     </head>
     <body>
         <div class="global-container">
             <div class="signup-form">
                 <div class="signup-form__header">
-                    <a href="/"><img class="header__logo" src="logo.png" alt="logo"></a>
+                    <a href="/"><img class="header__logo" src="/images/logo.png" alt="logo"></a>
                     <div>Đăng ký nhanh chóng, dễ dàng</div>
                 </div>
                 <div class="signup-form__body">
@@ -23,7 +23,7 @@
                                 <div>Họ và tên (*)</div>
                                 <input type="text" name="fullname" required>
                                 <div class="alert-area">
-                                    <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
+                                    <img src="/images/alert.png" alt="alert" class="alert-icon"></img>
                                     <div class="alert-message">Họ tên không hợp lệ</div>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                 <div>Tên đăng nhập (*)</div>
                                 <input type="text" name="username" required>
                                 <div class="alert-area">
-                                    <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
+                                    <img src="/images/alert.png" alt="alert" class="alert-icon"></img>
                                     <div class="alert-message">Tên đăng nhập không hợp lệ</div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                             <div>Email của bạn (*)</div>
                             <input type="email" name="email" required>
                             <div class="alert-area">
-                                <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
+                                <img src="/images/alert.png" alt="alert" class="alert-icon"></img>
                                 <div class="alert-message">Định dạng email không hợp lệ</div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 <i class="fas fa-eye-slash"></i>
                             </div>
                             <div class="alert-area" id="pass-alert">
-                                <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
+                                <img src="/images/alert.png" alt="alert" class="alert-icon"></img>
                                 <div class="alert-message">Mật khẩu không đạt yêu cầu</div>
                             </div>
                             <div class="input-note">Sử dụng 8 ký tự trở lên, có đầy đủ chữ cái thường, viết hoa, chữ số và kí tự đặc biệt. Ví dụ: helloWorld@123</div>
@@ -63,7 +63,7 @@
                                 <i class="fas fa-eye-slash"></i>
                             </div>
                             <div class="alert-area" id="cfpass-alert">
-                                <img src="icons/alert.png" alt="alert" class="alert-icon"></img>
+                                <img src="/images/alert.png" alt="alert" class="alert-icon"></img>
                                 <div class="alert-message">Mật khẩu không trùng khớp</div>
                             </div>
                         </div>
@@ -119,15 +119,14 @@
             window.onload = () => {
                 let i;
                 let temp;
-
                 temp = document.getElementById("date");
                 for(i = 1; i <= 31; ++i) temp.innerHTML = temp.innerHTML + '<option value="'+ i + '">' + i.toString() + '</option>';
                 temp = document.getElementById("year");
                 for(i = 1900; i <= new Date().getFullYear(); ++i) temp.innerHTML = temp.innerHTML + '<option value="'+ i + '">' + i.toString() + '</option>';
             };
         </script>
-        <script src="./validate.js"></script>
-        <script src="./signup_handle_events.js"></script>
-        <script src="./signup_catch_events.js"></script>
+        <script src="/js/validate.js"></script>
+        <script src="/js/signup_handle_events.js"></script>
+        <script src="/js/signup_catch_events.js"></script>
     </body>
 </html>
