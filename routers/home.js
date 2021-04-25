@@ -5,10 +5,7 @@ const {
 
 const router = require('express').Router();
 
-router.get('/', passport.authenticate("jwt", {
-    session: true,
-    failureRedirect: '/login'
-}), (req, res) => {
+router.get('/',(req, res) => {
     res.render('home');
 })
 
