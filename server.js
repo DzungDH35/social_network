@@ -4,24 +4,32 @@ const path = require('path');
 const morgan = require('morgan');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-
+const bodyParser = require('body-parser');
+// const io = require('');
 const cors = require('cors');
 require('dotenv').config();
 require('./config/passport')(passport);
 require('./config/db');
-app.use(cors())
+
+app.use(cors());
 app.set('view engine', 'ejs');
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/public')))
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 
 app.use(passport.initialize());
-app.use(passport.session());
 
-app.use('/', require('./routers/router'))
+app.use('/login', require('./routers/login'));
+app.use('/register', require('./routers/register'));
+
+app.use('/', passport.authenticate("jwt", {
+    session: true,
+    failureRedirect: '/login'
+}), require('./routers/router'));
+
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -31,5 +39,4 @@ app.use(function(req, res, next) {
     next();
 })
 
-app.listen(process.env.PORT, () => console.log('Server running at http://localhost:'+ process.env.PORT +'/home'))
-
+app.listen(process.env.PORT, () => console.log(`Server running at http://localhost:${process.env.PORT}/home`))
