@@ -1,6 +1,39 @@
-<h1>This is home</h1>
-<h2>Welcome <%= user%></h2>
-<a href="/user/20185555">Personal</a><br>
-<a href="/logout">Logout</a><br>
-<a href="/register">Register</a>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social media</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">
+</head>
+<body>
+   
+    <%- include('topbar'); -%>
+    <div class="home__page">
+        <div class="left"></div>
+        <div class="center">
+        </div>
+        <div class="right">
+            <div class="friend__container">
+                <div class="title">
+                    <h3>Friend List</h3>
+                    <div class="input--search">
+                        <input type="text" placeholder="Search">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                <%- include('friendlist'); -%>
 
+                <div class="title groups">
+                    <h3>Groups</h3>
+                </div>
+                <%- include('listgroup'); -%>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/home.js"></script>
+</html>

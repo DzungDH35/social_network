@@ -1,0 +1,113 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+/* main content */
+
+.home__page{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.home__page .left{
+    width: 20%;
+    background-color: rgb(95, 91, 75);
+}
+
+.home__page .center{
+    flex-grow: 1;
+}
+
+.home__page .right{
+    width: 20%;
+    border-left: 1px solid gray;
+    padding-top: 5px;
+}
+
+.home__page .right a{
+    text-decoration: none;
+    color: black;
+}
+
+.home__page .right .friend__container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.home__page .right .friend__container .title{
+    width: 100%;
+}
+.home__page .right .friend__container .title h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    color: rgb(65, 63, 63);
+    display: inline-block;
+    padding-left: 5px;
+    padding-top: 10px;
+    width: 100%;
+    border-bottom: solid 1px rgb(189, 180, 180);
+}
+
+.home__page .right .friend__container .title h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    color: rgb(65, 63, 63);
+    display: inline-block;
+    padding: 10px 0 10px 5px;
+    width: 100%;
+    border-bottom: solid 1px rgb(189, 180, 180);
+}
+
+.home__page .right .friend__container .title input{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    color: rgb(65, 63, 63);
+    display: inline-block;
+    padding: 5px;
+    border-radius: 15px;
+    width: 70%;
+    border: none;
+    background: gainsboro;
+    margin: 5px;
+}
+
+.home__page .right .friend__container .title input:focus{
+    outline: none;
+}
+.home__page .right .friend__container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.home__page .right .friend__container::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 5px;
+}
+
+.home__page .right .friend__container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.home__page .right .friend__container::-webkit-scrollbar-track {
+    background: #888; 
+    transition: 1s;
+}
+
+.home__page .right .friend__container{
+    overflow-y: hidden;
+}
+.home__page .right .friend__container:hover{
+    overflow-y: scroll;
+}
+  
+
+
+
