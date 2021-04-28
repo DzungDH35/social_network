@@ -1,6 +1,6 @@
 document.body.addEventListener("submit", async function (event) {
     event.preventDefault();
-    const username = event.target.username.value
+    const email = event.target.email.value
     const pwd = event.target.pwd.value
     
     fetch
@@ -11,7 +11,7 @@ document.body.addEventListener("submit", async function (event) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            userName: username,
+            email: email,
             pwd: pwd
         }),
         })
