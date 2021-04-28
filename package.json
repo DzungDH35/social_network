@@ -18,6 +18,7 @@
   },
   "homepage": "https://gitlab.com/soict-it4409/20202/nhom05/social-network#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -31,9 +32,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
+    "package.json": "^2.0.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "session": "^0.1.0",
-    "socket.io": "^4.0.1"
+    "session": "^0.1.0"
+  },
+  "devDependencies": {
+    "font-awesome": "^4.7.0"
   }
 }
