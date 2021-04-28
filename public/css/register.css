@@ -108,11 +108,11 @@ table {
     margin-top: 16px;
 }
 
-.input-wrapper--col > input, .option-wrapper {
+.input-wrapper--col > input, .option-wrapper, #major-list {
     margin-top: 8px;
 }
 
-.input-wrapper--col > input {
+.input-wrapper--col > input, #major-list {
     padding: 4px 12px;
     border: 1px solid #cbd4db;
     border-radius: 6px;
@@ -121,7 +121,7 @@ table {
     font-size: 14px;
 }
 
-.input-wrapper--col > input:focus {
+.input-wrapper--col > input:focus, #major-list:focus {
     outline: none;
     border-color: rgb(132, 141, 149);
     box-shadow: inset 0 1px #e8ecee;
