@@ -1,0 +1,154 @@
+/* CSS for Post-Card */
+*{
+    font: inherit;
+}
+.card-post{
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    border-radius: 5px;
+    width: 540px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 18px 10px;
+}
+header{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.avatar{
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.avatar img{
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.name{
+    width: 440px;
+}
+.name h1{
+    padding-left: 8px;
+    text-align: left;
+    word-break: break-word;
+    font-weight: bold;
+}
+
+/* dot */
+.threedots{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-top: 2px;
+    border-radius: 50%;
+}
+.fa-ellipsis-h{
+    padding-top: 6px;
+}
+.threedots:hover{
+    background-color: #e4e4e4;
+    cursor: pointer;
+}
+/* End CSS for 3dot */
+
+.content-text-post{
+    text-align: justify;
+}
+
+.content-img-post img{
+    max-width: 504px;
+    border: 2px solid #f1f1f1;
+}
+
+hr{
+    width: 100%;
+    align-items: center;
+}
+
+.swap-like-cmt{
+    width: 504px;
+    height: 30px;
+}
+.like-cmt-post{
+    width: 250px;
+    height: inherit;
+    text-align: center;   
+    line-height: 30px;
+    background-color: #57707d;
+    border: #57707d;
+    color: #fff;
+}
+
+.like-cmt-post:hover{
+    cursor: pointer;
+    background-color: rgb(145, 190, 248);
+}
+.like{
+    float: left;
+}
+.cmt{
+    float: right;
+}
+.like-post span{
+    padding-left: 10px;
+}
+.comment-post span{
+    padding-left: 10px;
+}
+/*CSS for comment.html*/
+.content-text-cmt{
+    width: fit-content;
+    margin-left: 46px;
+    margin-bottom: 18px;
+    text-align: justify;
+    background-color: #e8e7e7f5;
+    border-radius: 14px;
+}
+.content-text-cmt h1{
+    margin-left: 10px;
+    margin-bottom: 0;
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-right: 16px;
+    font-weight: bold;
+}
+.content-text-cmt p{
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-left: 5px;
+    padding-bottom: 8px;
+    padding-right: 16px;
+}
+
+.new-comment input{
+    border-radius: 22px;
+    background-color: #e8e7e7f5;
+    width: 400px;
+    height: 40px;
+    padding-left: 14px;
+    margin-left: 6px;
+    font-size: medium;
+    border: none;
+}
+.new-comment input:focus{
+    border: none;
+    outline: none;
+}
+
+.new-comment input:hover{
+    cursor: auto;
+    background-color: rgb(234, 233, 235);
+}
+.wrap-new-cmt{
+    height: 50px;
+}
+.input-group-camera:hover{
+    cursor: pointer;
+}
