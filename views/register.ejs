@@ -90,6 +90,14 @@
                             </div>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
+                            <div>Chuyên ngành (*)</div>
+                            <select id="major-list" name="major" required></select>
+                        </div>
+                        <div class="input-wrapper--col input-wrapper--mt">
+                            <div>Viện (*)</div>
+                            <input type="text" name="school" disabled>
+                        </div>
+                        <div class="input-wrapper--col input-wrapper--mt">
                             <div>Giới tính (*)</div>
                             <div class="option-wrapper">
                                 <div class="option">
@@ -113,17 +121,7 @@
                 <div class="signup-form__footer">Bạn đã có tài khoản? <a href="/login">Đăng nhập ngay</a>.</div>
             </div>
         </div>
-        <script>
-            // run once, generate date & year
-            window.onload = () => {
-                let i;
-                let temp;
-                temp = document.getElementById("date");
-                for(i = 1; i <= 31; ++i) temp.innerHTML = temp.innerHTML + '<option value="'+ i + '">' + i.toString() + '</option>';
-                temp = document.getElementById("year");
-                for(i = 1900; i <= new Date().getFullYear(); ++i) temp.innerHTML = temp.innerHTML + '<option value="'+ i + '">' + i.toString() + '</option>';
-            };
-        </script>
+        <script src="/js/signup_runonce.js"></script>
         <script src="/js/validate.js"></script>
         <script src="/js/signup_handle_events.js"></script>
         <script src="/js/signup_catch_events.js"></script>
