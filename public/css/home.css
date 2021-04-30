@@ -84,7 +84,7 @@ body{
     outline: none;
 }
 .home__page .right .friend__container::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 .home__page .right .friend__container::-webkit-scrollbar-track {
