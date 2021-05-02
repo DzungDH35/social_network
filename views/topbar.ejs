@@ -36,9 +36,9 @@
         <div class="account__control">
             <div class="personal__information">
                 <div>
-                    <a href="">
-                        <img class="avatar" src="/images/avatar.jpg" alt="">
-                        <p class="name">Tien Dung</p>
+                    <a href="/profile/<%= user._id%>">
+                        <img class="avatar" src="<%= user.avatar%>" alt="avatar">
+                        <p class="name"><%= user.name%></p>
                     </a>
                 </div>
             </div>

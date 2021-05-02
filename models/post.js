@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
-
 // reaction
 const reactionSchema = new schema({
     owner: {type: schema.Types.ObjectId, ref: 'User', require: true},
@@ -39,7 +38,10 @@ const postSchema = new schema({
     group: {type: schema.Types.ObjectId, ref: 'Group'},
     // comment
     comments: [commentSchema],
-    reactions: [reactionSchema]
+    // reaction
+    reactions: [reactionSchema],
+    // những người có thể thấy post này
+    usersCanSee: [{type: schema.Types.ObjectId, ref: 'User'}]
 }, {
     timestamps: true,
     versionKey: false

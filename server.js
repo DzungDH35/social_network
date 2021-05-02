@@ -24,7 +24,7 @@ app.use(passport.initialize());
 
 app.use('/login', require('./routers/login'));
 app.use('/register', require('./routers/register'));
-
+app.use('/changePwd', require('./routers/changePwd'))
 app.use('/', passport.authenticate("jwt", {
     session: true,
     failureRedirect: '/login'
