@@ -5,15 +5,19 @@
             <img src="/fb_icon_325x325.png" alt="">
         </div>
         <div class="newpost-input">
-            <form action="/" id="form-add-post" method="post">
-                <input type="text" placeholder="Cảm nghĩ của bạn hiện tại?"> 
+            <form action="" id="form-add-post" method="post" onchange="preview_image(event)">
+                <div class="edittext" contentEditable="true"></div>
+                <div class="wrap-image">
+                    <img id="output_image">
+                </div>
+                <div class="media">
+                    <div class="file-upload">
+                        <input type="file">
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="Đăng">&nbsp;&nbsp;
+                </div>
             </form>
         </div>
-    </div>
-    <hr>
-    <div class="media">
-        <i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;&nbsp;
-        <input type="submit" value="Đăng">
     </div>
 </div>
 <script src="/PostJS/post_status.js"></script>
@@ -29,7 +33,10 @@
                 <h1>Lê Hữu Tiến Dũng</h1>
             </div>
             <div class="threedots">
-                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="">Xóa</a>
+                </div>
             </div>
         </header>
         <div class="content-text-post">
@@ -71,26 +78,6 @@
                     <p>Chào mọi người. Cho em xin chút review</p>
                 </div>                    
             </div>
-
-            <div class="commented">
-                <div class="avatar">
-                    <img src="/usercmt1.png" alt="">
-                </div>
-                <div class="content-text-cmt">
-                    <h1>Zoro</h1>
-                    <p>Chào mọi người. Cho em xin chút review Chào mọi người. Cho em xin chút review Chào mọi người. Cho em xin chút review Chào mọi người. Cho em xin chút review</p>
-                </div>                    
-            </div>
-
-            <div class="commented">
-                <div class="avatar">
-                    <img src="/usercmt2.png" alt="">
-                </div>
-                <div class="content-text-cmt">
-                    <h1>Luffy</h1>
-                    <p>Chào mọi người. Cho em xin chút review</p>
-                </div>                    
-            </div>
             
             <!-- Viết comment -->
             <div class="new-comment">
@@ -99,13 +86,48 @@
                 </div>
                 <div class="wrap-new-cmt">
                     <form action="">
-                        <input type="text" placeholder="Viết bình luận ..."> &nbsp;
-                        <span class="input-group-camera">
-                            <i class="fa fa-camera" aria-hidden="true"></i>
-                        </span>
+                        <!-- <input id="text-cmt" type="text" placeholder="Viết bình luận ..."> -->
+                        <div class="edittext" contentEditable="true"></div>
+                        <div class="media-cmt">             
+                            <input id="img-cmt" type="file" onchange="preview_image_cmt(event)">
+                        </div>
+                        <div class="wrap-img-cmt">
+                            <img id="output_image_cmt">
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Choose preview image post-->
+<script>
+    function preview_image(event){
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output_image');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+<!-- Choose preview image comment -->
+<script>
+    function preview_image_cmt(event){
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('output_image_cmt');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+<!-- ThreeDots Click - Xóa -->
+<script>
+    function deleteStatus(){
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+</script>
