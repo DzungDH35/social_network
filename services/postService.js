@@ -1,45 +1,97 @@
 const Post = require('../models/post');
-
+const mongoose = require('mongoose')
 module.exports = {
+
+    // lấy vài post để đưa lên trang chủ
+    getPostsInHome: async (userId, pageNumber) => {
+        try {
+            return await
+                Post.find({usersCanSee: mongoose.Types.ObjectId(userId)})
+                    .populate('owner', 'name')
+                    .populate('group', 'name')
+                    .select('content img comments reaction group')
+                    .sort({updatedAt: -1})
+                    .skip(pageNumber - 1)
+                    .limit(10);
+        } catch (e) {
+            console.log(e)
+        }
+    },
+
+    // lấy vài post để đưa lên tường nhà
+    getPostsInProfile: async (userId, pageNumber) => {
+        try {
+            return await
+                Post.find({owner: mongoose.Types.ObjectId(userId)})
+                    .populate('owner', 'name')
+                    .populate('group', 'name')
+                    .select('content img comments reaction group')
+                    .sort({updatedAt: -1})
+                    .skip(pageNumber - 1)
+                    .limit(10);
+        } catch (e) {
+            console.log(e)
+        }
+    },
+
+    // lấy vài post để đưa lên nhóm
+    getPostsInGroups: async (groupId, pageNumber) => {
+        try {
+            return await
+                Post.find({group: mongoose.Types.ObjectId(groupId)})
+                    .populate('owner', 'name')
+                    .populate('group', 'name')
+                    .select('content img comments reaction group')
+                    .sort({updatedAt: -1})
+                    .skip(pageNumber - 1)
+                    .limit(10);
+        } catch (e) {
+            console.log(e)
+        }
+    },
+
+    // tạo
     createPost: async (userId, content, img, group) => {
         try {
-            const result = await Post.create({
+            await Post.create({
                 userId,
                 content,
                 img,
                 group
             })
-            return result;
         } catch (e) {
             console.log(e);
         }
     },
 
-    modifyContentPost: async (postId, newContent) => {
+    // sửa nội dung
+    modifyContentPost: async (postId, newContent, img) => {
         try {
-            const result = await Post.findByIdAndUpdate(
+            await Post.findByIdAndUpdate(
                 postId,
                 {
-                    'content': newContent
+                    content: newContent,
+                    img: (img === null) ? this.img : img
                 }
             )
-            return result;
         } catch (e) {
             console.log(e);
         }
     },
 
-    addComment: async (postId, owner, content, img) => {
+    // comment
+    addComment: async (postId, cmtOwner, content, img) => {
         try {
             const cmt = {
-                'owner': owner,
-                'content': content,
-                'img': img
+                owner: cmtOwner,
+                content: content,
+                img: img
             }
-            const post = await Post.findById(postId);
-            post.comments.push(cmt);
-            const result = post.save();
-            return result;
+            await Post.findByIdAndUpdate(postId, {
+                $push: {
+                    comments: cmt
+                }
+            })
         } catch (e) {
             console.log(e);
         }
