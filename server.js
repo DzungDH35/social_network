@@ -24,6 +24,7 @@ app.use(passport.initialize());
 
 app.use('/login', require('./routers/login'));
 app.use('/register', require('./routers/register'));
+app.use('/group', require('./routers/group'));
 
 app.use('/', passport.authenticate("jwt", {
     session: true,
