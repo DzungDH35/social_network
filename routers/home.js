@@ -1,12 +1,12 @@
 const passport = require('passport');
-const {
-    isAuth
-} = require('../config/authenticate');
+const User = require('../models/user');
 
 const router = require('express').Router();
 
-router.get('/',(req, res) => {
-    res.render('home');
+router.get('/', (req, res) => {
+    res.render('home',{
+        user: req.user.name
+    });
 })
 
 module.exports = router;
