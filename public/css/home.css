@@ -18,11 +18,6 @@ body{
     height: 100vh;
 }
 
-.home__page .left{
-    width: 20%;
-    background-color: rgb(95, 91, 75);
-}
-
 .home__page .center{
     flex-grow: 1;
 }
