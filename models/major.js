@@ -8,10 +8,12 @@ const majorSchema = new schema({
     name: {type: String, require: true},
     // mã ngành
     code: {type: String, require: true},
-    // viện (viện CNTT&TT)
+    // viện
     school: {type: schema.Types.ObjectId, ref: 'School'},
+    // nhóm của ngành
+    group: {type: schema.Types.ObjectId, ref: 'Group'},
     // danh sách sinh viên
-    student: [{type: schema.Types.ObjectId, ref: 'User'}],
+    students: [{type: schema.Types.ObjectId, ref: 'User'}],
 },{
     versionKey: false
 })

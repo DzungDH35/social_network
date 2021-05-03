@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const User = require('../models/user');
 const userService = require('../services/userService')
+const schoolService = require('../services/schoolService')
 require('dotenv').config();
 
 
 router.post('/', async (req, res) => {
     try {
-        const savedUser = await userService.saveUser(req.body);
+        const savedUser = await userService.createUser(req.body);
         console.log(savedUser);
         res.send(savedUser);
     } catch (err) {
@@ -14,8 +15,11 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', (req, res) => {
-    res.render('register');
+router.get('/', async (req, res) => {
+    let codes = await schoolService.getListsCode();
+    res.render('register', {
+        codes: codes
+    });
 })
 
 module.exports = router;

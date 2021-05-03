@@ -48,6 +48,36 @@ header{
     margin-top: 2px;
     border-radius: 50%;
 }
+.dropbtn{
+    width: inherit;
+    height: inherit;
+    border: none;
+}
+/* Dropdown threedots */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #57707d;
+    min-width: 60px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    display: block;
+    text-decoration: none;
+    padding-top: 10px;
+    color: #fff;
+    font-size: large;
+}
+.show {
+    background-color: #e93030;
+    display:block;
+    height: 42px;
+}
+/* End dropdown threedots */
+
 .fa-ellipsis-h{
     padding-top: 6px;
 }
@@ -101,6 +131,7 @@ hr{
 .comment-post span{
     padding-left: 10px;
 }
+
 /*CSS for comment.html*/
 .content-text-cmt{
     width: fit-content;
@@ -126,29 +157,63 @@ hr{
     padding-bottom: 8px;
     padding-right: 16px;
 }
-
-.new-comment input{
+.new-comment{
+    min-height: 42px;
+    display: flex;
+    position: relative;
+}
+.new-comment .edittext{
     border-radius: 22px;
-    background-color: #e8e7e7f5;
+    background-color: #F5F5F5F5;
     width: 400px;
-    height: 40px;
-    padding-left: 14px;
-    margin-left: 6px;
+    min-height: 30px;
     font-size: medium;
     border: none;
+    float: left;
+    margin-bottom: 10px;
+    padding: 5px 8px;
+    text-align: justify;
+    overflow: hidden;
 }
-.new-comment input:focus{
+.new-comment .edittext:focus{
     border: none;
     outline: none;
 }
 
-.new-comment input:hover{
+.new-comment .edittext:hover{
     cursor: auto;
     background-color: rgb(234, 233, 235);
 }
 .wrap-new-cmt{
-    height: 50px;
+    margin-left: 6px;
+    min-height: 40px;
+    float: left;
 }
-.input-group-camera:hover{
+
+/* CSS for upload file comment */
+.media-cmt{
+    width: 35px;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #FFFFFF;
+    background-image: url(/public/images/camera1.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 10;
+    right: 0;
+}
+.media-cmt #img-cmt{
+    width: inherit;
+    height: 28px;
+    opacity: 0;
     cursor: pointer;
+    margin-top: 7px;
+}
+
+.wrap-img-cmt #output_image_cmt{
+    max-width: 150px;
 }

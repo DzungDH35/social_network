@@ -1,0 +1,31 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/group.css">
+    <title>Group</title>
+</head>
+<body>
+<div class="body__side-bar">
+    <div class="side-bar__section side-bar__section-1">
+        <div class="section__title">Group</div>
+        <label class="section__search-tool">
+            <img class="search-tool__icon" src="images/icons/search.png" alt="search-icon">
+            <input class="search-tool__input" name="search-input" type="search" placeholder="Tìm kiếm nhóm">
+        </label>
+    </div>
+    <div class="side-bar__section-wrapper">
+        <div class="side-bar__separator"></div>
+        <div class="side-bar__section">
+            <div class="side-bar__item-list"></div>
+                <% groups.forEach(g => { %>
+                <div class="side-bar__item side-bar__item--type-2">
+                    <img class="side-bar__item-image" src="<%= g.img %>">
+                    <div class="side-bar__item-title"><%= g.name %></div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/friendlist.css">
+</head>
+<body>
+<ul>
+    <% friends.forEach(f=> { %>
+        <li>
+            <div class="friend__item">
+                <div class="hover__friend__detail">
+                </div>
+                <a href="/profile/<%= f._id %>">
+                    <div class="item">
+                        <div class="image">
+                            <img class="avatar" src="<%= f.avatar %>" alt="">
+                        </div>
+                        <div class="friend--name">
+                            <p><%= f.name %></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>
