@@ -9,27 +9,105 @@
 </head>
 <body>
     <%- include('topbar'); -%>
-    <div class="cover__photo__avatar">
-        <div class="cover__photo">
-            <div class="photo">
-                <img src="/images/cover_photo.jpg" alt="">
-                <div class="edit-cover-photo">
-                    <img src="/images/camera.png" alt="">
-                    <p>Edit Cover Photo</p>
-                </div>
-            </div>
-            <div class="avatar">
-                <div class="edit-avatar">
-                    <a href="">
+    <div class="avatar__container__top">
+        <div class="cover__photo__avatar">
+            <div class="cover__photo">
+                <div class="photo">
+                    <img src="/images/cover_photo.jpg" alt="">
+                    <div class="edit-cover-photo">
                         <img src="/images/camera.png" alt="">
-                    </a>
+                        <p>Edit Cover Photo</p>
+                    </div>
                 </div>
-                <div class="photo-avatar">
-                    <img src="/images/big_avatar.jpg" alt="">
+                <div class="avatar">
+                    <div class="edit-avatar">
+                        <a href="">
+                            <img src="/images/camera.png" alt="">
+                        </a>
+                    </div>
+                    <div class="photo-avatar">
+                        <img src="/images/big_avatar.jpg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-        
+        <div class="user__name">
+            <h2 class="name">Nguyen Tien Dung</h2>
+            <br>
+            <p class="sub_name">dungnt</p>
+        </div>
+        <div class="information__bar">
+            <div class="left__items">
+                <ul>
+                    <a href="" class="active">
+                        <li><p>Posts</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>About</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>Friends</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>Photos</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>More</p></li>
+                    </a>
+                </ul>
+            </div>
+            <div class="right__button">
+                <ul>
+                    <!-- xu ly logic neu la profile cua minh thi hien thi 
+                    nut edit prifile neu xem profile cua nguoi khac thi co nut add friends, message-->
+                    <!-- neu da la ban be thi hien thi nut Friends va message -->
+                    <li class="active">
+                        <div id="edit-profile">
+                            <img src="/images/edit.png" alt="">
+                            <p>Edit profile</p>
+                        </div>
+                    </li>
+                    <!-- chua add friend -->
+                    <li class="active">
+                        <div id="add-friend">
+                            <img src="/images/addfriend.png" alt="">
+                            <p>Add friend</p>
+                        </div>
+                    </li>
+                    <li class="hide">
+                        <div id="message">
+                            <img src="/images/message.png" alt="">
+                            <p>Message</p>
+                        </div>
+                    </li>
+                    <!-- da add friend -->
+                    <li class="hide">
+                        <a href="">
+                            <div id="friend">
+                                <img src="/images/friends.png" alt="">
+                                <p>Friends</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="hide">
+                        <div id="message">
+                            <img src="/images/message.png" alt="">
+                            <p>Message</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div class="main__profile__content">
+        <div class="left__detail__infor">
+            <div class="intro">
+                <p class="title">Intro</p>
+            </div>
+        </div>
+        <div class="right__posts">
+
+        </div>
+    
 </body>
 </html>
