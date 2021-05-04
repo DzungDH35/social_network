@@ -13,12 +13,35 @@ require('dotenv').config();
 require('./config/db');
 try {
 
-    User.find().then( async us => {
-        for (let u of us) {
-            u.gender = (faker.datatype.boolean())? 'male':'female';
-            u.save();
+    let register = async (obj) => {
+        try {
+            let res = await schoolService.getMajorAndSchoolByCode(obj.major);
+            obj.major = res.major;
+            obj.school = res.school;
+            // let user = await User.create(obj);
+            let m = await Major.findById(res.major);
+            // let s = await School.findById(res.school);
+            // await groupService.joinGroup(user._id, m.group);
+            // await groupService.joinGroup(user._id, s.group);
+            let g = await Group.findById(m.group);
+            return g
+        } catch (e) {
+            console.log(e);
         }
-    })
+    }
+
+    let x = {
+        email: "duc.nm183713@sis.hust.edu.vn",
+        name: "Minh Đức",
+        pwd: "1234",
+        birthDay: "2000-10-28",
+        avatar: "https://cdn.fakercloud.com/avatars/brandonflatsoda_128.jpg",
+        gender: "male",
+        mssv: "201837131",
+        major: "IT2"
+    }
+
+    register(x).then(r => console.log(r));
 
 } catch (e) {
     console.log(e)
