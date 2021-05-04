@@ -7,8 +7,7 @@ require('dotenv').config();
 
 router.post('/', async (req, res) => {
     try {
-        const savedUser = await userService.createUser(req.body);
-        console.log(savedUser);
+        const savedUser = await userService.register(req.body);
         res.send(savedUser);
     } catch (err) {
         res.status(400).send(err);
@@ -16,10 +15,15 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    let codes = await schoolService.getListsCode();
-    res.render('register', {
-        codes: codes
-    });
+    try {
+        let codes = await schoolService.getListsCode();
+        res.render('register', {
+            codes: codes
+        });
+    } catch (e) {
+        res.status(400).send('get register')
+    }
+
 })
 
 module.exports = router;

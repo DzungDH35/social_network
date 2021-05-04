@@ -20,7 +20,8 @@ const groupSchema = new schema({
         default: 'normal'
     }
 },{
-    versionKey: false
+    versionKey: false,
+    timestamps: true
 })
 
 module.exports = mongoose.model('Group', groupSchema)

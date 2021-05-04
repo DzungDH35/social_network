@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
                 id: user._id
             }, process.env.SECRETKEY);
             res.cookie('token', token);
-            res.redirect('/home');
+            res.json({token: token});
         } else {
             res.status(400).json({
                 status: 'err',

@@ -11,14 +11,19 @@ const transporter = nodemailer.createTransport({
 
 module.exports = {
     sendMail: (toMail, param) => {
-        const link = 'http://localhost:' + process.env.PORT + '/changePwd/' + param;
-        const mailOption = {
-            from: process.env.USER,
-            to: toMail,
-            subject: 'Reset password',
-            html: '<a href="' + link + '">Click here to reset password</a>'
+        try {
+            const link = 'http://localhost:' + process.env.PORT + '/changePwd/' + param;
+            const mailOption = {
+                from: process.env.USER,
+                to: toMail,
+                subject: 'Reset password',
+                html: '<a href="' + link + '">Click here to reset password</a>'
+            }
+            transporter.sendMail(mailOption);
+        } catch (e) {
+            throw e
         }
-        transporter.sendMail(mailOption);
+
     }
 }
 

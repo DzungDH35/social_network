@@ -6,13 +6,12 @@ module.exports = {
         try {
             return await Major.find().select('name');
         } catch (e) {
-            console.log(e);
+            throw e
         }
     },
 
     getMajorAndSchoolByCode: async (code) => {
       try {
-          console.log(code)
           let m = await Major.findOne({code: code});
           let s = await School.findById(m.school);
           return {
@@ -20,7 +19,7 @@ module.exports = {
               school: s._id
           }
       }  catch (e) {
-          console.log(e)
+          throw e
       }
     },
 
@@ -28,7 +27,7 @@ module.exports = {
         try {
             return await School.find().select({_id: 0, name: 1}).populate('majors', {_id: 0, name: 1});
         } catch (e) {
-            console.log(e)
+            throw e
         }
     },
 
@@ -37,7 +36,7 @@ module.exports = {
             let res = await Major.find().select({_id: 0, code: 1});
             return res.map(obj => obj.code);
         } catch (e) {
-            console.log(e)
+            throw e
         }
     }
 }

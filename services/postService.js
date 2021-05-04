@@ -1,4 +1,6 @@
 const Post = require('../models/post');
+const User = require('../models/user');
+const Group = require('../models/group')
 const mongoose = require('mongoose')
 module.exports = {
 
@@ -12,9 +14,9 @@ module.exports = {
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
                     .skip(pageNumber - 1)
-                    .limit(10);
+                    .limit(3);
         } catch (e) {
-            console.log(e)
+            throw e
         }
     },
 
@@ -28,9 +30,9 @@ module.exports = {
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
                     .skip(pageNumber - 1)
-                    .limit(10);
+                    .limit(3);
         } catch (e) {
-            console.log(e)
+            throw e
         }
     },
 
@@ -44,23 +46,27 @@ module.exports = {
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
                     .skip(pageNumber - 1)
-                    .limit(10);
+                    .limit(3);
         } catch (e) {
-            console.log(e)
+            throw e
         }
     },
 
     // tạo
-    createPost: async (userId, content, img, group) => {
+    createPost: async (userId, content, img, groupId) => {
         try {
-            await Post.create({
-                userId,
-                content,
-                img,
-                group
+            let user = await User.findById(userId);
+            let group = await Group.findById(groupId);
+            let usersCanSee = new Set([...user.friends, ...group.members]);
+            let post = await Post.create({
+                owner: userId,
+                content: content,
+                img: img,
+                group: groupId,
+                usersCanSee: usersCanSee
             })
         } catch (e) {
-            console.log(e);
+            throw e
         }
     },
 
@@ -75,7 +81,7 @@ module.exports = {
                 }
             )
         } catch (e) {
-            console.log(e);
+            throw e
         }
     },
 
@@ -93,7 +99,7 @@ module.exports = {
                 }
             })
         } catch (e) {
-            console.log(e);
+            throw e
         }
     }
 }
