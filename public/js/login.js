@@ -2,11 +2,11 @@ document.body.addEventListener("submit", async function (event) {
     event.preventDefault();
     const email = event.target.email.value
     const pwd = event.target.pwd.value
-    
+
     fetch
-        ('/login', {
+    ('/login', {
         method: 'POST',
-        redirect: 'follow',
+        redirect: 'manual',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -14,11 +14,10 @@ document.body.addEventListener("submit", async function (event) {
             email: email,
             pwd: pwd
         }),
-        })
-        .then(response => { 
-            if (response.redirected) {
-                window.location.href = response.url;
-            }
+    })
+        .then(response => {
+            console.log(response)
+            window.location.href = '/home';
         })
         .catch(error => {
             console.error('Error:', error);

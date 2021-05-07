@@ -1,20 +1,31 @@
 const User = require('../models/user')
 const Major = require('../models/major')
 const School = require('../models/school')
+const Group = require('../models/school')
+const Post = require('../models/post')
 const mailService = require('./mailService')
 const schoolService = require('./schoolService')
+const groupService = require('./groupService')
+const mongoose = require('mongoose')
 const faker = require('faker')
 module.exports = {
 
-    createUser: async (obj) => {
+    register: async (obj) => {
         try {
             let res = await schoolService.getMajorAndSchoolByCode(obj.major);
             obj.major = res.major;
             obj.school = res.school;
-            let user = new User(obj);
-            return await user.save();
+            console.log(obj)
+            // let user = await User.create(obj);
+            let m = await Major.findById(res.major);
+            // let s = await School.findById(res.school);
+            // await groupService.joinGroup(user._id, m.group);
+            // await groupService.joinGroup(user._id, s.group);
+            let g = await Group.findById(mongoose.Types.ObjectId(m.group));
+            console.log(g)
+            return g
         } catch (e) {
-            console.log(e);
+            throw e
         }
     },
 
@@ -25,57 +36,17 @@ module.exports = {
             if (user.comparePwd(pwd)) return user;
             return null;
         } catch (e) {
-            console.log(e);
+            throw e
         }
     },
 
-    // gửi lời mời kết bạn từ 'from' tới 'to'
-    sendAddFriendRequest: async (from, to) => {
-        let user = await User.findById(to);
-        user.addFriendRequest.push(from);
-        user.save()
-    },
 
-    // đồng ý lời mời kết bạn từ 'from' đến 'to'
-    addFriend: async (from, to) => {
-        // thêm 'to' vào list frs của 'from'
-        try {
-            await User.findByIdAndUpdate(from, {
-                $addToSet: {
-                    friends: to
-                }
-            });
-            // thêm 'from' vào list friends của 'to' và xóa lời mời từ 'from'
-            await User.findByIdAndUpdate(to, {
-                $addToSet: {
-                    friends: from
-                }
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    },
-
-    // từ chối lời mời kết bạn
-    delAcceptAddFriend: async (from, to) => {
-        try {
-            // xóa request kết bạn
-            User.findByIdAndUpdate(to, {
-                $pull: {
-                    addFriendRequest: from
-                }
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    },
 
     getUserById: async (id) => {
         try {
-            let user = await User.findById(id).populate('major').populate('school');
-            return user;
+            return await User.findById(id).populate('major').populate('school');
         } catch (e) {
-            console.log(e)
+            throw e
         }
     },
 
@@ -85,12 +56,12 @@ module.exports = {
             user.pwd = newPwd;
             user.save();
         } catch (e) {
-            console.log(e);
+            throw e
         }
     },
 
     sendResetPwdId: async (email) => {
-        try{
+        try {
             let user = await User.findOne({email: email});
             if (user === null) return null;
             let resetPwdId = faker.datatype.uuid();
@@ -99,7 +70,7 @@ module.exports = {
             mailService.sendMail(email, resetPwdId);
             return 'OK';
         } catch (e) {
-            console.log(e)
+            throw e
         }
     },
 
@@ -112,8 +83,15 @@ module.exports = {
             await user.save();
             return 'OK';
         } catch (e) {
-            console.log(e)
+            throw e
         }
-    }
+    },
 
+    searchByName: async (name) => {
+        try {
+            return await User.find({name: new RegExp(name, 'i')})
+        } catch (e) {
+            throw e
+        }
+    },
 }
