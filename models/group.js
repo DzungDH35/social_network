@@ -5,14 +5,23 @@ const schema = mongoose.Schema;
 const groupSchema = new schema({
     // tên nhóm
     name: {type: String, require: true},
+    // admin
+    admin: {type: schema.Types.ObjectId, ref: 'User'},
     // thành viên
-    member: [{type: schema.Types.ObjectId, ref: 'User', require: true}],
+    members: [{type: schema.Types.ObjectId, ref: 'User'}],
     // các bài post trong nhóm
     posts: [{type: schema.Types.ObjectId, ref: 'Post'}],
     // ảnh nền nhóm?
-    img: {type: String}
+    img: {type: String, required: true},
+    // loại nhóm
+    groupType: {
+        type: String,
+        enum: ['major', 'school', 'normal'],
+        default: 'normal'
+    }
 },{
-    versionKey: false
+    versionKey: false,
+    timestamps: true
 })
 
 module.exports = mongoose.model('Group', groupSchema)

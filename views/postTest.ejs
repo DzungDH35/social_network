@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/post.css">
-    <script src="https://kit.fontawesome.com/aedaaef517.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!-- card post -->
-    
+<% postList.forEach(post => { %>
     <div class="card-post" id="container">
         <div class="wrapper">
             <header>
                 <div class="avatar">
-                    <img src="" alt="">
+                    <img src="<%= post.owner.avatar %>" alt="">
                 </div>
                 <div class="name">
-                    <h1>Le Huu Tien Dung</h1>
+                    <h1><%= post.owner.name %></h1>
                 </div>
                 <div class="threedots">
                     <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
@@ -24,7 +16,7 @@
                 </div>
             </header>
             <div class="content-text-post">
-                <p>aaaaaaaaaaaaa</p>
+                <p><%= post.content %></p>
             </div>
             <div class="content-img-post">
                 <img src="" alt="">
@@ -38,7 +30,7 @@
                         <span>Thích</span>
                     </section>
                     &nbsp;
-                    <section class="like-cmt-post cmt">                 
+                    <section class="like-cmt-post cmt">
                         <i class="far fa-comment"></i>&nbsp;&nbsp;
                         <span>Bình luận</span>
                     </section>
@@ -54,9 +46,9 @@
                     <div class="content-text-cmt">
                         <h1>Tumblr</h1>
                         <p>Chào mọi người. Cho em xin chút review</p>
-                    </div>                    
+                    </div>
                 </div>
-                
+
                 <!-- Viết comment -->
                 <div class="new-comment">
                     <div class="avatar">
@@ -66,7 +58,7 @@
                         <form action="">
                             <!-- <input id="text-cmt" type="text" placeholder="Viết bình luận ..."> -->
                             <div class="edittext" contentEditable="true"></div>
-                            <div class="media-cmt">             
+                            <div class="media-cmt">
                                 <input id="img-cmt" type="file" onchange="preview_image_cmt(event)">
                             </div>
                             <div class="wrap-img-cmt">
@@ -78,28 +70,4 @@
             </div>
         </div>
     </div>
-    
-    <!-- Choose preview image comment -->
-    <script>
-        function preview_image_cmt(event){
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('output_image_cmt');
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
-
-    <!-- ThreeDots Click - Xóa -->
-    <script>
-        function deleteStatus(){
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-    </script>
-
-    <script src="js/post.js">
-        
-    </script>
-</body>
-</html>
+<% }) %>

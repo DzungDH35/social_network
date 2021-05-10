@@ -16,6 +16,8 @@ const userSchema = new schema({
     avatar: {type: String},
     // mssv
     mssv: {type: String, require: true, unique: true},
+    // giới tính
+    gender: {type: String, enum: ['male', 'female']},
     // chuyên ngành
     major: {type: schema.Types.ObjectId, ref: "Major", require: true},
     // viện
@@ -29,10 +31,19 @@ const userSchema = new schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     }],
-    addFriendRequest: [{
+    addFriendRequests: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    }]
+    }],
+    joinGroupRequests: [{
+        from: {type: schema.Types.ObjectId, ref: 'User'},
+        toGroup: {type: schema.Types.ObjectId, ref: 'Group'}
+    }],
+    groups: [{
+        type: schema.Types.ObjectId,
+        ref: 'Group'
+    }],
+    resetPwdId: {type: String}
 }, {
     timestamps: true,
     versionKey: false

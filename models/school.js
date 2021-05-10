@@ -6,8 +6,10 @@ const schoolSchema = new schema({
     name: {type: String, require: true},
     // các chuyên ngành (IT2, IT-E15,...)
     majors: [{type: schema.Types.ObjectId, ref: 'Major'}],
+    // nhóm của viện
+    group: {type: schema.Types.ObjectId, ref: 'Group'},
     // sinh viên = user
-    student: [{type: schema.Types.ObjectId, ref: 'User'}]
+    students: [{type: schema.Types.ObjectId, ref: 'User'}]
 },{
     versionKey: false
 })

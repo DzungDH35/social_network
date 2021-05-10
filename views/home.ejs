@@ -6,47 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social media</title>
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">
-    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">
+    <link rel="stylesheet" href="/css/topbar.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
+    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
 </head>
 <body>
-   
-    <%- include('topbar'); -%>
-    <div class="home__page">
-        <div class="left"></div>
-        <div class="center">
-        </div>
-        <div class="right">
-            <div class="friend__container">
-                <div class="title">
-                    <h3>Friend List</h3>
-                    <div class="input--search">
-                        <input type="text" placeholder="Search">
-                    </div>
-                </div>
-                <%- include('friendlist'); -%>
 
-                <div class="title groups">
-                    <h3>Groups</h3>
+<%- include('topbar', {user: user}); %>
+
+<div class="home__page">
+    <div class="left">
+        <%- include('grouplist', {groups: groups})%>
+    </div>
+    <div class="center">
+        <%- include('newpost') %>
+    </div>
+    <div class="right">
+        <div class="friend__container">
+            <div class="title">
+                <h3>Friend List</h3>
+                <div class="input--search">
+                    <input type="text" placeholder="Search">
                 </div>
-                <%- include('listgroup'); -%>
             </div>
+            <%- include('friendlist', {friends: friends}); %>
+            <div class="title groups">
+                <h3>Groups</h3>
+            </div>
+            <%- include('listgroupchat'); -%>
         </div>
     </div>
-    <!-- <div class="box__chat__container">
-        <div class="box__chat">
-            <div class="top_bar">
-                <div class="left">
-                    <img src="/images/avatar.jpg" alt="">
-                    <div class="name">
-                        <p>Tran Dang</p>
-                        <span>Active now</span>
-                    </div>
-                </div>
-                <div class="right"></div>
-            </div>
-        </div>
-    </div> -->
+</div>
 </body>
 <script src="js/home.js"></script>
+<script src="js/post.js"></script>
 </html>

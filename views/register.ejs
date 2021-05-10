@@ -99,7 +99,11 @@
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
                             <div>Chuyên ngành (*)</div>
-                            <select id="major-list" name="major" required></select>
+                            <select id="major-list" name="major" required>
+                                <% codes.forEach(code => {%>
+                                    <option><%= code%></option>
+                                <%}) %>
+                            </select>
                         </div>
                         <div class="input-wrapper--col input-wrapper--mt">
                             <div>Viện (*)</div>
