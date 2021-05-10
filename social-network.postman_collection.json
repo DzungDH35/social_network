@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "cfeb447a-12fa-4671-9f0e-d31f0d96212c",
+		"name": "social-network",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"duc.nm183713@sis.hust.edu.vn\",\r\n    \"name\": \"Minh Đức\",\r\n    \"pwd\": \"1234\",\r\n    \"birthDay\": \"2000-10-28\",\r\n    \"avatar\": \"https://cdn.fakercloud.com/avatars/brandonflatsoda_128.jpg\",\r\n    \"gender\": \"male\",\r\n    \"mssv\": \"201837131\",\r\n    \"major\": \"IT2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"duc.nm183713@sis.hust.edu.vn\",\r\n    \"pwd\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Reset Password Link",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"duc.nm183713@sis.hust.edu.vn\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/changePwd",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"changePwd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update New Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"newPwd\": \"123456\"  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/changePwd/{{resetId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"changePwd",
+						"{{resetId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Some Posts In Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/post/home/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"home",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Some Posts In Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/post/profile/{{userId}}/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"profile",
+						"{{userId}}",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Some Posts In Group",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/post/group/{{groupId}}/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"group",
+						"{{groupId}}",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search User",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/search/user?name=Đức",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"search",
+						"user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Đức"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Group",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/search/group?name=máy",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"search",
+						"group"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "máy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Add Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"608963d31fb1b13e50f1f59b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/friend/addFriendRequests",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"friend",
+						"addFriendRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Add Friend Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/friend/addFriendRequests",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"friend",
+						"addFriendRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deny Add Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"608963d31fb1b13e50f1f59b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/friend/denyAddFriend/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"friend",
+						"denyAddFriend",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Add Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"608963d31fb1b13e50f1f59b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/friend/acceptAddFriend",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"friend",
+						"acceptAddFriend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Join Group Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"groupId\": \"609117c0298f73246793368b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/group/joinRequest",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"group",
+						"joinRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "acceptJoinGroup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqId\":\"60915fcaa2598b18c07c7d4e\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/group/acceptJoinGroup",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"group",
+						"acceptJoinGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Join Group Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/group/joinRequest",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"group",
+						"joinRequest"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "resetId",
+			"value": "8799d37c-29ef-43af-8cae-babec8ee0a13"
+		},
+		{
+			"key": "userId",
+			"value": "60883244c2f56126d0d7bfa4"
+		},
+		{
+			"key": "groupId",
+			"value": "608ad5dd91d770055c949fbb"
+		}
+	]
+}

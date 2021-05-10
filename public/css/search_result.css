@@ -1,0 +1,166 @@
+/* ===== normalize css ===== */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* ============================================================ */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.global-wrapper {
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.header-wrapper {
+    height: 56px;
+    position: sticky;
+    top: 0;
+    
+/* css below is for test purpose, delete when you insert component */
+    background-color: #fff;
+    border-bottom: 1px solid #000;
+    text-align: center;
+    line-height: 56px;
+/* ================================================================= */
+}
+
+.body-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar-wrapper {
+    width: 360px;
+    height: calc(100vh - 56px);
+    position: sticky;
+    top: 56px; left: 0;
+    flex-shrink: 0;
+
+/* css below is for test purpose, delete when you insert component */ 
+    background-color: #fff;
+    text-align: center;
+    line-height: calc(100vh - 56px);
+/* ================================================================= */
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.item-list::before {
+    display: block;
+    content: "";
+    margin-bottom: -30px;
+}
+
+.item-list > * {
+    margin-top: 30px;
+}
+
+.item {
+    width: 680px;
+    height: 92px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.item__avatar {
+    width: 60px; height: 60px;
+    border-radius: 100%;
+    border: 1px solid #b9b9b9;
+    cursor: pointer;
+}
+
+.item__avatar:hover {
+    filter: brightness(90%);
+}
+
+.item__text-wrapper {
+    flex-grow: 1;
+    margin-left: 12px;
+}
+
+.item__text-wrapper > div:nth-child(2) {
+    margin-top: 10px;
+}
+
+.item__name {
+    font-weight: 500;
+}
+
+.item__description {
+    font-size: 14px;
+    color: #65676b;
+}
+
+.item__icon {
+    padding: 6px;
+    border-radius: 100%;
+    background-color: #e4e6eb;
+    cursor: pointer;
+}
+
+.item__icon:hover {
+    background-color: #ccced4;
+}
+
+.item__icon > img {
+    width: 23px;
+}
