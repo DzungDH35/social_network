@@ -9,7 +9,7 @@ module.exports = {
         try {
             return await
                 Post.find({usersCanSee: mongoose.Types.ObjectId(userId)})
-                    .populate('owner', 'name')
+                    .populate('owner', 'name avatar')
                     .populate('group', 'name')
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
