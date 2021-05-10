@@ -1,23 +1,22 @@
-let postList = null;
-
-function getData(){
-  fetch
-      ('/post/home/1', {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-      })
-          .then(response => {
-              response.status
-              response.json().then((data) => {
-                postList = data;
-                console.log(postList)
-                // console.log(data);
-              })
-          })
-          .catch(error => {
-              console.error('Error:', error);
-          });
+function getData() {
+    fetch
+    ('/post/home/1', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            response.text().then((data) => {
+                console.log(data)
+                let list = document.createElement('div');
+                list.innerHTML = data;
+                document.getElementsByClassName('center')[0].appendChild(list)
+            })
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
-getData();
+
+
