@@ -1,133 +1,105 @@
-<!-- Box đăng bài -->
-<div class="new-postbox">
-    <div class="wrap-avatar-input">
-        <div class="avatar">
-            <img src="/fb_icon_325x325.png" alt="">
-        </div>
-        <div class="newpost-input">
-            <form action="" id="form-add-post" method="post" onchange="preview_image(event)">
-                <div class="edittext" contentEditable="true"></div>
-                <div class="wrap-image">
-                    <img id="output_image">
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/post.css">
+    <script src="https://kit.fontawesome.com/aedaaef517.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- card post -->
+    
+    <div class="card-post" id="container">
+        <div class="wrapper">
+            <header>
+                <div class="avatar">
+                    <img src="" alt="">
                 </div>
-                <div class="media">
-                    <div class="file-upload">
-                        <input type="file">
-                    </div>&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Đăng">&nbsp;&nbsp;
+                <div class="name">
+                    <h1>Le Huu Tien Dung</h1>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
-<script src="/PostJS/post_status.js"></script>
-
-<!-- card post -->
-<div class="card-post">
-    <div class="wrapper">
-        <header>
-            <div class="avatar">
-                <img src="/fb_icon_325x325.png" alt="">
+                <div class="threedots">
+                    <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="">Xóa</a>
+                    </div>
+                </div>
+            </header>
+            <div class="content-text-post">
+                <p>aaaaaaaaaaaaa</p>
             </div>
-            <div class="name">
-                <h1>Lê Hữu Tiến Dũng</h1>
+            <div class="content-img-post">
+                <img src="" alt="">
             </div>
-            <div class="threedots">
-                <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="">Xóa</a>
+            <div class="bar-post">
+                <section class="numberlike">50 Lượt Thích</section>
+                <hr>
+                <div class="swap-like-cmt">
+                    <section class="like-cmt-post like">
+                        <i class="far fa-heart"></i>&nbsp;&nbsp;
+                        <span>Thích</span>
+                    </section>
+                    &nbsp;
+                    <section class="like-cmt-post cmt">                 
+                        <i class="far fa-comment"></i>&nbsp;&nbsp;
+                        <span>Bình luận</span>
+                    </section>
                 </div>
             </div>
-        </header>
-        <div class="content-text-post">
-            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                 Ut enim ad minim veniam, quis nostrud exercitation ullamco.Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                 Ut enim ad minim veniam, quis nostrud exercitation ullamco.Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                 Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        </div>
-        <div class="content-img-post">
-            <img src="/9c3928b843a01ec6d3b796583a707704-1000.jpg" alt="">
-        </div>
-        <div class="bar-post">
-            <section class="numberlike">50 Lượt Thích</section>
             <hr>
-            <div class="swap-like-cmt">
-                <section class="like-cmt-post like">
-                    <i class="far fa-heart"></i>&nbsp;&nbsp;
-                    <span>Thích</span>
-                </section>
-                &nbsp;
-                <section class="like-cmt-post cmt">                 
-                    <i class="far fa-comment"></i>&nbsp;&nbsp;
-                    <span>Bình luận</span>
-                </section>
-            </div>
-        </div>
-        <hr>
-        <div class="comment">
-            <!-- Các comment đã xuất hiện -->
-            <div class="commented">
-                <div class="avatar">
-                    <img src="/me.jpg" alt="">
+            <div class="comment">
+                <!-- Các comment đã xuất hiện -->
+                <div class="commented">
+                    <div class="avatar">
+                        <img src="/me.jpg" alt="">
+                    </div>
+                    <div class="content-text-cmt">
+                        <h1>Tumblr</h1>
+                        <p>Chào mọi người. Cho em xin chút review</p>
+                    </div>                    
                 </div>
-                <div class="content-text-cmt">
-                    <h1>Tumblr</h1>
-                    <p>Chào mọi người. Cho em xin chút review</p>
-                </div>                    
-            </div>
-            
-            <!-- Viết comment -->
-            <div class="new-comment">
-                <div class="avatar">
-                    <img src="/fb_icon_325x325.png" alt="">
-                </div>
-                <div class="wrap-new-cmt">
-                    <form action="">
-                        <!-- <input id="text-cmt" type="text" placeholder="Viết bình luận ..."> -->
-                        <div class="edittext" contentEditable="true"></div>
-                        <div class="media-cmt">             
-                            <input id="img-cmt" type="file" onchange="preview_image_cmt(event)">
-                        </div>
-                        <div class="wrap-img-cmt">
-                            <img id="output_image_cmt">
-                        </div>
-                    </form>
+                
+                <!-- Viết comment -->
+                <div class="new-comment">
+                    <div class="avatar">
+                        <img src="<%= user.avatar %>" alt="">
+                    </div>
+                    <div class="wrap-new-cmt">
+                        <form action="">
+                            <!-- <input id="text-cmt" type="text" placeholder="Viết bình luận ..."> -->
+                            <div class="edittext" contentEditable="true"></div>
+                            <div class="media-cmt">             
+                                <input id="img-cmt" type="file" onchange="preview_image_cmt(event)">
+                            </div>
+                            <div class="wrap-img-cmt">
+                                <img id="output_image_cmt">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Choose preview image post-->
-<script>
-    function preview_image(event){
-        var reader = new FileReader();
-        reader.onload = function(){
-            var output = document.getElementById('output_image');
-            output.src = reader.result;
+    
+    <!-- Choose preview image comment -->
+    <script>
+        function preview_image_cmt(event){
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('output_image_cmt');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
         }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
+    </script>
 
-<!-- Choose preview image comment -->
-<script>
-    function preview_image_cmt(event){
-        var reader = new FileReader();
-        reader.onload = function(){
-            var output = document.getElementById('output_image_cmt');
-            output.src = reader.result;
+    <!-- ThreeDots Click - Xóa -->
+    <script>
+        function deleteStatus(){
+            document.getElementById("myDropdown").classList.toggle("show");
         }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
+    </script>
 
-<!-- ThreeDots Click - Xóa -->
-<script>
-    function deleteStatus(){
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-</script>
+    <script src="js/post.js">
+        
+    </script>
+</body>
+</html>
