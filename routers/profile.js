@@ -13,7 +13,8 @@ router.get('/:id', (async (req, res) => {
             user: user,
             isFriend: isFriend,
             isYourself: isYourself,
-            isRequestToAddFriend: isRequestToAddFriend
+            isRequestToAddFriend: isRequestToAddFriend,
+            friends: user.friends
         })
     } catch (e) {
         res.status(404).send("Not found")

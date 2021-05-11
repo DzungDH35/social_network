@@ -26,13 +26,13 @@
                         </a>
                     </div>
                     <div class="photo-avatar">
-                        <img src="/images/big_avatar.jpg" alt="">
+                        <img src="<%= user.avatar%>" alt="">
                     </div>
                 </div>
             </div>
         </div>
         <div class="user__name">
-            <h2 class="name">Nguyen Tien Dung</h2>
+            <h2 class="name"><%=user.name%></h2>
             <br>
             <p class="sub_name">dungnt</p>
         </div>
@@ -58,43 +58,46 @@
             </div>
             <div class="right__button">
                 <ul>
-                    <!-- xu ly logic neu la profile cua minh thi hien thi 
-                    nut edit prifile neu xem profile cua nguoi khac thi co nut add friends, message-->
-                    <!-- neu da la ban be thi hien thi nut Friends va message -->
-                    <li class="active">
-                        <div id="edit-profile">
-                            <img src="/images/edit.png" alt="">
-                            <p>Edit profile</p>
-                        </div>
-                    </li>
-                    <!-- chua add friend -->
-                    <li class="active">
-                        <div id="add-friend">
-                            <img src="/images/addfriend.png" alt="">
-                            <p>Add friend</p>
-                        </div>
-                    </li>
-                    <li class="hide">
-                        <div id="message">
-                            <img src="/images/message.png" alt="">
-                            <p>Message</p>
-                        </div>
-                    </li>
-                    <!-- da add friend -->
-                    <li class="hide">
-                        <a href="">
-                            <div id="friend">
-                                <img src="/images/friends.png" alt="">
-                                <p>Friends</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="hide">
-                        <div id="message">
-                            <img src="/images/message.png" alt="">
-                            <p>Message</p>
-                        </div>
-                    </li>
+                    <%if (isYourself)
+                        {%>
+                            <li class="active">
+                                <div id="edit-profile">
+                                    <img src="/images/edit.png" alt="">
+                                    <p>Edit profile</p>
+                                </div>
+                            </li>
+                        <%}else if(isFriend){%>
+                            <!-- da add friend -->
+                            <li class="active">
+                                <a href="">
+                                    <div id="friend">
+                                        <img src="/images/friends.png" alt="">
+                                        <p>Friends</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <div id="message">
+                                    <img src="/images/message.png" alt="">
+                                    <p>Message</p>
+                                </div>
+                            </li>
+                        <%}else{%>
+                            <!-- chua add friend -->
+                            <li class="active">
+                                <div id="add-friend">
+                                    <img src="/images/addfriend.png" alt="">
+                                    <p>Add friend</p>
+                                </div>
+                            </li>
+                            <li class="active">
+                                <div id="message">
+                                    <img src="/images/message.png" alt="">
+                                    <p>Message</p>
+                                </div>
+                            </li>
+                        <%}
+                    %>
                 </ul>
             </div>
         </div>
@@ -109,15 +112,15 @@
                     <div class="infor">
                         <div class="item school">
                             <img src="/images/school.png" alt="">
-                            <p>Đang học tại <b> Đại học Bách khoa Hà Nội - Hanoi University of Science and Technology</b></p>
+                            <p>Đang học tại <b><%=user.school.name%></b></p>
                         </div>
                         <div class="item unit">
                             <img src="/images/unit.png" alt="">
-                            <p>Viện <b>Công nghệ Thông tin và Truyền thông</b></p>
+                            <p>Chuyên ngành <b><%=user.major.name%></b></p>
                         </div>
                         <div class="item class">
                             <img src="/images/class.png" alt="">
-                            <p><b>
+                            <p>Lớp <b>
                                 CNTT-09 - K62
                             </b></p>
                         </div>
@@ -132,73 +135,28 @@
                     <div class="top">
                         <div class="number-friend">
                             <p class="title">Friends</p>
-                            <span>100 friends</span>
+                            <span><%=friends.length%> friends</span>
                         </div>
                         <a href=""><p>
                             See All Friends
                         </p></a>
                     </div>
+                    <p><%=friends[0].name%></p>
                     <div class="friends__container">
+                        <% friends.forEach(friend => { %>
                         <div class="friend">
                             <a href="">
-                                <img src="/images/avatar3.jpg" alt="">
-                                <p class="name">Friend 1</p>
+                                <img src="<%= friend.avatar %>" alt="">
+                                <p class="name"><%= friend.name %></p>
                             </a>
                         </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar1.jpg" alt="">
-                                <p class="name">Friend 2</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar2.jpg" alt="">
-                                <p class="name">Friend 3</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar3.jpg" alt="">
-                                <p class="name">Friend 4</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar2.jpg" alt="">
-                                <p class="name">Friend 5</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar1.jpg" alt="">
-                                <p class="name">Friend 6</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar1.jpg" alt="">
-                                <p class="name">Friend 7</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar2.jpg" alt="">
-                                <p class="name">Friend 8</p>
-                            </a>
-                        </div>
-                        <div class="friend">
-                            <a href="">
-                                <img src="/images/avatar3.jpg" alt="">
-                                <p class="name">Friend 9</p>
-                            </a>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="right__posts">
-   
+                
             </div>
         </div>
     </div>
