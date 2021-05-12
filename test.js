@@ -14,12 +14,19 @@ require('dotenv').config();
 require('./config/db');
 try {
 
-    let test = async () => {
-        let postList = await postService.getPostsInHome('60883244c2f56126d0d7bfa4', 1);
-        let html = await ejs.renderFile(__dirname + '/views/postTest.ejs', {postList: postList})
-        console.log(html)
-    }
-    test();
+    Group.find().then( async gs => {
+        let j = 0;
+        for (let g of gs) {
+            for (let u of g.members) {
+                for (let i = 0; i < 4; i++) {
+                    let gId = (i === 0 || i === 2)?g._id:null;
+                    let img = (i === 0 || i === 2)?faker.internet.avatar():null;
+                    await postService.createPost(u._id, faker.lorem.paragraphs(), img, gId)
+                    console.log(j++);
+                }
+            }
+        }
+    })
 
 } catch (e) {
     console.log(e)

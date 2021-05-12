@@ -26,18 +26,13 @@ const userSchema = new schema({
         ref: "School",
         require: true,
     },
-    // list bạn
-    friends: [{
+    following: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     }],
-    addFriendRequests: [{
+    followers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    }],
-    joinGroupRequests: [{
-        from: {type: schema.Types.ObjectId, ref: 'User'},
-        toGroup: {type: schema.Types.ObjectId, ref: 'Group'}
     }],
     groups: [{
         type: schema.Types.ObjectId,

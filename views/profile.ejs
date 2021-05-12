@@ -66,7 +66,7 @@
                                     <p>Edit profile</p>
                                 </div>
                             </li>
-                        <%}else if(isFriend){%>
+                        <%}else if(isFollow){%>
                             <!-- da add friend -->
                             <li class="active">
                                 <a href="">
@@ -134,18 +134,17 @@
                 <div class="friend__list form__info">
                     <div class="top">
                         <div class="number-friend">
-                            <p class="title">Friends</p>
-                            <span><%=friends.length%> friends</span>
+                            <p class="title">Following</p>
+                            <span><%=following.length%> following</span>
                         </div>
                         <a href=""><p>
                             See All Friends
                         </p></a>
                     </div>
-                    <p><%=friends[0].name%></p>
                     <div class="friends__container">
-                        <% friends.forEach(friend => { %>
+                        <% following.forEach(friend => { %>
                         <div class="friend">
-                            <a href="">
+                            <a href="/profile/<%= friend._id %>">
                                 <img src="<%= friend.avatar %>" alt="">
                                 <p class="name"><%= friend.name %></p>
                             </a>
