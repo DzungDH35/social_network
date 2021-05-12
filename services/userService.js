@@ -1,8 +1,9 @@
 const User = require('../models/user')
 const Major = require('../models/major')
 const School = require('../models/school')
-const Group = require('../models/school')
+const Group = require('../models/group')
 const Post = require('../models/post')
+const followService = require('./followService')
 const mailService = require('./mailService')
 const schoolService = require('./schoolService')
 const groupService = require('./groupService')
@@ -10,20 +11,36 @@ const mongoose = require('mongoose')
 const faker = require('faker')
 module.exports = {
 
-    register: async (obj) => {
+    register: async (email, name, pwd, birthDay, avatar, gender, mssv, code) => {
         try {
-            let res = await schoolService.getMajorAndSchoolByCode(obj.major);
-            obj.major = res.major;
-            obj.school = res.school;
-            console.log(obj)
-            // let user = await User.create(obj);
-            let m = await Major.findById(res.major);
-            // let s = await School.findById(res.school);
-            // await groupService.joinGroup(user._id, m.group);
-            // await groupService.joinGroup(user._id, s.group);
-            let g = await Group.findById(mongoose.Types.ObjectId(m.group));
-            console.log(g)
-            return g
+            let major = await Major.findOne({code: code});
+            let school = await School.findById(major.school);
+            let mGroup = await Group.findById(major.group);
+            let sGroup = await Group.findById(school.group);
+            let newUser = await User.create({
+                email: email,
+                name: name,
+                pwd: pwd,
+                birthDay: birthDay,
+                avatar: avatar,
+                gender: gender,
+                mssv: mssv,
+                major: major._id,
+                school: school._id,
+                following: [],
+                followers: []
+            })
+
+            // join vào group của viện và ngành
+            await groupService.joinGroup(newUser._id, mGroup._id);
+            await groupService.joinGroup(newUser._id, sGroup._id);
+
+            // follow những thằng trong cùng ngành và ngược lại
+            for (let m of mGroup.members) {
+                await followService.follow(newUser._id, m)
+                await followService.follow(m, newUser._id)
+            }
+
         } catch (e) {
             throw e
         }
@@ -40,11 +57,9 @@ module.exports = {
         }
     },
 
-
-
-    getUserById: async (id) => {
+    getProfile: async (id) => {
         try {
-            return await User.findById(id).populate('major').populate('school');
+            return await User.findById(id).populate('major').populate('school').populate('following');
         } catch (e) {
             throw e
         }

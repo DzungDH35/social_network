@@ -7,7 +7,7 @@ const Post = require('./models/post')
 const postService = require('./services/postService');
 const schoolService = require('./services/schoolService');
 const userService = require('./services/userService');
-const friendService = require('./services/friendService');
+const followService = require('./services/followService');
 const groupService = require('./services/groupService')
 
 const util = require('util');
