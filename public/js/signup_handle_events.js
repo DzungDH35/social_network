@@ -23,7 +23,7 @@ function alertAreaHandler(isInputInvalid, alertArea) {
 /* =============== Module handles alert-areas' event =============== */
 
 function submitHandler() {
-    const uri = "/api/register";
+    const uri = "/register";
     const submittedData = {
         userName: usrName.value,
         name: fullName.value,
