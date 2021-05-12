@@ -3,7 +3,12 @@ const userService = require('../services/userService')
 const User = require('../models/user');
 
 router.get('/', (req, res) => {
-    res.render('sendMailToChangePwd')
+    res.render('changePwd')
+})
+
+// test
+router.get('/resetPwd', (req, res) => {
+    res.render('resetPwd')
 })
 
 router.post('/', async (req, res) => {

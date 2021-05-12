@@ -64,12 +64,9 @@ body {
     height: 56px;
     position: sticky;
     top: 0;
-    
+    z-index: 1;
 /* css below is for test purpose, delete when you insert component */
     background-color: #fff;
-    border-bottom: 1px solid #000;
-    text-align: center;
-    line-height: 56px;
 /* ================================================================= */
 }
 
@@ -86,9 +83,10 @@ body {
     flex-shrink: 0;
 
 /* css below is for test purpose, delete when you insert component */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
-    text-align: center;
-    line-height: calc(100vh - 56px);
 /* ================================================================= */
 }
 

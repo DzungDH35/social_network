@@ -10,4 +10,5 @@ router.use('/friend', require('./friend'));
 router.use('/group', require('./group'));
 router.use('/search_result', require('./search_result'));
 
+
 module.exports = router;
