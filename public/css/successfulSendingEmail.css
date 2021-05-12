@@ -64,8 +64,8 @@ body {
     background-color: #e9ebee;
 }
 
-form {
-    width: 500px;
+.success-box {
+    width: 420px;
     border-radius: 6px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -82,58 +82,27 @@ form {
     padding: 20px;
     border-bottom: 1px solid #c1c1c1;
     font-size: 17px;
-}
-
-.form__body > input {
-    width: 100%;
-    margin-top: 20px;
-    padding: 16px;
-    border: 1px solid #afafaf;
-    border-radius: 6px;
-    outline: none;
-    font-size: inherit;
-    transition: border-color 0.2s linear;
-}
-
-.form__body > input::placeholder {
-    color: #afafaf;
-    font-weight: 100;
-}
-
-.form__body > input:focus {
-    border-color: #ff6c6c;
+    line-height: 22px;
 }
 
 .form__btn-group {
     padding: 20px;
-    overflow: auto;
 }
 
-.form__btn-group > button {
-    float: right;
-    padding: 9px 20px;
+.form__btn-group > a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
     border-radius: 6px;
-    border: none;
+    text-align: center;
     font-size: inherit;
     font-weight: 600;
     cursor: pointer;
-}
-
-.form__btn-group > button[type="button"] {
-    margin-left: 10px;
-    background-color: #e4e6eb;
-    color: #4b4f56;
-}
-
-.form__btn-group > button[type="button"]:hover {
-    background-color: #d9dbe0;
-}
-
-.form__btn-group > button[type="submit"] {
     background-color: #e66f6f;
     color: #fff;
+    text-decoration: none;
 }
 
-.form__btn-group > button[type="submit"]:hover {
+.form__btn-group > a:hover {
     background-color: #e85c5c;
 }

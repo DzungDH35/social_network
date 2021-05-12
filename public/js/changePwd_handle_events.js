@@ -1,7 +1,7 @@
 let eyeIcon = document.querySelectorAll(".input-with-eye > i");
 let inputArea = document.querySelectorAll(".input-with-eye > input");
-let password = document.querySelector('[name="password"]');
-let cfPassword = document.querySelector('[name="cf-password"]');
+let password = document.querySelector('.password');
+let cfPassword = document.querySelector('.cf-password');
 let alertAreas = document.querySelectorAll('[class="alert-area"]');
 
 function eyeEventHandler(eyeIcon, inputArea) {
