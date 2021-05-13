@@ -17,6 +17,10 @@ ul{
     -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.45);
     -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.45);
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.45);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
 }
 
 .navigation__bar .search__friend ul{
@@ -60,28 +64,20 @@ ul{
     padding-top: 3px;
 }
 
-.navigation__bar .search__friend ul li.search  div{
-    transition: 0.3s;
-}
-
-
-.navigation__bar .search__friend ul li.search .icon{
-    color: #6b6f71;
-    font-size: 22px;
-    margin: 12px 0 0 12px;
-
+.navigation__bar .search__friend ul li.search {
+    border-radius: 28px;
+    background-color: #e4e6eb;
 }
 
 .navigation__bar .search__friend ul li.search input{
-    background-color: inherit;
-    border: none;
-    border-radius: 25px;
-    margin-left: 10px;
-    font-size: 16px;
-}
-.navigation__bar .search__friend ul li.search input:focus{
+    font-size: 18px;
+    height: 30px;
+    margin-top: 8px;
+    width: 90%;
+    margin: auto;
     border: none;
     outline: none;
+    background-color: #e4e6eb;
 }
 
 .navigation__bar .search__friend ul li.search input:focus .icon{
@@ -183,7 +179,7 @@ ul{
     margin-left: 3px;
     width: 32px;
     height: 32px;
-    padding-right: 10px;
+    margin-right: 10px;
 }
 .navigation__bar .account__control .personal__information a p{
     border-radius: 20px;

@@ -32,4 +32,6 @@ window.addEventListener('scroll', () => {
     }
 })
 
+getData();
+
 

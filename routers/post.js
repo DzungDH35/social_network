@@ -15,7 +15,6 @@ router.get('/home/:page', async (req, res) => {
                 postList: postList,
                 user: req.user
             })
-        console.log(html)
         res.set('Content-Type', 'text/html');
         res.send(html)
     } catch (e) {
@@ -44,13 +43,14 @@ router.get('/profile/:userId/:page', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        await postService.createPost(
+        let r = await postService.createPost(
+
             req.user._id,
             req.body.content,
             req.body.img,
             req.body.groupId
         )
-        res.send({msg: 'OK'})
+        res.send({msg: 'OK', r})
     } catch (e) {
         res.status(400).send(e)
     }

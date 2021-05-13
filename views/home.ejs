@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/topbar.css">
     <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="/css/friendlist.css">
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
 </head>
@@ -28,10 +29,9 @@
                 <h3>Friend List</h3>
                 <div class="input--search">
                     <input type="text" placeholder="Search">
-                    <i class="fas fa-plus"></i>
                 </div>
             </div>
-            <%- include('friendlist', {friends: friends}); %>
+            <%- include('followinglist', {following: following}); %>
             <div class="title groups">
                 <h3>Groups</h3>
             </div>

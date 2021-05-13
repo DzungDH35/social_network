@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     try {
         await userService.sendResetPwdId(req.body.email)
-            .then(r => res.send(r));
+            .then(r => res.render('successfulSendingEmail'));
     } catch (e) {
         res.status(400).send('Send email fail')
     }
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 router.get('/:resetId', (req, res) => {
     try {
         console.log(req.params.resetId);
-        res.render('resetPwd');
+        res.render('changePwd');
     } catch (e) {
         console.log(e);
     }
@@ -27,11 +27,11 @@ router.get('/:resetId', (req, res) => {
 router.post('/:resetId', async (req, res) => {
     try {
         let result = await userService.resetPassword(req.body.newPwd, req.params.resetId);
-        if (result === null) res.status(400).send('Fail to reset pwd');
-        res.status(200).send(result);
+        if (result === null) res.status(400).render("failToChangePwd");
+        res.status(200).render("successfulToChangePwd");
     } catch (e) {
         console.log(e);
-        res.status(400).send('Fail to reset pwd')
+        res.status(400).render("failToChangePwd");
     }
 })
 module.exports = router
