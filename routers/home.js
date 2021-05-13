@@ -5,7 +5,7 @@ const Groups = require('../models/group')
 const ejs = require('ejs')
 
 router.get('/', async (req, res) => {
-    let data = await User.findById(req.user._id).select({_id: 0}).populate('following', 'name avatar').populate('groups', 'name img');
+    let data = await User.findById(req.user._id).select({_id: 0}).populate('following', 'name avatar').populate('groups', 'name avatar');
 
     res.render('home',{
         user: req.user,

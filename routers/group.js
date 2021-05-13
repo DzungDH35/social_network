@@ -7,7 +7,7 @@ router.get('/:groupId', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        let data = await groupService.createGroup(req.user._id, req.body.name, req.body.img)
+        let data = await groupService.createGroup(req.user._id, req.body.name, req.body.avatar)
         res.send({
             data: data,
             status: 'success',
