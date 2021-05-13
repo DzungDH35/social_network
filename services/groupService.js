@@ -4,12 +4,12 @@ const Post = require('../models/post');
 const mongoose = require('mongoose')
 module.exports = {
 
-    createGroup: async (userId, name, img) => {
+    createGroup: async (userId, name, avatar) => {
         try {
             return await Group.create({
                 name: name,
                 admin: userId,
-                img: img,
+                avatar: avatar,
                 members: [userId]
             });
         } catch (e) {

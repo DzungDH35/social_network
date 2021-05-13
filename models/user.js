@@ -13,7 +13,9 @@ const userSchema = new schema({
     // ngày sinh
     birthDay: {type: Date},
     // avatar
-    avatar: {type: String},
+    avatar: {type: String, default: 'http://placeimg.com/400/400/people'},
+    // ảnh nền
+    background: {type: String, default: 'http://placeimg.com/1000/400/tech'},
     // mssv
     mssv: {type: String, require: true, unique: true},
     // giới tính
