@@ -4,8 +4,9 @@
 }
 .card-post{
     box-sizing: border-box;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: #fff;
+    border-radius: 10px;
     width: 540px;
     margin: 0 auto;
     margin-top: 20px;
@@ -25,7 +26,7 @@ header{
 }
 
 .avatar img{
-    min-width: 100%;
+    width: 100%;
     min-height: 100%;
     object-fit: cover;
 }
@@ -91,7 +92,10 @@ header{
     text-align: justify;
     margin-top: 10px;
 }
-
+.content-img-post{
+    margin-top: 10px;
+    text-align: center;
+}
 .content-img-post img{
     max-width: 504px;
     border: 2px solid #f1f1f1;
@@ -115,7 +119,7 @@ hr{
     height: inherit;
     text-align: center;   
     line-height: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: #57707d;
 }
 
@@ -140,9 +144,15 @@ hr{
 .comment{
     margin-top: 10px;
 }
+.commented{
+    display: flex;
+}
+.comment .avatar{
+    float: left;
+}
 .content-text-cmt{
     width: fit-content;
-    margin-left: 46px;
+    margin-left: 8px;
     margin-bottom: 18px;
     text-align: justify;
     background-color: #e8e7e7f5;
@@ -213,7 +223,7 @@ hr{
     bottom: 10;
     right: 0;
 }
-.media-cmt #img-cmt{
+.media-cmt [name="img-cmt"]{
     width: inherit;
     height: 28px;
     opacity: 0;
@@ -221,6 +231,6 @@ hr{
     margin-top: 7px;
 }
 
-.wrap-img-cmt #output_image_cmt{
+.wrap-img-cmt [name="output_image_cmt"]{
     max-width: 150px;
 }

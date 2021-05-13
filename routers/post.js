@@ -10,7 +10,7 @@ require('dotenv').config();
 router.get('/home/:page', async (req, res) => {
     try {
         let postList = await postService.getPostsInHome(req.user._id, req.params.page);
-        let html = await ejs.renderFile(path.join(process.cwd(), '/views/postTest.ejs'),
+        let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
             {
                 postList: postList,
                 user: req.user
@@ -44,7 +44,13 @@ router.get('/profile/:userId/:page', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-
+        await postService.createPost(
+            req.user._id,
+            req.body.content,
+            req.body.img,
+            req.body.groupId
+        )
+        res.send({msg: 'OK'})
     } catch (e) {
         res.status(400).send(e)
     }

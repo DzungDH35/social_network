@@ -12,7 +12,7 @@
             </div>
             <div class="newpost-input">
                 <form action="" id="form-add-post" onchange="preview_image(event)">
-                    <div class="edittext" contentEditable="true" name="textarea"></div>
+                    <div class="edittext" id="mydiv" contentEditable="true" name="textarea" data-myval="Cam xuc hien tai"></div>
                     <div class="wrap-image">
                         <img id="output_image">
                     </div>
@@ -45,5 +45,5 @@
             contenteditable = document.querySelector('[contenteditable]'),
             text = contenteditable.textContent;
             console.log(text);
-        })
+        })    
 </script>
