@@ -15,17 +15,16 @@ router.post('/', async (req, res) => {
     console.log(req.body)
     try {
         let user = await userService.login(req.body.email, req.body.pwd);
-        console.log(user)
         if (user !== null) {
             const token = jwt.sign({
                 id: user._id
             }, process.env.SECRETKEY);
             res.cookie('token', token);
-            res.json({token: token});
+            res.json({token: token, msg: 'OK', status: 'success'});
         } else {
             res.status(400).json({
-                status: 'err',
-                error: 'Invalid username/pwd'
+                status: 'error',
+                msg: 'e'
             })
         }
     } catch (e) {

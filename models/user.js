@@ -13,7 +13,9 @@ const userSchema = new schema({
     // ngày sinh
     birthDay: {type: Date},
     // avatar
-    avatar: {type: String},
+    avatar: {type: String, default: 'http://placeimg.com/400/400/people'},
+    // ảnh nền
+    background: {type: String, default: 'http://placeimg.com/1000/400/tech'},
     // mssv
     mssv: {type: String, require: true, unique: true},
     // giới tính
@@ -26,18 +28,13 @@ const userSchema = new schema({
         ref: "School",
         require: true,
     },
-    // list bạn
-    friends: [{
+    following: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     }],
-    addFriendRequests: [{
+    followers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-    }],
-    joinGroupRequests: [{
-        from: {type: schema.Types.ObjectId, ref: 'User'},
-        toGroup: {type: schema.Types.ObjectId, ref: 'Group'}
     }],
     groups: [{
         type: schema.Types.ObjectId,

@@ -1,6 +1,6 @@
 /* CSS for Post-Card */
 *{
-    font: inherit;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .card-post{
     box-sizing: border-box;
@@ -89,6 +89,7 @@ header{
 
 .content-text-post{
     text-align: justify;
+    margin-top: 10px;
 }
 
 .content-img-post img{
@@ -101,23 +102,26 @@ hr{
     align-items: center;
 }
 
+.numberlike{
+    margin-bottom: 10px;    
+}
+
 .swap-like-cmt{
     width: 504px;
     height: 30px;
 }
 .like-cmt-post{
-    width: 250px;
+    width: 249px;
     height: inherit;
     text-align: center;   
     line-height: 30px;
-    background-color: #57707d;
+    border-radius: 10px;
     border: #57707d;
-    color: #fff;
 }
 
 .like-cmt-post:hover{
     cursor: pointer;
-    background-color: rgb(145, 190, 248);
+    background-color: #f5f4f4f5;
 }
 .like{
     float: left;
@@ -133,6 +137,9 @@ hr{
 }
 
 /*CSS for comment.html*/
+.comment{
+    margin-top: 10px;
+}
 .content-text-cmt{
     width: fit-content;
     margin-left: 46px;
@@ -166,7 +173,7 @@ hr{
     border-radius: 22px;
     background-color: #F5F5F5F5;
     width: 400px;
-    min-height: 30px;
+    min-height: 40px;
     font-size: medium;
     border: none;
     float: left;
@@ -198,7 +205,7 @@ hr{
     align-items: center;
     overflow: hidden;
     color: #FFFFFF;
-    background-image: url(/public/images/camera1.png);
+    background-image: url(/images/camera1.png);
     background-size:contain;
     background-repeat: no-repeat;
     background-position: center;

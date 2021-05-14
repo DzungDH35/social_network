@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/newpost.css">
+</head>
+<body>
+    <!-- Box đăng bài -->
+    <div class="new-postbox">
+        <div class="wrap-avatar-input">
+            <div class="avatar">
+                <img src="<%= user.avatar%>" alt="">
+            </div>
+            <div class="newpost-input">
+                <form action="" id="form-add-post" onchange="preview_image(event)">
+                    <div class="edittext" contentEditable="true" name="textarea"></div>
+                    <div class="wrap-image">
+                        <img id="output_image">
+                    </div>
+                    <div class="media">
+                        <div class="file-upload">
+                            <input type="file" name="file">
+                        </div>&nbsp;&nbsp;&nbsp;
+                        <input type="submit" value="Đăng">&nbsp;&nbsp;
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Choose preview image post-->
+    <script>
+        function preview_image(event){
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('output_image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
+
+<script>
+        document.getElementById("form-add-post").addEventListener('submit', function(){
+            contenteditable = document.querySelector('[contenteditable]'),
+            text = contenteditable.textContent;
+            console.log(text);
+        })
+</script>

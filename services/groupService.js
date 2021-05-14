@@ -4,52 +4,41 @@ const Post = require('../models/post');
 const mongoose = require('mongoose')
 module.exports = {
 
-    createGroup: async (userId, name, img) => {
+    createGroup: async (userId, name, avatar) => {
         try {
-            await Group.create({
+            return await Group.create({
                 name: name,
                 admin: userId,
-                img: img,
-                members: userId
-            })
-        } catch (e) {
-            throw e
-        }
-    },
-
-    addJoinGroupRequest: async (userId, groupId) => {
-        try {
-            let group = await Group.findById(groupId);
-            let req = {
-                from: userId,
-                toGroup: groupId
-            }
-            await User.findByIdAndUpdate(group.admin, {
-                $addToSet: {
-                    joinGroupRequests: req
-                }
-            })
+                avatar: avatar,
+                members: [userId]
+            });
         } catch (e) {
             throw e
         }
     },
 
     joinGroup: async (userId, groupId) => {
-        await Group.findByIdAndUpdate(groupId, {
-            $addToSet: {
-                members: userId
-            }
-        });
-        await User.findByIdAndUpdate(userId, {
-            $addToSet: {
-                groups: groupId
-            }
-        })
-        await Post.updateMany({group: groupId}, {
-            $addToSet: {
-                usersCanSee: userId
-            }
-        })
+        try {
+            await Group.findByIdAndUpdate(groupId, {
+                $addToSet: {
+                    members: userId
+                }
+            });
+
+            await User.findByIdAndUpdate(userId, {
+                $addToSet: {
+                    groups: groupId
+                }
+            })
+
+            await Post.updateMany({group: groupId}, {
+                $addToSet: {
+                    usersCanSee: userId
+                }
+            })
+        } catch (e) {
+            throw e
+        }
     },
 
     outGroup: async (userId, groupId) => {
@@ -74,28 +63,6 @@ module.exports = {
         }
     },
 
-    delJoinGroupReq: async (userId, groupId) => {
-        try {
-            let group = await Group.findById(groupId);
-            await User.findByIdAndUpdate(group.admin, {
-                $pull: {
-                    joinGroupRequests: {
-                        from: mongoose.Types.ObjectId(userId)
-                    }
-                }
-            })
-        } catch (e) {
-            throw e
-        }
-    },
-
-    getAllJoinGroupRequests: async (admin) => {
-      try {
-          return await User.findById(admin);
-      }  catch (e) {
-          throw e
-      }
-    },
 
     searchByName: async (name) => {
         try {

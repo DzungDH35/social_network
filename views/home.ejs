@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Social media</title>
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/topbar.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="/css/friendlist.css">
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
 </head>
@@ -18,7 +21,7 @@
         <%- include('grouplist', {groups: groups})%>
     </div>
     <div class="center">
-
+        <%- include('newpost') %>
     </div>
     <div class="right">
         <div class="friend__container">
@@ -26,10 +29,9 @@
                 <h3>Friend List</h3>
                 <div class="input--search">
                     <input type="text" placeholder="Search">
-                    <i class="fas fa-plus"></i>
                 </div>
             </div>
-            <%- include('friendlist', {friends: friends}); %>
+            <%- include('followinglist', {following: following}); %>
             <div class="title groups">
                 <h3>Groups</h3>
             </div>
@@ -39,4 +41,5 @@
 </div>
 </body>
 <script src="js/home.js"></script>
+<script src="js/post.js"></script>
 </html>

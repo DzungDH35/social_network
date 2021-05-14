@@ -1,14 +1,24 @@
 const router = require('express').Router();
 const Post = require('../models/post');
 const postService = require('../services/postService')
+const ejs = require('ejs')
+const fs = require('fs')
+const path = require('path')
 require('dotenv').config();
 
 
 router.get('/home/:page', async (req, res) => {
     try {
         let postList = await postService.getPostsInHome(req.user._id, req.params.page);
-        res.send(postList)
+        let html = await ejs.renderFile(path.join(process.cwd(), '/views/postTest.ejs'),
+            {
+                postList: postList,
+                user: req.user
+            })
+        res.set('Content-Type', 'text/html');
+        res.send(html)
     } catch (e) {
+        console.log(e)
         res.status(400).send(e)
     }
 })
@@ -33,7 +43,13 @@ router.get('/profile/:userId/:page', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-
+        let r = await postService.createPost(
+            req.user._id,
+            req.body.content,
+            req.body.img,
+            req.body.groupId
+        )
+        res.send({msg: 'OK', r})
     } catch (e) {
         res.status(400).send(e)
     }

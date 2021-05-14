@@ -15,21 +15,31 @@ body{
 .home__page{
     display: flex;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .home__page .left{
-    width: 20%;
+    min-height: 100vh;
+    position: fixed;
+    top: 60px;
+    left: 0;
 }
 
 .home__page .center{
     flex-grow: 1;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .home__page .right{
     width: 20%;
-    border-left: 1px solid gray;
     padding-top: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding-left: 15px;
+    min-height: 100vh;
+    position: fixed;
+    top: 60px;
+    right: 0;
 }
 
 .home__page .right a{
@@ -53,7 +63,6 @@ body{
     padding-left: 5px;
     padding-top: 10px;
     width: 100%;
-    border-bottom: solid 1px rgb(189, 180, 180);
 }
 
 .home__page .right .friend__container .title h3{
@@ -63,7 +72,13 @@ body{
     display: inline-block;
     padding: 10px 0 10px 5px;
     width: 100%;
-    border-bottom: solid 1px rgb(189, 180, 180);
+}
+
+.home__page .right .friend__container .title .input--search{
+    background: gainsboro;
+    border-radius: 15px;
+    min-width: 200px;
+    max-width: 200px;
 }
 
 .home__page .right .friend__container .title input{
@@ -77,13 +92,14 @@ body{
     border: none;
     background: gainsboro;
     margin: 5px;
+    padding-left: 5px;
 }
 
 .home__page .right .friend__container .title input:focus{
     outline: none;
 }
 .home__page .right .friend__container::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
 }
 
 .home__page .right .friend__container::-webkit-scrollbar-track {
@@ -106,7 +122,4 @@ body{
 .home__page .right .friend__container:hover{
     overflow-y: scroll;
 }
-  
-
-
 

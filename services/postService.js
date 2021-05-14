@@ -9,7 +9,7 @@ module.exports = {
         try {
             return await
                 Post.find({usersCanSee: mongoose.Types.ObjectId(userId)})
-                    .populate('owner', 'name')
+                    .populate('owner', 'name avatar')
                     .populate('group', 'name')
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
@@ -57,13 +57,14 @@ module.exports = {
         try {
             let user = await User.findById(userId);
             let group = await Group.findById(groupId);
-            let usersCanSee = new Set([...user.friends, ...group.members]);
-            let post = await Post.create({
+            let usersCanSee = new Set(user.followers);
+            if (group !== null) usersCanSee.add(...group.members)
+            return await Post.create({
                 owner: userId,
                 content: content,
                 img: img,
                 group: groupId,
-                usersCanSee: usersCanSee
+                usersCanSee: Array.from(usersCanSee)
             })
         } catch (e) {
             throw e

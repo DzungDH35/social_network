@@ -32,10 +32,11 @@
 
 .home__page .right .friend__container .group__item .item .image img{
     display: inline-block;
-    height: 80%;
     align-items: center;
-    margin-left: 7px;
-    margin-top: 4.5px;
+    margin-left: 5px;
+    margin-top: 3.5px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
 }
 
@@ -48,12 +49,14 @@
 
 .friend__container .create__group .item .plus-icon{
     text-align: center;
-    background: #dedede;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    width: 31px;
+    display: inline-block;
+    align-items: center;
+    margin-left: 5px;
+    margin-top: 3.5px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    margin-left: 10px;
+    background: #dedede;
 }
 
 .friend__container .create__group .item .plus-icon p{

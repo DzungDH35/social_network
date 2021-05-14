@@ -1,3 +1,164 @@
-<h1>This is home of <%= user.name%></h1>
-<h2>Major: <%= user.major.name%></h2>
-<h2>School: <%= user.school.name%></h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>Profile</title>
+</head>
+<body>
+    <%- include('topbar'); -%>
+    <div class="avatar__container__top">
+        <div class="cover__photo__avatar">
+            <div class="cover__photo">
+                <div class="photo">
+                    <img src="/images/cover_photo.jpg" alt="">
+                    <div class="edit-cover-photo">
+                        <img src="/images/camera.png" alt="">
+                        <p>Edit Cover Photo</p>
+                    </div>
+                </div>
+                <div class="avatar">
+                    <div class="edit-avatar">
+                        <a href="">
+                            <img src="/images/camera.png" alt="">
+                        </a>
+                    </div>
+                    <div class="photo-avatar">
+                        <img src="<%= user.avatar%>" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user__name">
+            <h2 class="name"><%=user.name%></h2>
+            <br>
+            <p class="sub_name">dungnt</p>
+        </div>
+        <div class="information__bar">
+            <div class="left__items">
+                <ul>
+                    <a href="" class="active">
+                        <li><p>Posts</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>About</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>Friends</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>Photos</p></li>
+                    </a>
+                    <a href="">
+                        <li><p>More</p></li>
+                    </a>
+                </ul>
+            </div>
+            <div class="right__button">
+                <ul>
+                    <%if (isYourself)
+                        {%>
+                            <li class="active">
+                                <div id="edit-profile">
+                                    <img src="/images/edit.png" alt="">
+                                    <p>Edit profile</p>
+                                </div>
+                            </li>
+                        <%}else if(isFollow){%>
+                            <!-- da add friend -->
+                            <li class="active">
+                                <a href="">
+                                    <div id="friend">
+                                        <img src="/images/friends.png" alt="">
+                                        <p>Friends</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <div id="message">
+                                    <img src="/images/message.png" alt="">
+                                    <p>Message</p>
+                                </div>
+                            </li>
+                        <%}else{%>
+                            <!-- chua add friend -->
+                            <li class="active">
+                                <div id="add-friend">
+                                    <img src="/images/addfriend.png" alt="">
+                                    <p>Add friend</p>
+                                </div>
+                            </li>
+                            <li class="active">
+                                <div id="message">
+                                    <img src="/images/message.png" alt="">
+                                    <p>Message</p>
+                                </div>
+                            </li>
+                        <%}
+                    %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main__content__container">
+        <div class="main__profile__content">
+            <div class="left__detail__infor">
+                <div class="basic__infor form__info">
+                    <div class="intro">
+                        <p class="title">Intro</p>
+                    </div>
+                    <div class="infor">
+                        <div class="item school">
+                            <img src="/images/school.png" alt="">
+                            <p>Đang học tại <b><%=user.school.name%></b></p>
+                        </div>
+                        <div class="item unit">
+                            <img src="/images/unit.png" alt="">
+                            <p>Chuyên ngành <b><%=user.major.name%></b></p>
+                        </div>
+                        <div class="item class">
+                            <img src="/images/class.png" alt="">
+                            <p>Lớp <b>
+                                CNTT-09 - K62
+                            </b></p>
+                        </div>
+                        <div class="item from">
+                            <img src="/images/position.png" alt="">
+                            <p>Đến từ <b>Hà Nội</b></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="friend__list form__info">
+                    <div class="top">
+                        <div class="number-friend">
+                            <p class="title">Following</p>
+                            <span><%=following.length%> following</span>
+                        </div>
+                        <a href=""><p>
+                            See All Friends
+                        </p></a>
+                    </div>
+                    <div class="friends__container">
+                        <% following.forEach(friend => { %>
+                        <div class="friend">
+                            <a href="/profile/<%= friend._id %>">
+                                <img src="<%= friend.avatar %>" alt="">
+                                <p class="name"><%= friend.name %></p>
+                            </a>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="right__posts">
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

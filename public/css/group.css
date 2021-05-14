@@ -80,8 +80,6 @@ body {
     width: 360px;
     height: calc(100vh - 56px);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    position: sticky;
-    top: 56px;
 }
 
 .side-bar__section-wrapper {
@@ -138,7 +136,7 @@ body {
     width: 20px;
     height: 20px;
 }
-#search-input {
+.search-input {
     border: none;
     outline: none;
     background: inherit;
@@ -161,6 +159,7 @@ body {
 
 .hint-list-positioned-ancestor {
     position: relative;
+    display: none;
 }
 
 .hint-list-layout--absolute {
@@ -197,6 +196,11 @@ body {
     margin-left: 12px;
     flex-grow: 1;
 } 
+
+.hint-item-hyperlink {
+    text-decoration: none;
+    color: #000;
+}
 
 .hint-item {
     border-radius: 8px;
