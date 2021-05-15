@@ -1,5 +1,4 @@
 function showHintList(data) {
-    console.log(data);
     let output = "";
     output += `<div class="hint-list hint-list-layout hint-list-layout--absolute">`;
 
@@ -27,13 +26,19 @@ function handleFormSubmit(event) { return document.querySelector('.search-input'
 let searchInputObj = document.querySelector('.search-input');
 let hintListwrapper = document.querySelector('#group-live-searching-results');
 
-searchInputObj.addEventListener('blur', () => { hintListwrapper.style.display = "none"; });
+searchInputObj.addEventListener('click', () => { console.log("inside input"); hintListwrapper.style.display = "block"; });
 
-searchInputObj.addEventListener('click', () => { hintListwrapper.style.display = "block"; });
+document.addEventListener('click', function(event) {
+    let isClickInside = searchInputObj.contains(event.target);
+    if (!isClickInside) {
+        console.log("outside input");
+        hintListwrapper.style.display = "none";
+    }
+});
 
 searchInputObj.addEventListener('keyup', () => {
+    hintListwrapper.style.display = "block";
     if (searchInputObj.value === "") {
-        console.log("1");
         hintListwrapper.innerHTML = showHintList([]);
     } else {
         let data = [];
