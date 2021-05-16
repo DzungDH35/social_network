@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/search_result.css">
+    <link rel="stylesheet" href="/css/group.css">
     <title>Search results</title>
 </head>
+
 <body>
     <div class="global-wrapper">
-        <div class="header-wrapper"><%- include('topbar', {user: user}); %></div>
+        <div class="header-wrapper">
+            <%- include('topbar', {user: user}); %>
+        </div>
         <div class="body-wrapper">
-            <div class="sidebar-wrapper">Insert sidebar here</div>
+            <div class="sidebar-wrapper">
+                <%- include('grouplist', {groups: groups})%>
+            </div>
             <div class="content-wrapper">
                 <div class="item-list">
                     <div class="item">
@@ -22,51 +29,22 @@
                         </div>
                         <div class="item__icon"><img src="/images/icons/add_friend.png"></div>
                     </div>
-                    <div class="item">
-                        <img src="/images/img/avatar.png" class="item__avatar">
-                        <div class="item__text-wrapper">
-                            <div class="item__name">Nguyễn Minh Đức</div>
+                    <% results.forEach(group=> {%>
+                        <div class="item">
+                            <img src="<%= group.avatar%>" class="item__avatar">
+                            <div class="item__text-wrapper">
+                                <div class="item__name">
+                                    <%= group.name%>
+                                    <%= group.contain%>
+                                </div>
+                            </div>
+                            <div class="item__icon"><img src="/images/icons/messenger.png"></div>
                         </div>
-                        <div class="item__icon"><img src="/images/icons/messenger.png"></div>
-                    </div>
-                    <div class="item">
-                        <img src="/images/img/avatar.png" class="item__avatar">
-                        <div class="item__text-wrapper">
-                            <div class="item__name">Nguyễn Minh Đức</div>
-                        </div>
-                        <div class="item__icon"><img src="/images/icons/messenger.png"></div>
-                    </div>
-                    <div class="item">
-                        <img src="/images/img/avatar.png" class="item__avatar">
-                        <div class="item__text-wrapper">
-                            <div class="item__name">Nguyễn Minh Đức</div>
-                        </div>
-                        <div class="item__icon"><img src="/images/icons/messenger.png"></div>
-                    </div>
-                    <div class="item">
-                        <img src="/images/img/avatar.png" class="item__avatar">
-                        <div class="item__text-wrapper">
-                            <div class="item__name">Nguyễn Minh Đức</div>
-                        </div>
-                        <div class="item__icon"><img src="/images/icons/messenger.png"></div>
-                    </div>
-                    <div class="item">
-                        <img src="/images/img/avatar.png" class="item__avatar">
-                        <div class="item__text-wrapper">
-                            <div class="item__name">Nguyễn Minh Đức</div>
-                        </div>
-                        <div class="item__icon"><img src="/images/icons/messenger.png"></div>
-                    </div>
-                    <div class="item">
-                        <img src="/images/img/avatar.png" class="item__avatar">
-                        <div class="item__text-wrapper">
-                            <div class="item__name">Nguyễn Minh Đức</div>
-                        </div>
-                        <div class="item__icon"><img src="/images/icons/messenger.png"></div>
-                    </div>
+                    <% }) %>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>

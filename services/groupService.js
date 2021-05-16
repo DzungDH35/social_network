@@ -66,7 +66,16 @@ module.exports = {
 
     searchByName: async (name) => {
         try {
-            return await Group.find({name: new RegExp(name, 'i')})
+            return await Group.find({name: new RegExp(name, 'i'), groupType:'normal'})
+        } catch (e) {
+            throw e
+        }
+    },
+
+    checkContain: async (userId, groupId) => {
+        try {
+            const g = await Group.findById(groupId);
+            return g.members.includes(userId)
         } catch (e) {
             throw e
         }

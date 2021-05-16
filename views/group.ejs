@@ -9,60 +9,25 @@
 </head>
 <body>
     <div class="global-wrapper">
-        <div class="header-bar">Header Bar</div>
+        <div class="header-bar"><%- include('topbar', {user: user}); %></div>
         <div class="body">
-            <div class="body__side-bar">
-                <div class="side-bar__section side-bar__section-1">
-                    <div class="section__title">Group</div>
-                    <form>
-                        <label class="search-wrapper search-wrapper-layout">
-                            <img class="search-icon" src="/images/icons/search.png" alt="search-icon">
-                            <input id="search-input" name="search-input" type="search" placeholder="Search for something...">
-                        </label>
-                    </form>
-                    <div class="hint-list-positioned-ancestor">
-                        <div class="hint-list hint-list-layout hint-list-layout--absolute">
-                            <div class="hint-item hint-item-layout">
-                                <img class="hint-item__search-icon search-icon" src="/images/icons/search_fff.png" alt="search-icon">
-                                <div class="hint-item__content">{{data}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="side-bar__section-wrapper">
-                    <div class="side-bar__separator"></div>
-                    <div class="side-bar__section">
-                        <!-- <div class="section__title--type-2">Nhóm bạn đã tham gia</div> -->
-                        <div class="side-bar__item-list">
-                            <div class="side-bar__item side-bar__item--type-2" style="background: #EAF3FF;">
-                                <img class="side-bar__item-image" src="">
-                                <div class="side-bar__item-title">Kênh thông tin Sinh viên Viện CNTT&TT- ĐH Bách Khoa HN</div>
-                            </div>
-                            <div class="side-bar__item side-bar__item--type-2">
-                                <img class="side-bar__item-image" src="">
-                                <div class="side-bar__item-title">Kênh thông tin Sinh viên Viện CNTT&TT- ĐH Bách Khoa HN</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="body__main-page">
                 <div class="main-page__intro-section">
-                    <img src="/images/img/soict.jpg" class="intro-section__wallpaper">
+                    <img class="intro-section__wallpaper" src="<%= background %>" alt="group image">
                     <div class="intro-section__title-wrapper">
-                        <div class="title-wrapper__title">Kênh thông tin Sinh viên Viện CNTT&TT- ĐH Bách Khoa HN</div>
+                        <div class="title-wrapper__title"><%= groupName %></div>
                         <div class="title-wrapper__sub-info">
-                            <img src="/images/icons/globe.png" class="sub-info__privacy-icon">
-                            <div class="sub-info__privacy-mode">Nhóm công khai</div>
+                            <img src="/images/icons/globe.png">
+                            <div>Nhóm công khai</div>
                             <div class="sub-info__separator">.</div>
-                            <div class="sub-info__num-of-members">10K thành viên</div>
+                            <div><%= numOfMembers %> thành viên</div>
                         </div>
                     </div>
                 </div>
                 <div class="main-page__content-section">
                     <div class="content-section__post-section">
                         <div class="post-section__post-creator">
-                            <img src="/images/img/avatar.png" alt="" class="post-creator__avatar">
+                            <img src="<%= user.avatar %>" alt="" class="post-creator__avatar">
                             <div class="post-creator__content">Tạo bài viết công khai...</div>
                         </div>
                         <div class="post-section__post-lists">
@@ -78,7 +43,7 @@
             <div class="modal-box__title">Tạo bài viết</div>
             <img src="/images/icons/remove.png" class="modal-box__remove-icon">
             <div class="modal-box__creator-info">
-                <img src="/images/img/avatar.png" class="creator-info__avatar">
+                <img src="<%= user.avatar %>" class="creator-info__avatar">
                 <div class="creator-info__name">Anonymous</div>
             </div>
             <form action="#" class="modal-box__form">
@@ -88,7 +53,7 @@
             </form>
         </div>
     </div>
-    <script src="js/group_handle_events.js"></script>
-    <script src="js/group_catch_events.js"></script>
+    <script src="/js/group_handle_events.js"></script>
+    <script src="/js/group_catch_events.js"></script>
 </body>
 </html>

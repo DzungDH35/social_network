@@ -1,8 +1,15 @@
 const router = require('express').Router();
 const groupService = require('../services/groupService')
-
+const Group = require('../models/group');
+const { route } = require('./login');
 router.get('/:groupId', async (req, res) => {
-    res.render('group');
+    const data = await Group.findById(req.params.groupId)
+    res.render('group', {
+        user: req.user,
+        groupName: data.name,
+        numOfMembers: data.members.length,
+        background: data.background
+    });
 })
 
 router.post('/', async (req, res) => {

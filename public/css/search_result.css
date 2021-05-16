@@ -81,13 +81,7 @@ body {
     position: sticky;
     top: 56px; left: 0;
     flex-shrink: 0;
-
-/* css below is for test purpose, delete when you insert component */ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #fff;
-/* ================================================================= */
 }
 
 .content-wrapper {

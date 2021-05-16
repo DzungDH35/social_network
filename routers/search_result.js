@@ -2,16 +2,42 @@ const passport = require('passport');
 const User = require('../models/user');
 const router = require('express').Router();
 const Groups = require('../models/group')
+const groupService = require('../services/groupService')
 const ejs = require('ejs')
-router.get('/', async (req, res) => {
+const queryString = require('querystring');
+const userService = require('../services/userService');
+const followService = require('../services/followService');
+router.get('/group', async (req, res) => {
     let data = await User.findById(req.user._id).select({_id: 0}).populate('friends', 'name mssv avatar').populate('groups', 'name avatar');
-    console.log(data);
+    let name = queryString.unescape(req.query.name);
+    let raw = await groupService.searchByName(name);
+    let results = [];
+
+    for (let r of raw) {
+        r.contain = await groupService.checkContain(req.user._id, r._id)
+        results.push(r)
+    }
     res.render('search_result',{
         user: req.user,
-        friends: data.friends,
-        groups: data.groups
+        groups: data.groups,
+        results: results
     })
+})
 
+router.get('/user', async (req, res) => {
+    let data = await User.findById(req.user._id).select({_id: 0}).populate('friends', 'name mssv avatar').populate('groups', 'name avatar');
+    let name = queryString.unescape(req.query.name);
+    let raw = await userService.searchByName(name);
+    let results = [];
+    for (let r of raw) {
+        r.contain = await followService.isFollow(req.user._id, r._id)
+        results.push(r)
+    }
+    res.render('search_result',{
+        user: req.user,
+        groups: data.groups,
+        results: results
+    })
 })
 
 module.exports = router;

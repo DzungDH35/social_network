@@ -9,7 +9,7 @@ function showHintList(data) {
                     </div>`;
     } else {
         for (let i of data) {
-            output += `<a class="hint-item-hyperlink" href="/search/group?name=${i}">
+            output += `<a class="hint-item-hyperlink" href="/search_result/group?name=${i}">
                             <div class="hint-item hint-item-layout">
                                 <img class="hint-item__search-icon search-icon" src="/images/icons/search_fff.png" alt="search-icon">
                                 <div class="hint-item__content">${i}</div>
@@ -26,14 +26,12 @@ function handleFormSubmit(event) { return document.querySelector('.search-input'
 let searchInputObj = document.querySelector('.search-input');
 let hintListwrapper = document.querySelector('#group-live-searching-results');
 
-searchInputObj.addEventListener('click', () => { console.log("inside input"); hintListwrapper.style.display = "block"; });
+searchInputObj.addEventListener('click', () => { hintListwrapper.style.display = "block"; });
 
 document.addEventListener('click', function(event) {
     let isClickInside = searchInputObj.contains(event.target);
-    if (!isClickInside) {
-        console.log("outside input");
+    if (!isClickInside)
         hintListwrapper.style.display = "none";
-    }
 });
 
 searchInputObj.addEventListener('keyup', () => {
