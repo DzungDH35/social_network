@@ -1,7 +1,7 @@
 
 const router = require('express').Router();
-const userService = require('../services/userService')
-const friendService = require('../services/followService')
+const userService = require('../services/user.service')
+const friendService = require('../services/follow.service')
 // tường nhà
 router.get('/:id', (async (req, res) => {
     try {

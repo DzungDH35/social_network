@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const userService = require('../services/userService')
-const followService = require('../services/followService')
+const userService = require('../services/user.service')
+const followService = require('../services/follow.service')
 
 router.post('/:followedId', async (req, res) => {
     try {

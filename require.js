@@ -4,11 +4,11 @@ const User = require('./models/user');
 const Group = require('./models/group');
 const Post = require('./models/post')
 
-const postService = require('./services/postService');
-const schoolService = require('./services/schoolService');
-const userService = require('./services/userService');
-const followService = require('./services/followService');
-const groupService = require('./services/groupService')
+const postService = require('./services/post.service');
+const schoolService = require('./services/school.service');
+const userService = require('./services/user.service');
+const followService = require('./services/follow.service');
+const groupService = require('./services/group.service')
 
 const util = require('util');
 const faker = require('faker');

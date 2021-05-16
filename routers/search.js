@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user');
-const userService = require('../services/userService')
-const groupService = require('../services/groupService')
+const userService = require('../services/user.service')
+const groupService = require('../services/group.service')
 const queryString = require('querystring')
 
 router.get('/user', async (req, res) => {

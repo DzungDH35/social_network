@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Post = require('../models/post');
-const postService = require('../services/postService')
+const postService = require('../services/post.service')
 const ejs = require('ejs')
 const fs = require('fs')
 const path = require('path')
@@ -52,6 +52,23 @@ router.post('/', async (req, res) => {
         res.send({msg: 'OK', r})
     } catch (e) {
         res.status(400).send(e)
+    }
+})
+
+router.post('/comment', async (req, res) => {
+    try {
+        let r = await postService.addComment(
+            req.body.postId,
+            req.user._id,
+            req.body.content,
+            req.body.img
+        )
+        res.send({msg: 'OK', r})
+    } catch (e) {
+        res.status(400).send({
+            status: 'error',
+            msg: e
+        })
     }
 })
 module.exports = router;

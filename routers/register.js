@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user');
-const userService = require('../services/userService')
-const schoolService = require('../services/schoolService')
+const userService = require('../services/user.service')
+const schoolService = require('../services/school.service')
 require('dotenv').config();
 
 router.post('/', async (req, res) => {

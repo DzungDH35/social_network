@@ -11,8 +11,7 @@ const groupSchema = new schema({
     members: [{type: schema.Types.ObjectId, ref: 'User'}],
     // các bài post trong nhóm
     posts: [{type: schema.Types.ObjectId, ref: 'Post'}],
-    // avatar
-    img: {type: String, required: true},
+    //
     avatar: {type: String, default: 'http://placeimg.com/400/400/tech'},
     // ảnh nền
     background: {type: String, default: 'http://placeimg.com/1000/400/tech'},
