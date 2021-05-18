@@ -18,6 +18,8 @@ router.get('/group', async (req, res) => {
         results.push(r)
     }
     res.render('search_result',{
+        queryPath: req.path,
+        query: req.query.name,
         user: req.user,
         groups: data.groups,
         results: results
@@ -34,10 +36,13 @@ router.get('/user', async (req, res) => {
         results.push(r)
     }
     res.render('search_result',{
+        queryPath: req.path,
+        query: req.query.name,
         user: req.user,
         groups: data.groups,
         results: results
     })
+    console.log(results)
 })
 
 module.exports = router;

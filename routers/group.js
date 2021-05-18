@@ -5,6 +5,7 @@ const { route } = require('./login');
 router.get('/:groupId', async (req, res) => {
     const data = await Group.findById(req.params.groupId)
     res.render('group', {
+        queryPath: req.path,
         user: req.user,
         groupName: data.name,
         numOfMembers: data.members.length,
