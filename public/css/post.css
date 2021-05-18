@@ -182,6 +182,13 @@ hr{
     padding-bottom: 8px;
     padding-right: 16px;
 }
+.more-comment{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.more-comment span{
+    font-weight: bold;
+}
 .new-comment{
     min-height: 42px;
     display: flex;

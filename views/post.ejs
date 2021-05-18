@@ -31,22 +31,26 @@
                         <span>Thích</span>
                     </section>
                     &nbsp;
-                    <section class="like-cmt-post cmt">
+                    <section class="like-cmt-post cmt" data-swrap-cmt-id="<%= post._id %>" onclick="showDivCmt(this)">
                         <i class="far fa-comment"></i>&nbsp;&nbsp;
                         <span>Bình luận</span>
                     </section>
                 </div>
             </div>
             <hr>
-            <div class="comment">
-                <!-- Commented here -->
+            <div class="comment" data-post-id="<%= post._id %>" style="display: none;">
+                <div class="old-comment" data-old-cmt-id="<%= post._id %>"></div>
+                <!-- Commented here-->
                 <!-- Viết comment -->
+                <div class="up-new-comment" data-new-cmt-id="<%= post._id %>"></div>
+                <!-- <div class="more-comment"><span>Xem thêm bình luận</span></div> -->
                 <div class="new-comment">
                     <div class="avatar">
                         <img src="<%= user.avatar %>" alt="">
                     </div>
                     <div class="wrap-new-cmt">
-                        <form action="">
+                        <!-- <form> -->
+                        <div>
                             <!-- <input id="text-cmt" type="text" placeholder="Viết bình luận ..."> -->
                             <!-- <div class="edittext" contentEditable="true"></div> -->
                             <div class="wrap-comment_image-cmt">
@@ -54,17 +58,18 @@
                                     <textarea name="cmt-content" data-id="<%= post._id %>" class="form__text-comment" placeholder="Viết bình luận ..."></textarea>
                                 </div>
                                 <div class="wrap_button_send">
-                                    <button data-id="<%= post._id %>" onclick="getIdCmt(this)">
+                                    <button data-id="<%= post._id %>" onclick="getIdCmt(this)" style="cursor: pointer;">
                                         <img src="/images/send.png" alt=""></button>
                                 </div>
-                                <div class="media-cmt">
+                                <div class="media-cmt" style="cursor: pointer;"> 
                                     <input name="img-cmt" type="file" onchange="preview_image_cmt(event)">
                                 </div>
                             </div>
                             <div class="wrap-img-cmt">
                                 <img name="output_image_cmt">
                             </div>
-                        </form>
+                        <!-- </form> -->
+                        </div>
                     </div>
                 </div>
             </div>
