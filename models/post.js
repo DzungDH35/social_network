@@ -1,30 +1,5 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
-// reaction
-const reactionSchema = new schema({
-    owner: {type: schema.Types.ObjectId, ref: 'User', require: true},
-    react: {
-        type: String,
-        enum: ['like', 'love', 'dislike', 'haha', 'sad', 'angry']
-    }
-},{
-    versionKey: false
-})
-
-//comment
-const commentSchema = new schema({
-    // người comment
-    owner: {type: schema.Types.ObjectId, ref: 'User', require: true},
-    // nội dung comment
-    content: {type: String, require: true},
-    // ảnh(nếu có)
-    img: {type: String},
-    // reaction
-    reaction: [reactionSchema],
-},{
-    timestamps: true,
-    versionKey: false
-})
 
 // bài post
 const postSchema = new schema({
@@ -36,10 +11,8 @@ const postSchema = new schema({
     img: {type: String},
     // trong nhóm?
     group: {type: schema.Types.ObjectId, ref: 'Group'},
-    // comment
-    comments: [commentSchema],
     // reaction
-    reactions: [reactionSchema],
+    reactions: {type: Number, default: 0},
     // những người có thể thấy post này
     usersCanSee: [{type: schema.Types.ObjectId, ref: 'User'}]
 }, {

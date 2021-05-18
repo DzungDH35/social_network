@@ -5,45 +5,35 @@
 </head>
 <body>
     <!-- Box đăng bài -->
-    <div class="new-postbox">
-        <div class="wrap-avatar-input">
-            <div class="avatar">
-                <img src="<%= user.avatar%>" alt="">
+    <div class="post-section__post-creator">
+        <img src="<%= user.avatar %>" alt="" class="post-creator__avatar">
+        <div class="post-creator__content">Tạo bài viết công khai...</div>
+    </div>
+    <div class="global-wrapper second-flow">
+        <div class="modal-box">
+            <div class="modal-box__title">Tạo bài viết</div>
+            <img src="images/icons/remove.png" class="modal-box__remove-icon">
+            <div class="modal-box__creator-info">
+                <img src="<%= user.avatar %>" class="creator-info__avatar">
+                <div class="creator-info__name"><%= user.name %></div>
             </div>
-            <div class="newpost-input">
-                <form action="" id="form-add-post" onchange="preview_image(event)">
-                    <div class="edittext" id="mydiv" contentEditable="true" name="textarea" data-myval="Cam xuc hien tai"></div>
+            <form action="" id="form" class="modal-box__form" onchange="preview_image(event)" >
+                <div class="wrap-content-image">
+                    <textarea name="post-content" id="contentPost" class="form__text-input" placeholder="Bạn viết gì đi..."></textarea>
                     <div class="wrap-image">
                         <img id="output_image">
                     </div>
-                    <div class="media">
-                        <div class="file-upload">
-                            <input type="file" name="file">
-                        </div>&nbsp;&nbsp;&nbsp;
-                        <input type="submit" value="Đăng">&nbsp;&nbsp;
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="file-upload">
+                    <input type="file" name="file" id="file">
+                </div>
+                <button type="submit" class="form__submit-button form__submit-button--not-allowed">Đăng</button>
+            </form>
         </div>
     </div>
-    <!-- Choose preview image post-->
-    <script>
-        function preview_image(event){
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('output_image');
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
+
+    <script src="js/group_handle_events.js" defer></script>
+    <script src="js/group_catch_events.js" defer></script>
+    <script src="js/up_post_event.js"></script>
 </body>
 </html>
-
-<script>
-        document.getElementById("form-add-post").addEventListener('submit', function(){
-            contenteditable = document.querySelector('[contenteditable]'),
-            text = contenteditable.textContent;
-            console.log(text);
-        })    
-</script>

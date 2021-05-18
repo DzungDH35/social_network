@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 const User = require('../models/user');
-const Group = require('../models/group')
+const Group = require('../models/group');
+const Comment = require('../models/comment')
 const mongoose = require('mongoose')
 module.exports = {
 
@@ -11,7 +12,7 @@ module.exports = {
                 Post.find({usersCanSee: mongoose.Types.ObjectId(userId)})
                     .populate('owner', 'name avatar')
                     .populate('group', 'name')
-                    .select('content img comments reaction group')
+                    .select('content img reaction group')
                     .sort({updatedAt: -1})
                     .skip(pageNumber - 1)
                     .limit(3);
@@ -25,9 +26,9 @@ module.exports = {
         try {
             return await
                 Post.find({owner: mongoose.Types.ObjectId(userId)})
-                    .populate('owner', 'name')
+                    .populate('owner', 'name avatar')
                     .populate('group', 'name')
-                    .select('content img comments reaction group')
+                    .select('content img reaction group')
                     .sort({updatedAt: -1})
                     .skip(pageNumber - 1)
                     .limit(3);
@@ -41,12 +42,28 @@ module.exports = {
         try {
             return await
                 Post.find({group: mongoose.Types.ObjectId(groupId)})
-                    .populate('owner', 'name')
+                    .populate('owner', 'name avatar')
+                    .populate('group', 'name')
+                    .select('content img reaction group')
+                    .sort({updatedAt: -1})
+                    .skip(pageNumber - 1)
+                    .limit(3);
+        } catch (e) {
+            throw e
+        }
+    },
+
+    // lấy vài post vừa đăng gần nhất đưa lên trang home
+    getPostsInHomeTop: async (userId, pageNumber) => {
+        try {
+            return await
+                Post.find({owner: mongoose.Types.ObjectId(userId)})
+                    .populate('owner', 'name avatar')
                     .populate('group', 'name')
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
                     .skip(pageNumber - 1)
-                    .limit(3);
+                    .limit(1);
         } catch (e) {
             throw e
         }
@@ -58,6 +75,7 @@ module.exports = {
             let user = await User.findById(userId);
             let group = await Group.findById(groupId);
             let usersCanSee = new Set(user.followers);
+            usersCanSee.add(userId)
             if (group !== null) usersCanSee.add(...group.members)
             return await Post.create({
                 owner: userId,
@@ -86,23 +104,7 @@ module.exports = {
         }
     },
 
-    // comment
-    addComment: async (postId, cmtOwner, content, img) => {
-        try {
-            const cmt = {
-                owner: cmtOwner,
-                content: content,
-                img: img
-            }
-            await Post.findByIdAndUpdate(postId, {
-                $push: {
-                    comments: cmt
-                }
-            })
-        } catch (e) {
-            throw e
-        }
-    }
+    
 }
 
 

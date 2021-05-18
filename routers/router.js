@@ -9,6 +9,7 @@ router.use('/search', require('./search'));
 router.use('/follow', require('./follow'));
 router.use('/group', require('./group'));
 router.use('/search_result', require('./search_result'));
+router.use('/comment', require('./comment'))
 
 
 module.exports = router;

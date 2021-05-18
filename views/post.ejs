@@ -1,11 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <link rel="stylesheet" href="/css/post.css">-->
-<!--    <script src="https://kit.fontawesome.com/aedaaef517.js" crossorigin="anonymous"></script>-->
-<!--</head>-->
-<!--<body>-->
-    <!-- card post -->
 <% postList.forEach(post => { %>
     <div class="card-post" id="container">
         <div class="wrapper">
@@ -23,6 +15,7 @@
                     </div>
                 </div>
             </header>
+            <div class="id_post" name="id_post" style="display: none;"><p id="idPost"><%= post._id %></p></div>
             <div class="content-text-post">
                 <p><%= post.content %></p>
             </div>
@@ -46,17 +39,7 @@
             </div>
             <hr>
             <div class="comment">
-                <!-- Các comment đã xuất hiện -->
-                <div class="commented">
-                    <div class="avatar">
-                        <img src="/images/img/avatar.png" alt="">
-                    </div>
-                    <div class="content-text-cmt">
-                        <h1>Tumblr</h1>
-                        <p>Chào mọi người. Cho em xin chút review</p>
-                    </div>
-                </div>
-
+                <!-- Commented here -->
                 <!-- Viết comment -->
                 <div class="new-comment">
                     <div class="avatar">
@@ -65,9 +48,18 @@
                     <div class="wrap-new-cmt">
                         <form action="">
                             <!-- <input id="text-cmt" type="text" placeholder="Viết bình luận ..."> -->
-                            <div class="edittext" contentEditable="true"></div>
-                            <div class="media-cmt">
-                                <input name="img-cmt" type="file" onchange="preview_image_cmt(event)">
+                            <!-- <div class="edittext" contentEditable="true"></div> -->
+                            <div class="wrap-comment_image-cmt">
+                                <div id="wrap-textarea">
+                                    <textarea name="cmt-content" data-id="<%= post._id %>" class="form__text-comment" placeholder="Viết bình luận ..."></textarea>
+                                </div>
+                                <div class="wrap_button_send">
+                                    <button data-id="<%= post._id %>" onclick="getIdCmt(this)">
+                                        <img src="/images/send.png" alt=""></button>
+                                </div>
+                                <div class="media-cmt">
+                                    <input name="img-cmt" type="file" onchange="preview_image_cmt(event)">
+                                </div>
                             </div>
                             <div class="wrap-img-cmt">
                                 <img name="output_image_cmt">
@@ -78,10 +70,5 @@
             </div>
         </div>
     </div>
-
-<!--    <script src="js/post.js">-->
-<!--        -->
-<!--    </script>-->
-<!--</body>-->
-<!--</html>-->
+<% })%>
 
