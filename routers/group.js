@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const groupService = require('../services/groupService')
+const groupService = require('../services/group.service')
 
 router.get('/:groupId', async (req, res) => {
     res.render('group');

@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+require('./socket-server')(io)
+
 const path = require('path');
 const morgan = require('morgan');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const io = require('');
+
 const cors = require('cors');
 require('dotenv').config();
 require('./config/passport')(passport);
@@ -23,11 +27,9 @@ app.use(cookieParser());
 
 app.use(passport.initialize());
 
-//   
-
 app.use('/login', require('./routers/login'));
 app.use('/register', require('./routers/register'));
-app.use('/changePwd', require('./routers/changePwd'));
+app.use('/changePwd', require('./routers/change-password'));
 app.use('/', passport.authenticate("jwt", {
     session: true,
     failureRedirect: '/login'
@@ -42,4 +44,5 @@ app.use(function(req, res, next) {
     next();
 })
 
-app.listen(process.env.PORT, () => console.log(`Server running at http://localhost:${process.env.PORT}/home`))
+server.listen(process.env.PORT, () =>
+    console.log(`Server running at http://localhost:${process.env.PORT}/home`))

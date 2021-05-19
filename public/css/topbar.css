@@ -173,7 +173,7 @@ ul{
     text-decoration: none;
 }
 .navigation__bar .account__control .personal__information a img{
-    border-collapse: separate; 
+    border-collapse: separate;
     border-radius: 50%;
     display: inline-block;
     margin-left: 3px;
@@ -186,7 +186,7 @@ ul{
     word-break: break-word;
     font-size: 14px;
     font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     color: black;
 }
 
@@ -264,13 +264,13 @@ ul{
 }
 
 .navigation__bar .account__control ul li.setting .down_setting .setting_item:hover{
-    background-color: antiquewhite;  
-    transition: 0.2s; 
+    background-color: antiquewhite;
+    transition: 0.2s;
 }
 .navigation__bar .account__control ul li.setting .down_setting .setting_item:hover a{
-    background-color: antiquewhite;  
-    transition: 0.2s; 
-}   
+    background-color: antiquewhite;
+    transition: 0.2s;
+}
 
 .navigation__bar .account__control ul li.setting .down_setting .setting_item a{
     display: inline-block;

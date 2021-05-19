@@ -1,6 +1,10 @@
+
+
+
 function showDivCmt(post){
     var currentNumCmt = 0;
-    var z = 1;  
+    var z = 1;
+
     var postId = post.getAttribute("data-swrap-cmt-id");
     console.log(postId);
     document.querySelector("[data-post-id=" + CSS.escape(postId) + "]").style.display = "block";

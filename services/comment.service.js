@@ -21,22 +21,12 @@ module.exports = {
 
     getComment: async (postId, page) => {
         try {
-            return await 
+            return await
                 Comment.find({post: mongoose.Types.ObjectId(postId)})
                     .populate('owner', 'name avatar')
-                    .sort({updateAt: 1})
-                    .skip(3*page - 3)
-                    .limit(3);
-        } catch (e) {
-            throw e
-        }
-    },
-
-    //Get total record comment of post
-    getTotalRecord: async(postId) => {
-        try{
-            return await
-                Comment.find({post: mongoose.Types.ObjectId(postId)}).count();
+                    .sort({createAt: 1})
+                    .skip(10*page - 10)
+                    .limit(10);
         } catch (e) {
             throw e
         }
