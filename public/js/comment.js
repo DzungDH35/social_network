@@ -1,8 +1,9 @@
 function showDivCmt(post){
+    var currentNumCmt = 0;
+    var z = 1;  
     var postId = post.getAttribute("data-swrap-cmt-id");
     console.log(postId);
     document.querySelector("[data-post-id=" + CSS.escape(postId) + "]").style.display = "block";
-    z = 1;
     fetch
     (`/comment/${postId}/${z}`, {
         method: 'GET',
@@ -11,38 +12,54 @@ function showDivCmt(post){
         }
     })
         .then(response => {
-            response.text().then(html => {
+            response.json().then(res => {
                 let oldCmt = document.createElement('div');
-                oldCmt.innerHTML = html;
+                oldCmt.innerHTML = res.html;
                 document.querySelector("[data-old-cmt-id=" + CSS.escape(postId) + "]").appendChild(oldCmt);
+                currentNumCmt+=res.numberOfCmtInPage;
+                console.log(currentNumCmt);
+                if(currentNumCmt != res.numberOfRecord ) {
+                    showDivMoreCmt(postId);
+                }
             })
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
-/*
-window.onload = function getDataComment() {
-    //y = "60a007883870360978b44e2c";
-    z= Math.floor(Math.random()*5);
+function showDivMoreCmt(postId){
+    document.querySelector("[data-more-id=" + CSS.escape(postId) + "]").style.display = "block";
+    var numNow = 3;
+    var pageNow = 2;
+    document.querySelector("[data-more-id=" + CSS.escape(postId) + "]").addEventListener('click', fetchagain(numNow, pageNow, postId) );
+}
+
+var fetchagain = function(currentNumCmt, z, postId ){
     fetch
-    (`/comment/${y}/${z}`, {
+    (`/comment/${postId}/${z}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json; text/html',
         }
     })
         .then(response => {
-            console.log(response.body);
-            response.text().then((data) => {
-                console.log(data)
-                let list = document.createElement('div');
-                list.innerHTML = data;
-                document.getElementsByClassName('comment')[0].appendChild(list)
+            response.json().then(res => {
+                let oldCmt = document.createElement('div');
+                oldCmt.innerHTML = res.html;
+                document.querySelector("[data-old-cmt-id=" + CSS.escape(postId) + "]").appendChild(oldCmt);
+                currentNumCmt+=res.numberOfCmtInPage;
+                console.log(currentNumCmt);
+                if(currentNumCmt != res.numberOfRecord ) {
+                    z++;
+                    document.querySelector("[data-more-id=" + CSS.escape(postId) + "]").addEventListener('click', () => {
+                        fetchagain(currentNumCmt, z, postId);
+                    });
+                }else{
+                    document.querySelector("[data-more-id=" + CSS.escape(postId) + "]").style.display = "none";
+                }
             })
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
-*/

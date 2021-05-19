@@ -25,8 +25,18 @@ module.exports = {
                 Comment.find({post: mongoose.Types.ObjectId(postId)})
                     .populate('owner', 'name avatar')
                     .sort({updateAt: 1})
-                    .skip(page-1)
+                    .skip(3*page - 3)
                     .limit(3);
+        } catch (e) {
+            throw e
+        }
+    },
+
+    //Get total record comment of post
+    getTotalRecord: async(postId) => {
+        try{
+            return await
+                Comment.find({post: mongoose.Types.ObjectId(postId)}).count();
         } catch (e) {
             throw e
         }

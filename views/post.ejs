@@ -43,7 +43,9 @@
                 <!-- Commented here-->
                 <!-- Viết comment -->
                 <div class="up-new-comment" data-new-cmt-id="<%= post._id %>"></div>
-                <!-- <div class="more-comment"><span>Xem thêm bình luận</span></div> -->
+                <div class="more-comment" data-more-id="<%= post._id %>" style="display: none;">
+                    <span style="cursor: pointer;">Xem thêm bình luận</span>
+                </div>
                 <div class="new-comment">
                     <div class="avatar">
                         <img src="<%= user.avatar %>" alt="">
@@ -62,11 +64,11 @@
                                         <img src="/images/send.png" alt=""></button>
                                 </div>
                                 <div class="media-cmt" style="cursor: pointer;"> 
-                                    <input name="img-cmt" type="file" onchange="preview_image_cmt(event)">
+                                    <input name="img-cmt" type="file" data-cmt-img-id="<%= post._id %>" onchange="preview_image_cmt(event, this)">
                                 </div>
                             </div>
                             <div class="wrap-img-cmt">
-                                <img name="output_image_cmt">
+                                <img name="output_image_cmt" data-preview-id="<%= post._id %>">
                             </div>
                         <!-- </form> -->
                         </div>

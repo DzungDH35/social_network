@@ -1,11 +1,12 @@
 //Choose preview image comment
-var i = 0;
-function preview_image_cmt(event){
+function preview_image_cmt(event, post){
+    var postIdCmt = post.getAttribute("data-cmt-img-id");
+    console.log(postIdCmt);
     var reader = new FileReader();
     reader.onload = function(){
-        var output = document.getElementsByName('output_image_cmt')[i];
+        var output = document.querySelector("[data-preview-id=" + CSS.escape(postIdCmt) + "]");
+        console.log(output);
         output.src = reader.result;
-        i++;
     }
     reader.readAsDataURL(event.target.files[0]);
 }   

@@ -30,12 +30,16 @@ router.post('/', async (req, res) => {
 router.get('/:postId/:page', async (req, res) => {
     try {
         const commentList = await commentService.getComment(req.params.postId, req.params.page);
+        const totalRecord = await commentService.getTotalRecord(req.params.postId);
         let html = await ejs.renderFile(path.join(process.cwd(), '/views/comment.ejs'),
             {
                 commentList: commentList
             })
-        res.set('Content-Type', 'text/html');
-        res.send(html);
+        res.send({
+            html: html,
+            numberOfCmtInPage: commentList.length,
+            numberOfRecord: totalRecord
+        })
     } catch (e) {
         res.status(400).send({
             status: 'error',

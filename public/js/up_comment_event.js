@@ -3,11 +3,14 @@ function getIdCmt(post) {
     console.log(postId);
     var content = document.querySelector("[data-id=" + CSS.escape(postId) + "]").value;
     console.log(content);
-    createCmt(postId, content);
+    var img = document.querySelector("[data-preview-id=" + CSS.escape(postId) + "]").src;
+    createCmt(postId, content, img);
+    //Reset value input box
     document.querySelector("[data-id=" + CSS.escape(postId) + "]").value = "";
+    document.querySelector("[data-preview-id=" + CSS.escape(postId) + "]").src = "";
 }
 
-function createCmt(postId, content){
+function createCmt(postId, content, img){
     fetch
     ('/comment', {
         method: 'POST',
@@ -16,7 +19,8 @@ function createCmt(postId, content){
         },
         body: JSON.stringify({
             postId: postId,
-            content: content
+            content: content,
+            img: img
         }),
     })
         .then(response => {

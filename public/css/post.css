@@ -182,6 +182,9 @@ hr{
     padding-bottom: 8px;
     padding-right: 16px;
 }
+.content-text-cmt img{
+    max-width: 260px;
+}
 .more-comment{
     margin-top: 3px;
     margin-bottom: 3px;
@@ -306,5 +309,6 @@ hr{
     width: inherit;
 }
 .wrap-img-cmt [name="output_image_cmt"]{
+    margin-top: 10px;
     max-width: 150px;
 }

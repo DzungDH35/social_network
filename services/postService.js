@@ -14,13 +14,13 @@ module.exports = {
                     .populate('group', 'name')
                     .select('content img reaction group')
                     .sort({updatedAt: -1})
-                    .skip(pageNumber - 1)
+                    .skip(3*pageNumber - 3)  
                     .limit(3);
         } catch (e) {
             throw e
         }
     },
-
+    
     // lấy vài post để đưa lên tường nhà
     getPostsInProfile: async (userId, pageNumber) => {
         try {
@@ -30,7 +30,7 @@ module.exports = {
                     .populate('group', 'name')
                     .select('content img reaction group')
                     .sort({updatedAt: -1})
-                    .skip(pageNumber - 1)
+                    .skip(3*pageNumber - 3)
                     .limit(3);
         } catch (e) {
             throw e
@@ -46,7 +46,7 @@ module.exports = {
                     .populate('group', 'name')
                     .select('content img reaction group')
                     .sort({updatedAt: -1})
-                    .skip(pageNumber - 1)
+                    .skip(3*pageNumber - 3)
                     .limit(3);
         } catch (e) {
             throw e
@@ -62,7 +62,7 @@ module.exports = {
                     .populate('group', 'name')
                     .select('content img comments reaction group')
                     .sort({updatedAt: -1})
-                    .skip(pageNumber - 1)
+                    .skip(3*pageNumber - 3)
                     .limit(1);
         } catch (e) {
             throw e
