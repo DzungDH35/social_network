@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="/css/topbar.css">
     <link rel="stylesheet" href="/css/post.css">
     <link rel="stylesheet" href="/css/friendlist.css">
-    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
 </head>
 <body>
 
-<%- include('topbar', {user: user}); %>
+<%- include('topbar', {current: user}); %>
 
 <div class="home__page">
     <div class="left">
@@ -39,6 +38,7 @@
         </div>
     </div>
 </div>
+<%- include('chat', {current: user}); %>
 </body>
 <script src="js/home.js"></script>
 <script src="js/post.js"></script>
