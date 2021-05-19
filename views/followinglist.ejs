@@ -11,7 +11,7 @@
             <div class="friend__item">
                 <div class="hover__friend__detail">
                 </div>
-                <a href="/profile/<%= f._id %>">
+                <a href="#" id="<%= f.id %>" class="friend__item_link">
                     <div class="item">
                         <div class="image">
                             <img class="avatar" src="<%= f.avatar %>" alt="">
@@ -20,6 +20,7 @@
                             <p><%= f.name %></p>
                         </div>
                     </div>
+                </a>
             </div>
         </li>
     <% }) %>

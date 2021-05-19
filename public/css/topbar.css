@@ -198,7 +198,7 @@ ul{
     text-decoration: none;
 }
 .navigation__bar .account__control .personal__information a img{
-    border-collapse: separate; 
+    border-collapse: separate;
     border-radius: 50%;
     display: inline-block;
     margin-left: 3px;
@@ -211,7 +211,7 @@ ul{
     word-break: break-word;
     font-size: 14px;
     font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
+    /*font-family: Arial, Helvetica, sans-serif;*/
     color: black;
 }
 
@@ -229,13 +229,6 @@ ul{
 }
 
 .navigation__bar .account__control ul a{
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: #e4e6eb;
-}
-.navigation__bar .account__control ul a{
     display: flex;
     height: 40px;
     width: 40px;
@@ -249,6 +242,10 @@ ul{
     margin-left: 10px;
 }
 
+.navigation__bar .account__control ul a.active{
+    color: blue;
+}
+
 .navigation__bar .account__control ul i{
     display: flex;
     text-align: center;
@@ -258,6 +255,82 @@ ul{
 .navigation__bar .account__control ul li.create i{
     margin-left: 13px;
 }
+
 .navigation__bar .account__control ul li.setting i{
-    margin-left: 15px;
+    margin-left: 14px;
+    font-size: 20px;
+}
+
+.navigation__bar .account__control ul li.setting{
+    position: relative;
+}
+.navigation__bar .account__control ul li.setting .down_setting_hide{
+    display: none;
+}
+
+.navigation__bar .account__control ul li.setting .down_setting{
+    position: absolute;
+    width: 300px;
+    height: auto;
+    bottom: -168px;
+    right: 10px;
+    background-color: white;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+.navigation__bar .account__control ul li.setting .down_setting .setting_item{
+    width: 96%;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.navigation__bar .account__control ul li.setting .down_setting .setting_item:hover{
+    background-color: antiquewhite;
+    transition: 0.2s;
+}
+.navigation__bar .account__control ul li.setting .down_setting .setting_item:hover a{
+    background-color: antiquewhite;
+    transition: 0.2s;
+}
+
+.navigation__bar .account__control ul li.setting .down_setting .setting_item a{
+    display: inline-block;
+    width: 100%;
+    background-color: white;
+    border: none;
+}
+
+.navigation__bar .account__control ul li.setting .down_setting .setting_item a .setting-item{
+    display: flex;
+}
+.navigation__bar .account__control ul li.setting .down_setting .setting_item a .setting-item .image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: inherit;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.navigation__bar .account__control ul li.setting .down_setting .setting_item a .setting-item img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.navigation__bar .account__control ul li.setting .down_setting .feedback a .setting-item .setting-item-text{
+    margin-top: 7px;
+}
+.navigation__bar .account__control ul li.setting .down_setting .setting,.logout a .setting-item .setting-item-text{
+    line-height: 45px;
+}
+
+.navigation__bar .account__control ul li.setting .down_setting .feedback .setting-item span{
+    font-size: 13px;
 }

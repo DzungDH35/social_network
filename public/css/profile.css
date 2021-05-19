@@ -1,3 +1,7 @@
+body{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
 .avatar__container__top{
     width: 100%;
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.51);
@@ -56,7 +60,7 @@
 
 .cover__photo__avatar .cover__photo .photo .edit-cover-photo p{
     line-height: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
 }
 
 
@@ -109,7 +113,7 @@
     margin: auto;
     margin-top: 30px;
     text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",Helvetica,Arial,sans-serif;
+    /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",Helvetica,Arial,sans-serif;*/
 }
 .user__name h2.name{
     font-size: 27px;
@@ -128,7 +132,7 @@
     margin: auto;
     height: 55px;
     border-top: 1px solid rgb(206, 206, 206);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
     margin-top: 25px;
     /* position: sticky; */
     /* top: 57px; */
@@ -150,33 +154,33 @@
     display: flex;
 }
 
-.information__bar .left__items ul p{ 
+.information__bar .left__items ul p{
     font-size: 16px;
     font-weight: 600;
     color: rgb(83, 81, 81);
 }
 
-.information__bar .left__items ul a{ 
+.information__bar .left__items ul a{
     height: 49px;
     margin-top: 3px;
     margin-bottom: 3px;
     padding: 0 20px;
 }
-.information__bar .left__items ul a p{ 
+.information__bar .left__items ul a p{
     line-height: 49px;
 }
 
-.information__bar .left__items ul a:not(.active):hover{ 
+.information__bar .left__items ul a:not(.active):hover{
     background-color: rgb(235, 235, 235);
     border-radius: 5px;
 }
 
 
-.information__bar .left__items ul a.active{ 
+.information__bar .left__items ul a.active{
     border-bottom: 3px solid rgb(255, 96, 96);
 }
 
-.information__bar .left__items ul a.active p{ 
+.information__bar .left__items ul a.active p{
     color:rgb(255, 96, 96);
     display: inline-block;
 }
@@ -194,7 +198,7 @@
     height: 100%;
 }
 
-.information__bar .right__button ul .hide{ 
+.information__bar .right__button ul .hide{
     display: none;
 }
 
@@ -236,7 +240,7 @@
     width: 100%;
     height: auto;
     background-color: #f0f2f5;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
 }
 
 .main__profile__content{
@@ -369,7 +373,6 @@
 
 .main__profile__content .right__posts{
     width: 60%;
-    background-color: rgb(212, 255, 251);
 }
 
 

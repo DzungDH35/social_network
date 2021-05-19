@@ -1,8 +1,12 @@
-
-const router = require('express').Router();
-const userService = require('../services/userService')
-const friendService = require('../services/followService')
+const express = require('express')
+const router = express.Router();
+const path = require('path')
+const userService = require('../services/user.service')
+const friendService = require('../services/follow.service')
 // tường nhà
+
+router.use(express.static(path.join(process.cwd(), '/public')))
+
 router.get('/:id', (async (req, res) => {
     try {
         let user = await userService.getProfile(req.params.id);
