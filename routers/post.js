@@ -10,7 +10,7 @@ require('dotenv').config();
 router.get('/home/:page', async (req, res) => {
     try {
         let postList = await postService.getPostsInHome(req.user._id, req.params.page);
-        let html = await ejs.renderFile(path.join(process.cwd(), '/views/postTest.ejs'),
+        let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
             {
                 postList: postList,
                 user: req.user
@@ -25,8 +25,14 @@ router.get('/home/:page', async (req, res) => {
 
 router.get('/group/:groupId/:page', async (req, res) => {
     try {
-        let result = await postService.getPostsInGroups(req.params.groupId, req.params.page);
-        res.send(result);
+        let postList = await postService.getPostsInGroups(req.params.groupId, req.params.page);
+        let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
+            {
+                postList: postList,
+                user: req.user
+            })
+        res.set('Content-Type', 'text/html');
+        res.send(html);
     } catch (e) {
         res.status(400).send(e)
     }
@@ -54,5 +60,22 @@ router.post('/', async (req, res) => {
         res.status(400).send(e)
     }
 })
+
+router.get('/', async (req, res) => {
+    try {
+        let postList = await postService.getPostsInHomeTop(req.user._id, req.params.page);
+        let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
+            {
+                postList: postList,
+                user: req.user
+            })
+        res.set('Content-Type', 'text/html');
+        res.send(html)
+    } catch (e) {
+        console.log(e)
+        res.status(400).send(e)
+    }
+})
+
 module.exports = router;
 

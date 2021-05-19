@@ -4,19 +4,27 @@
 }
 .card-post{
     box-sizing: border-box;
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
-    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: #fff;
+    border-radius: 10px;
     width: 540px;
     margin: 0 auto;
     margin-top: 20px;
     padding: 10px 18px 10px;
 }
-header{
+.wrapper header{
     margin-top: 5px;
     display: flex;
     flex-direction: row;
 }
+header a{
+    text-decoration: none;
+    color: black;
 
+}
+.name a{
+    width: auto;
+}
 .avatar{
     overflow: hidden;
     width: 40px;
@@ -25,7 +33,7 @@ header{
 }
 
 .avatar img{
-    min-width: 100%;
+    width: 100%;
     min-height: 100%;
     object-fit: cover;
 }
@@ -91,7 +99,10 @@ header{
     text-align: justify;
     margin-top: 10px;
 }
-
+.content-img-post{
+    margin-top: 10px;
+    text-align: center;
+}
 .content-img-post img{
     max-width: 504px;
     border: 2px solid #f1f1f1;
@@ -115,7 +126,7 @@ hr{
     height: inherit;
     text-align: center;   
     line-height: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: #57707d;
 }
 
@@ -140,10 +151,17 @@ hr{
 .comment{
     margin-top: 10px;
 }
+.commented{
+    display: flex;
+}
+.comment .avatar{
+    float: left;
+}
 .content-text-cmt{
     width: fit-content;
-    margin-left: 46px;
-    margin-bottom: 18px;
+    margin-left: 8px;
+    margin-bottom: 2px;
+    margin-top: 6px;
     text-align: justify;
     background-color: #e8e7e7f5;
     border-radius: 14px;
@@ -164,10 +182,21 @@ hr{
     padding-bottom: 8px;
     padding-right: 16px;
 }
+.content-text-cmt img{
+    max-width: 260px;
+}
+.more-comment{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.more-comment span{
+    font-weight: bold;
+}
 .new-comment{
     min-height: 42px;
     display: flex;
     position: relative;
+    text-align: center;
 }
 .new-comment .edittext{
     border-radius: 22px;
@@ -191,16 +220,57 @@ hr{
     cursor: auto;
     background-color: rgb(234, 233, 235);
 }
+.new-comment .avatar{
+    margin-top: 10px;
+}
 .wrap-new-cmt{
     margin-left: 6px;
     min-height: 40px;
     float: left;
 }
+.wrap-new-cmt form{
+    height: 60px;
+}
+/* CSS for textarea comment */
 
+.wrap-comment_image-cmt{
+    height: inherit;    
+}
+
+
+.wrap-from-button{
+    width: 400px;
+    height: 54px;
+}
+#wrap-textarea{
+    text-align: center;
+    float: left;
+    height: inherit;
+}
+.form__text-comment{
+    width: 365px;
+    min-height: 30px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex-grow: 1;
+    margin-top: 5px;
+    background-color: #e8e7e7f5;
+    border-radius: 14px;
+    overflow: auto;
+    padding: 5px;
+    float: left;
+}
+.form__text-comment::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
 /* CSS for upload file comment */
 .media-cmt{
     width: 35px;
     margin-left: 5px;
+    margin-top: 12px;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -213,14 +283,32 @@ hr{
     bottom: 10;
     right: 0;
 }
-.media-cmt #img-cmt{
+.media-cmt [name="img-cmt"]{
     width: inherit;
     height: 28px;
     opacity: 0;
     cursor: pointer;
     margin-top: 7px;
 }
+.wrap_button_send{
+    width: 32px;
+    float: left;
+    margin-top: 12px;
+    margin-left: 10px;
+    text-align: center;
+    background-color: #fff;
 
-.wrap-img-cmt #output_image_cmt{
+}
+.wrap_button_send button{
+    width: inherit;
+    text-align: center;
+    border: none;
+    background-color: #fff;
+}
+.wrap_button_send img{
+    width: inherit;
+}
+.wrap-img-cmt [name="output_image_cmt"]{
+    margin-top: 10px;
     max-width: 150px;
 }
