@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const groupService = require('../services/groupService')
+const groupService = require('../services/group.service')
 const Group = require('../models/group');
 const { route } = require('./login');
 

@@ -2,11 +2,11 @@ const passport = require('passport');
 const User = require('../models/user');
 const router = require('express').Router();
 const Groups = require('../models/group')
-const groupService = require('../services/groupService')
+const groupService = require('../services/group.service')
 const ejs = require('ejs')
 const queryString = require('querystring');
-const userService = require('../services/userService');
-const followService = require('../services/followService');
+const userService = require('../services/user.service');
+const followService = require('../services/follow.service');
 router.get('/group', async (req, res) => {
     let data = await User.findById(req.user._id).select({_id: 0}).populate('friends', 'name mssv avatar').populate('groups', 'name avatar');
     console.log(data)
