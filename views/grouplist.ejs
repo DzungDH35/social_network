@@ -15,12 +15,14 @@
     </div>
     <div class="hint-list-positioned-ancestor" id="group-live-searching-results" style="margin-top: 10px;"></div>
     <div class="btn-wrapper" style="padding: 0 20px">
-        <button class="side-bar__create-group"><img src="/images/icons/plus.png" alt="plus"><div>Create New Group</div></button>
+        <a href="/create_group" style="text-decoration: none;">
+            <button class="side-bar__create-group"><img src="/images/icons/plus.png" alt="plus"><div>Create New Group</div></button>
+        </a>
     </div>
     <div class="side-bar__separator"></div>
     <div class="side-bar__section-wrapper">
         <div class="side-bar__section">
-            <div class="side-bar__section-title">Groups you 've joined</div>
+            <div class="side-bar__section-title">Groups you've joined</div>
             <div class="side-bar__item-list">
                 <% groups.forEach(g => { %>
                     <a class="side-bar__item-link" href="/group/<%= g._id %>">

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const groupService = require('../services/groupService')
 const Group = require('../models/group');
 const { route } = require('./login');
+
 router.get('/:groupId', async (req, res) => {
     const data = await Group.findById(req.params.groupId)
     res.render('group', {
@@ -13,6 +14,7 @@ router.get('/:groupId', async (req, res) => {
     });
 })
 
+// create group
 router.post('/', async (req, res) => {
     try {
         let data = await groupService.createGroup(req.user._id, req.body.name, req.body.avatar)
@@ -57,5 +59,7 @@ router.delete('/:groupId', async (req, res) => {
         });
     }
 })
+
+
 
 module.exports = router;
