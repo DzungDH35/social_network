@@ -44,8 +44,8 @@
     line-height: 20px;
     display: inline-block;
     padding-top: 11px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}   
+    /*font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
+}
 
 .friend__container .create__group .item .plus-icon{
     text-align: center;

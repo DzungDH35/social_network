@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/group.css">
     <title>Profile</title>
 </head>
 <body>
@@ -33,29 +34,8 @@
         </div>
         <div class="user__name">
             <h2 class="name"><%=user.name%></h2>
-            <br>
-            <p class="sub_name">dungnt</p>
         </div>
         <div class="information__bar">
-            <div class="left__items">
-                <ul>
-                    <a href="" class="active">
-                        <li><p>Posts</p></li>
-                    </a>
-                    <a href="">
-                        <li><p>About</p></li>
-                    </a>
-                    <a href="">
-                        <li><p>Friends</p></li>
-                    </a>
-                    <a href="">
-                        <li><p>Photos</p></li>
-                    </a>
-                    <a href="">
-                        <li><p>More</p></li>
-                    </a>
-                </ul>
-            </div>
             <div class="right__button">
                 <ul>
                     <%if (isYourself)
@@ -118,16 +98,6 @@
                             <img src="/images/unit.png" alt="">
                             <p>Chuyên ngành <b><%=user.major.name%></b></p>
                         </div>
-                        <div class="item class">
-                            <img src="/images/class.png" alt="">
-                            <p>Lớp <b>
-                                CNTT-09 - K62
-                            </b></p>
-                        </div>
-                        <div class="item from">
-                            <img src="/images/position.png" alt="">
-                            <p>Đến từ <b>Hà Nội</b></p>
-                        </div>
                     </div>
                 </div>
 
@@ -137,9 +107,6 @@
                             <p class="title">Following</p>
                             <span><%=following.length%> following</span>
                         </div>
-                        <a href=""><p>
-                            See All Friends
-                        </p></a>
                     </div>
                     <div class="friends__container">
                         <% following.forEach(friend => { %>
@@ -155,10 +122,10 @@
                 <br>
             </div>
             <div class="right__posts">
-                
+                <%- include('newpost') %>
             </div>
         </div>
     </div>
-    
+
 </body>
 </html>

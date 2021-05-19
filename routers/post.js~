@@ -61,7 +61,24 @@ router.post('/', async (req, res) => {
     }
 })
 
-
+<<<<<<< HEAD
+router.post('/comment', async (req, res) => {
+    try {
+        let r = await postService.addComment(
+            req.body.postId,
+            req.user._id,
+            req.body.content,
+            req.body.img
+        )
+        res.send({msg: 'OK', r})
+    } catch (e) {
+        res.status(400).send({
+            status: 'error',
+            msg: e
+        })
+    }
+})
+=======
 router.get('/', async (req, res) => {
     try {
         let postList = await postService.getPostsInHomeTop(req.user._id, req.params.page);
@@ -78,6 +95,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-
+>>>>>>> 6687922a2c9cd97ae8ce30e28b4bd7abd4b6ad51
 module.exports = router;
 
