@@ -17,12 +17,9 @@ router.get('/:groupId', async (req, res) => {
 // create group
 router.post('/', async (req, res) => {
     try {
+        console.log(req.body)
         let data = await groupService.createGroup(req.user._id, req.body.name, req.body.avatar)
-        res.send({
-            data: data,
-            status: 'success',
-            msg: 'OK'
-        })
+        res.redirect('/group/' + data._id)
     } catch (e) {
         res.status(400).send({
             status: 'error',

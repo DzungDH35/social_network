@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         following: data.following,
         groups: data.groups
     })
-    console.log(req.path)
+    console.log("datagroups: " + req.user)
 })
 
 module.exports = router;

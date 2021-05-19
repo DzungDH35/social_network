@@ -9,6 +9,7 @@ const userService = require('../services/userService');
 const followService = require('../services/followService');
 router.get('/group', async (req, res) => {
     let data = await User.findById(req.user._id).select({_id: 0}).populate('friends', 'name mssv avatar').populate('groups', 'name avatar');
+    console.log(data)
     let name = queryString.unescape(req.query.name);
     let raw = await groupService.searchByName(name);
     let results = [];

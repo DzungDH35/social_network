@@ -3,15 +3,21 @@ const User = require('../models/user');
 const Post = require('../models/post');
 const mongoose = require('mongoose')
 module.exports = {
-
+    
     createGroup: async (userId, name, avatar) => {
         try {
-            return await Group.create({
+            let newG =  await Group.create({
                 name: name,
                 admin: userId,
                 avatar: avatar,
                 members: [userId]
             });
+            await User.findByIdAndUpdate(userId, {
+                $addToSet: {
+                    groups: newG._id
+                }
+            })
+            return newG
         } catch (e) {
             throw e
         }

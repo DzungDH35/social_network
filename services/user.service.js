@@ -11,7 +11,7 @@ const mongoose = require('mongoose')
 const faker = require('faker')
 module.exports = {
 
-    register: async (email, name, pwd, birthDay, avatar, gender, mssv, code) => {
+    register: async (email, name, pwd, birthDay, gender, mssv, code) => {
         try {
             let major = await Major.findOne({code: code});
             let school = await School.findById(major.school);
@@ -22,7 +22,7 @@ module.exports = {
                 name: name,
                 pwd: pwd,
                 birthDay: birthDay,
-                avatar: avatar,
+                avatar: "",
                 gender: gender,
                 mssv: mssv,
                 major: major._id,
