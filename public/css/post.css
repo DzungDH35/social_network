@@ -47,7 +47,9 @@ header a{
     word-break: break-word;
     font-weight: bold;
 }
-
+.name a:hover{
+    color: rgb(238, 76, 76);
+}
 /* dot */
 .threedots{
     width: 30px;
