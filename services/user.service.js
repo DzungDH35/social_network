@@ -40,7 +40,8 @@ module.exports = {
                 await followService.follow(newUser._id, m)
                 await followService.follow(m, newUser._id)
             }
-
+            
+            return newUser;
         } catch (e) {
             throw e
         }

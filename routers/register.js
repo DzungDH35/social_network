@@ -6,14 +6,15 @@ require('dotenv').config();
 
 router.post('/', async (req, res) => {
     try {
-        const savedUser = await userService.register(
+        await userService.register(
             req.body.email,
             req.body.name,
             req.body.pwd,
             req.body.birthDay,
             req.body.gender,
             req.body.mssv,
-            req.body.major);
+            req.body.major
+        );
         res.status(200).send({
             status: 'success',
             msg: 'OK'
@@ -21,7 +22,7 @@ router.post('/', async (req, res) => {
     } catch (err) {
         res.status(400).send({
             status: 'error',
-            msg: e
+            msg: err
         });
     }
 });

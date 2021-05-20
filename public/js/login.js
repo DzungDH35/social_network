@@ -17,7 +17,6 @@ document.body.addEventListener("submit", async function (event) {
     })
         .then(response => {
             if(response.status == 200){
-                console.log(response)
                 window.location.href = '/home';
             }else{
                 document.getElementById("error").innerHTML = "Mật khẩu bạn đã nhập không chính xác.";

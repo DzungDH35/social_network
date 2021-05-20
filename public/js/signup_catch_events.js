@@ -9,14 +9,18 @@ for (let i = 0; i < eyeIcon.length; ++i) eyeIcon[i].addEventListener("click", ()
 /* =============== Module catch inputs' events =============== */
 
 let fullName = document.querySelector('[name="fullname"]');
-let usrName = document.querySelector('[name="username"');
+let mssv = document.querySelector('[name="mssv"');
 let emailAddr = document.querySelector('[name="email"]');
 let password = document.querySelector('[name="password"]');
 let cfPassword = document.querySelector('[name="cf-password"]');
 let alertAreas = document.querySelectorAll('[class="alert-area"]');
+let major = document.getElementById('major-list');
+let date = document.getElementById('date');
+let month = document.getElementById('month');
+let year = document.getElementById('year');
 
 fullName.onblur = () => alertAreaHandler(!isNameValid(fullName.value), alertAreas[0]);
-usrName.onblur = () => alertAreaHandler(!isUserNameValid(usrName.value), alertAreas[1]);
+mssv.onblur = () => alertAreaHandler(!isMSSVValid(mssv.value), alertAreas[1]);
 emailAddr.onblur = () => alertAreaHandler(!isEmailValid(emailAddr.value), alertAreas[2]);
 password.onblur = () => alertAreaHandler(!isPasswordValid(password.value), alertAreas[3]);
 cfPassword.onblur = () => alertAreaHandler(!isPasswordConfirmed(password.value, cfPassword.value), alertAreas[4]);

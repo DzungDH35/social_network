@@ -12,7 +12,6 @@ let majorList = [
 function generateMajors(majorList) {
     let temp;
     temp = document.getElementById("major-list");
-    console.log(majorList);
     for (let i = 0; i < majorList.length; ++i) temp.innerHTML = temp.innerHTML + '<option value="'+ majorList[i] + '">' + majorList[i] + '</option>';
 }
 
