@@ -3,17 +3,17 @@
         <div class="wrapper">
             <header>
                 <div class="avatar">
-                    <img src="<%= post.owner.avatar %>" alt="">
+                    <a href="/profile/<%=post.owner._id%>"><img src="<%= post.owner.avatar %>" alt=""></a>
                 </div>
                 <div class="name">
-                    <h1><%= post.owner.name %></h1>
+                    <h1><a href="/profile/<%=post.owner._id%>"><%= post.owner.name %></a></h1>
                 </div>
-                <div class="threedots">
-                    <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
+                <!-- <div class="threedots">
+                     <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="">Xóa</a>
                     </div>
-                </div>
+                </div> -->
             </header>
             <div class="id_post" name="id_post" style="display: none;"><p id="idPost"><%= post._id %></p></div>
             <div class="content-text-post">
@@ -23,7 +23,7 @@
                 <img src="<%= post.img %>" alt="">
             </div>
             <div class="bar-post">
-                <section class="numberlike">50 Lượt Thích</section>
+                <!-- <section class="numberlike">50 Lượt Thích</section> -->
                 <hr>
                 <div class="swap-like-cmt">
                     <section class="like-cmt-post like">
@@ -31,7 +31,7 @@
                         <span>Thích</span>
                     </section>
                     &nbsp;
-                    <section class="like-cmt-post cmt" data-swrap-cmt-id="<%= post._id %>" onclick="showDivCmt(this)">
+                    <section class="like-cmt-post cmt" data-swrap-cmt-id="<%= post._id %>" data-time="0" onclick="showDivCmt(this)">
                         <i class="far fa-comment"></i>&nbsp;&nbsp;
                         <span>Bình luận</span>
                     </section>
@@ -43,7 +43,7 @@
                 <!-- Commented here-->
                 <!-- Viết comment -->
                 <div class="up-new-comment" data-new-cmt-id="<%= post._id %>"></div>
-                <div class="more-comment" data-more-id="<%= post._id %>" style="display: none;">
+                <div class="more-comment" data-more-id="<%= post._id %>" data-page="2" style="display: none;">
                     <span style="cursor: pointer;">Xem thêm bình luận</span>
                 </div>
                 <div class="new-comment">
