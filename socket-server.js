@@ -1,11 +1,13 @@
+const User = require('./models/user')
+const socketService = require('./services/socket.service');
 
 let clientSocketIds = [];
-let connectedUsers= [];
+let connectedUsers = [];
 
-const getSocketByUserId = (userId) =>{
+const getSocketByUserId = (userId) => {
     let socket = '';
-    for(let i = 0; i<clientSocketIds.length; i++) {
-        if(clientSocketIds[i].userId === userId) {
+    for (let i = 0; i < clientSocketIds.length; i++) {
+        if (clientSocketIds[i].userId === userId) {
             socket = clientSocketIds[i].socket;
             break;
         }
@@ -14,16 +16,28 @@ const getSocketByUserId = (userId) =>{
 }
 
 module.exports = io => {
-    io.on("connection", socket => {
+    io.on("connection", async socket => {
+        console.log(`${socket.id} is online`)
+
         socket.onAny((event, ...args) => {
             console.log(event, args);
         });
-
-        socket.on('disconnect', () => {
-            console.log("disconnected")
-            connectedUsers = connectedUsers.filter(item => item.socketId !== socket.id);
-            io.emit('updateUserList', connectedUsers)
+        socket.on('disconnect', async (reason) => {
+            console.log(`${socket.id} disconnected: ` + reason)
+            await socketService.disconnect(socket.id)
         });
+
+        socket.on('home', async (userId) => {
+            socket.user = userId;
+            await socketService.connected(userId, socket.id)
+            User.findById(userId).populate('followers').then(async u => {
+                for (let f of u.followers) {
+                    if (f.online) {
+                        io.to(`${f.socketId}`).emit('followingLogin', u.name)
+                    }
+                }
+            })
+        })
 
         socket.on('loggedin', function (user) {
             clientSocketIds.push({socket: socket, userId: user.user_id});

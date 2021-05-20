@@ -7,7 +7,6 @@ const path = require('path');
 const { ok } = require('assert');
 require('dotenv').config();
 
-
 router.get('/home/:page', async (req, res) => {
     try {
         let postList = await postService.getPostsInHome(req.user._id, req.params.page);

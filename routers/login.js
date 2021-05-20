@@ -7,12 +7,10 @@ const passport = require('passport');
 require('dotenv').config();
 
 router.get('/', (req, res) => {
-    if (req.user !== undefined) console.log('ok');
     res.render('login');
 })
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     try {
         let user = await userService.login(req.body.email, req.body.pwd);
         if (user !== null) {
@@ -20,7 +18,15 @@ router.post('/', async (req, res) => {
                 id: user._id
             }, process.env.SECRETKEY);
             res.cookie('token', token);
-            res.json({token: token, msg: 'OK', status: 'success'});
+            res.cookie('userId', user._id)
+            res.json({token: token,
+                msg: 'OK',
+                status: 'success',
+                user: {
+                    id: user._id,
+                    name: user.name
+                }
+            });
         } else {
             res.status(400).json({
                 status: 'error',

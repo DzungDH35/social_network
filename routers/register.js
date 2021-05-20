@@ -13,8 +13,7 @@ router.post('/', async (req, res) => {
             req.body.birthDay,
             req.body.gender,
             req.body.mssv,
-            req.body.major
-        );
+            req.body.major);
         res.status(200).send({
             status: 'success',
             msg: 'OK'

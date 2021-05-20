@@ -6,7 +6,11 @@
                     <a href="/profile/<%=post.owner._id%>"><img src="<%= post.owner.avatar %>" alt=""></a>
                 </div>
                 <div class="name">
-                    <h1><a href="/profile/<%=post.owner._id%>"><%= post.owner.name %></a></h1>
+                    <h1><a href="/profile/<%= post.owner._id %>"><%= post.owner.name %></a>
+                        <% if(post.group != null) { %>
+                            &#9654 <a href="/group/<%= post.group._id %>"><%= post.group.name %></a>
+                        <% } %>
+                    </h1>
                 </div>
                 <!-- <div class="threedots">
                      <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
@@ -31,7 +35,8 @@
                         <span>Thích</span>
                     </section>
                     &nbsp;
-                    <section class="like-cmt-post cmt" data-swrap-cmt-id="<%= post._id %>" data-time="0" onclick="showDivCmt(this)">
+                    <section class="like-cmt-post cmt" data-swrap-cmt-id="<%= post._id %>" data-time="0"
+                             onclick="showDivCmt(this)">
                         <i class="far fa-comment"></i>&nbsp;&nbsp;
                         <span>Bình luận</span>
                     </section>
@@ -57,25 +62,27 @@
                             <!-- <div class="edittext" contentEditable="true"></div> -->
                             <div class="wrap-comment_image-cmt">
                                 <div id="wrap-textarea">
-                                    <textarea name="cmt-content" data-id="<%= post._id %>" class="form__text-comment" placeholder="Viết bình luận ..."></textarea>
+                                    <textarea name="cmt-content" data-id="<%= post._id %>" class="form__text-comment"
+                                              placeholder="Viết bình luận ..."></textarea>
                                 </div>
                                 <div class="wrap_button_send">
                                     <button data-id="<%= post._id %>" onclick="getIdCmt(this)" style="cursor: pointer;">
                                         <img src="/images/send.png" alt=""></button>
                                 </div>
-                                <div class="media-cmt" style="cursor: pointer;"> 
-                                    <input name="img-cmt" type="file" data-cmt-img-id="<%= post._id %>" onchange="preview_image_cmt(event, this)">
+                                <div class="media-cmt" style="cursor: pointer;">
+                                    <input name="img-cmt" type="file" data-cmt-img-id="<%= post._id %>"
+                                           onchange="preview_image_cmt(event, this)">
                                 </div>
                             </div>
                             <div class="wrap-img-cmt">
                                 <img name="output_image_cmt" data-preview-id="<%= post._id %>">
                             </div>
-                        <!-- </form> -->
+                            <!-- </form> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<% })%>
+<% }) %>
 

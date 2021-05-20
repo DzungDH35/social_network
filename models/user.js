@@ -40,7 +40,9 @@ const userSchema = new schema({
         type: schema.Types.ObjectId,
         ref: 'Group'
     }],
-    resetPwdId: {type: String}
+    resetPwdId: {type: String},
+    online: {type: Boolean},
+    socketId: {type: String}
 }, {
     timestamps: true,
     versionKey: false
