@@ -9,37 +9,41 @@
     <link rel="stylesheet" href="/css/topbar.css">
     <link rel="stylesheet" href="/css/post.css">
     <link rel="stylesheet" href="/css/friendlist.css">
+    <link rel="stylesheet" href="/css/group.css">
+    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
 </head>
 <body>
-
-<%- include('topbar', {current: user}); %>
-
-<div class="home__page">
-    <div class="left">
-        <%- include('grouplist', {groups: groups})%>
-    </div>
-    <div class="center">
-        <%- include('newpost') %>
-    </div>
-    <div class="right">
-        <div class="friend__container">
-            <div class="title">
-                <h3>Friend List</h3>
-                <div class="input--search">
-                    <input type="text" placeholder="Search">
+    <%- include('topbar', {user: user, query: query, queryPath: queryPath}); %>
+    <div class="home__page">
+        <div class="left">
+            <%- include('grouplist', {groups: groups, query: query})%>
+        </div>
+        <div class="center">
+            <%- include('newpost') %>
+        </div>
+        <div class="right">
+            <div class="friend__container">
+                <div class="title">
+                    <h3>Friend List</h3>
+                    <div class="input--search">
+                        <input type="text" placeholder="Search">
+                    </div>
                 </div>
+                <%- include('followinglist', {following: following}); %>
+                <div class="title groups">
+                    <h3>Groups</h3>
+                </div>
+                <%- include('listgroupchat'); -%>
             </div>
-            <%- include('followinglist', {following: following}); %>
-            <div class="title groups">
-                <h3>Groups</h3>
-            </div>
-            <%- include('listgroupchat'); -%>
         </div>
     </div>
+
+</body>
 </div>
 <%- include('chat', {current: user}); %>
 </body>
+<script src="/js/livesearch.js"></script>
 <script src="js/home.js" defer></script>
 <script src="js/post.js" defer></script>
 <script src="js/preview_img_post.js" defer></script>

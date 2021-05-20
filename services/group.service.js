@@ -3,15 +3,21 @@ const User = require('../models/user');
 const Post = require('../models/post');
 const mongoose = require('mongoose')
 module.exports = {
-
+    
     createGroup: async (userId, name, avatar) => {
         try {
-            return await Group.create({
+            let newG =  await Group.create({
                 name: name,
                 admin: userId,
                 avatar: avatar,
                 members: [userId]
             });
+            await User.findByIdAndUpdate(userId, {
+                $addToSet: {
+                    groups: newG._id
+                }
+            })
+            return newG
         } catch (e) {
             throw e
         }
@@ -66,7 +72,16 @@ module.exports = {
 
     searchByName: async (name) => {
         try {
-            return await Group.find({name: new RegExp(name, 'i')})
+            return await Group.find({name: new RegExp(name, 'i'), groupType:'normal'})
+        } catch (e) {
+            throw e
+        }
+    },
+
+    checkContain: async (userId, groupId) => {
+        try {
+            const g = await Group.findById(groupId);
+            return g.members.includes(userId)
         } catch (e) {
             throw e
         }

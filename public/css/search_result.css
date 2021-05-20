@@ -81,20 +81,41 @@ body {
     position: sticky;
     top: 56px; left: 0;
     flex-shrink: 0;
-
-/* css below is for test purpose, delete when you insert component */ 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #fff;
-/* ================================================================= */
 }
 
 .content-wrapper {
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+}
+
+.no-results-wrapper {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.no-results-wrapper > :nth-child(2) {
+    margin-top: 20px;
+}
+
+.no-results-wrapper > :nth-child(3) {
+    margin-top: 10px;
+}
+
+.no-results-wrapper__info {
+    color: #65676b;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.no-results-wrapper__sub-info {
+    color: #65676b;
+    font-size: 17px;
+}
+
+.item-list {
+    padding: 30px 0;
 }
 
 .item-list::before {
@@ -105,6 +126,11 @@ body {
 
 .item-list > * {
     margin-top: 30px;
+}
+
+.item-list > :last-child {
+    text-align: center;
+    color: #65676b;
 }
 
 .item {
@@ -121,6 +147,7 @@ body {
 
 .item__avatar {
     width: 60px; height: 60px;
+    object-fit: cover;
     border-radius: 100%;
     border: 1px solid #b9b9b9;
     cursor: pointer;
@@ -140,7 +167,13 @@ body {
 }
 
 .item__name {
+    text-decoration: none;
+    color: #000;
     font-weight: 500;
+}
+
+.item__name:hover {
+    text-decoration: underline;
 }
 
 .item__description {
@@ -148,17 +181,49 @@ body {
     color: #65676b;
 }
 
+.item__icon-tooltip-ancestor {
+    position: relative;
+}
+
+.item__icon-tooltip-ancestor > .item__icon-tooltip {
+    display: none;
+    position: absolute;
+    top: 110%; left: -35%;
+    padding: 10px;
+}
+
 .item__icon {
     padding: 6px;
     border-radius: 100%;
-    background-color: #e4e6eb;
     cursor: pointer;
 }
 
-.item__icon:hover {
+.item__icon--joined {
+    background-color: #ffe7e7;
+}
+
+.item__icon--joined:hover {
+    background-color: #f3d9d9;
+}
+
+.item__icon--not-joined {
+    background-color: #e4e6eb;
+}
+
+.item__icon--not-joined:hover {
     background-color: #ccced4;
 }
 
 .item__icon > img {
     width: 23px;
+}
+
+.item__icon-tooltip {
+    background-color: #585858;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

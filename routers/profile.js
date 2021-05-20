@@ -13,6 +13,7 @@ router.get('/:id', (async (req, res) => {
         let isFollow = await friendService.isFollow(req.user._id, req.params.id)
         let isYourself = (req.user._id == req.params.id)
         res.render('profile', {
+            queryPath: req.path,
             user: user,
             isFollow: isFollow,
             isYourself: isYourself,

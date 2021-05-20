@@ -3,9 +3,9 @@ function isNameValid(name) {
     return validNameFormat.test(name);
 }
 
-function isUserNameValid(username) {
-    let validUsernameFormat = /^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/;
-    return validUsernameFormat.test(username);
+function isMSSVValid(mssv) {
+    let validMSSV = /^[0-9]+$/;
+    return validMSSV.test(mssv);
 }
 
 function isEmailValid(email) {
@@ -14,8 +14,9 @@ function isEmailValid(email) {
 }
 
 function isPasswordValid(password) {
-    let validPassFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,20}$/;
-    return validPassFormat.test(password);
+    return true;
+    // let validPassFormat = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,20}$/;
+    // return validPassFormat.test(password);
 }
 
 function isPasswordConfirmed(password, cfpassword) { return cfpassword === password; }
