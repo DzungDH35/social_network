@@ -25,17 +25,16 @@ function alertAreaHandler(isInputInvalid, alertArea) {
 function submitHandler() {
     const uri = "/register";
     const submittedData = {
-        userName: usrName.value,
-        name: fullName.value,
         email: emailAddr.value,
-        pwd: password.value
-        // date: document.getElementById('date').value,
-        // month: document.getElementById('month').value,
-        // year: document.getElementById('year').value,
-        // gender: (function() {
-        //     let temp = document.querySelectorAll('input[name="gender"]');
-        //     for (let i of temp) { if (i.checked == true) return i.value; } 
-        // })()
+        name: fullName.value,
+        pwd: password.value,
+        birthDay: year.value + '-' + month.value + '-' + date.value,
+        gender: (function() {
+            let temp = document.querySelectorAll('input[name="gender"]');
+            for (let i of temp) { if (i.checked == true) return i.value; } 
+        })(),
+        mssv: mssv.value,
+        major: major.value
     };
 
     for (let i in submittedData) {
@@ -50,11 +49,12 @@ function submitHandler() {
             'Accept': 'text/html',
             'Content-Type': 'application/json'
         },
+        redirect: 'manual',
         body: JSON.stringify(submittedData),
         method: "POST"
     };
     fetch(uri, config)
-        .then(data => {console.log(data);})
+        .then(data => { window.location.href = '/home'; })
         .catch(error => {console.log(error)});
 }
 

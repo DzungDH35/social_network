@@ -5,7 +5,6 @@ function preview_image_cmt(event, post){
     var reader = new FileReader();
     reader.onload = function(){
         var output = document.querySelector("[data-preview-id=" + CSS.escape(postIdCmt) + "]");
-        console.log(output);
         output.src = reader.result;
     }
     reader.readAsDataURL(event.target.files[0]);

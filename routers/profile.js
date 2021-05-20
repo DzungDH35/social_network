@@ -15,6 +15,7 @@ router.get('/:id', (async (req, res) => {
         let isYourself = (req.user._id == req.params.id)
         res.render('profile', {
             currentUser: currentUser,
+            queryPath: req.path,
             user: user,
             isFollow: isFollow,
             isYourself: isYourself,

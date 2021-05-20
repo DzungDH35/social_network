@@ -6,11 +6,6 @@ let textArea = document.querySelector(".form__text-input");
 let previewImgUpPost = document.getElementById("output_image").src;
 let formSubmitBtn = document.querySelector(".form__submit-button");
 
-function handleGroupSearching() {
-    if (groupSearchingInput.value !== "")
-        document.write("<h1>Sorry, we haven't implemented Group Searching Function, yet!</h1>")
-}
-
 function openPostCreatorModal() {
     secondFlow.style.display = "flex";   
 }

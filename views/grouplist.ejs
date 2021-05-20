@@ -1,31 +1,39 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/group.css">
-    <title>Group</title>
-</head>
-<body>
+
 <div class="body__side-bar">
     <div class="side-bar__section side-bar__section-1">
         <div class="section__title">Group</div>
-        <label class="section__search-tool">
-            <img class="search-tool__icon" src="images/icons/search.png" alt="search-icon">
-            <input class="search-tool__input" name="search-input" type="search" placeholder="Tìm kiếm nhóm">
-        </label>
+        <form onsubmit="return handleFormSubmit(event)" action="/search_result/group">
+            <label class="search-wrapper search-wrapper-layout">
+                <img class="search-icon" src="/images/icons/search.png" alt="search-icon">
+                <% if (queryPath === "/group") { %>
+                    <input class="search-input search-input--group" name="name" type="search" placeholder="Search for groups..." value="<%= query %>">
+                <% }else { %>
+                    <input class="search-input search-input--group" name="name" type="search" placeholder="Search for groups...">
+                <% } %>
+            </label>
+        </form>
+    </div>
+    <div class="hint-list-positioned-ancestor" id="group-live-searching-results" style="margin-top: 10px;"></div>
+    <div class="btn-wrapper" style="padding: 0 20px">
+        <a href="/create_group" style="text-decoration: none;">
+            <button class="side-bar__create-group"><img src="/images/icons/plus.png" alt="plus"><div>Create New Group</div></button>
+        </a>
     </div>
     <div class="side-bar__separator"></div>
     <div class="side-bar__section-wrapper">
         <div class="side-bar__section">
-            <% groups.forEach(g => { %>
+            <div class="side-bar__section-title">Groups you've joined</div>
             <div class="side-bar__item-list">
-                <div class="side-bar__item side-bar__item--type-2">
-                    <img class="side-bar__item-image" src="<%= g.avatar %>">
-                    <div class="side-bar__item-title"><%= g.name %></div>
-                </div>
+                <% groups.forEach(g => { %>
+                    <a class="side-bar__item-link" href="/group/<%= g._id %>">
+                        <div class="side-bar__item side-bar__item--type-2">
+                            <img class="side-bar__item-image" src="<%= g.avatar %>">
+                            <div class="side-bar__item-title"><%= g.name %></div>
+                        </div>
+                    </a>
+                <% }) %>
             </div>
-            <% }) %>
         </div>
     </div>
 </div>
-</body>
+

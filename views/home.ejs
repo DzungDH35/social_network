@@ -9,33 +9,34 @@
     <link rel="stylesheet" href="/css/topbar.css">
     <link rel="stylesheet" href="/css/post.css">
     <link rel="stylesheet" href="/css/friendlist.css">
-    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
+    <link rel="stylesheet" href="/css/group.css">
+
 </head>
 <body>
-
-<%- include('topbar', {current: user}); %>
-
-<div class="home__page">
-    <div class="left">
-        <%- include('grouplist', {groups: groups})%>
-    </div>
-    <div class="center">
-        <%- include('newpost') %>
-    </div>
-    <div class="right">
-        <div class="friend__container">
-            <div class="title">
-                <h3>Following</h3>
-<!--                <div class="input&#45;&#45;search">-->
-<!--                    <input type="text" placeholder="Search">-->
-<!--                </div>-->
+    <%- include('topbar', {user: user, query: query, queryPath: queryPath}); %>
+    <div class="home__page">
+        <div class="left">
+            <%- include('grouplist', {groups: groups, query: query})%>
+        </div>
+        <div class="center">
+            <%- include('newpost') %>
+        </div>
+        <div class="right">
+            <div class="friend__container">
+                <div class="title">
+                    <h3>Following List</h3>
+                </div>
+                <%- include('followinglist', {following: following}); %>
             </div>
-            <%- include('followinglist', {following: following}); %>
         </div>
     </div>
+
+</body>
 </div>
 <%- include('chat', {current: user}); %>
 </body>
+
+<script src="/js/livesearch.js"></script>
 
 <script src="js/home.js" defer></script>
 <script src="js/post.js" defer></script>
