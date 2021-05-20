@@ -3,17 +3,17 @@
         <div class="wrapper">
             <header>
                 <div class="avatar">
-                    <img src="<%= post.owner.avatar %>" alt="">
+                    <a href="/profile/<%=post.owner._id%>"><img src="<%= post.owner.avatar %>" alt=""></a>
                 </div>
                 <div class="name">
-                    <h1><%= post.owner.name %></h1>
+                    <h1><a href="/profile/<%=post.owner._id%>"><%= post.owner.name %></a></h1>
                 </div>
-                <div class="threedots">
-                    <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
+                <!-- <div class="threedots">
+                     <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="">Xóa</a>
                     </div>
-                </div>
+                </div> -->
             </header>
             <div class="id_post" name="id_post" style="display: none;"><p id="idPost"><%= post._id %></p></div>
             <div class="content-text-post">
