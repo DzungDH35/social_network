@@ -25,21 +25,18 @@
     <div class="right">
         <div class="friend__container">
             <div class="title">
-                <h3>Friend List</h3>
-                <div class="input--search">
-                    <input type="text" placeholder="Search">
-                </div>
+                <h3>Following</h3>
+<!--                <div class="input&#45;&#45;search">-->
+<!--                    <input type="text" placeholder="Search">-->
+<!--                </div>-->
             </div>
             <%- include('followinglist', {following: following}); %>
-            <div class="title groups">
-                <h3>Groups</h3>
-            </div>
-            <%- include('listgroupchat'); -%>
         </div>
     </div>
 </div>
 <%- include('chat', {current: user}); %>
 </body>
+
 <script src="js/home.js" defer></script>
 <script src="js/post.js" defer></script>
 <script src="js/preview_img_post.js" defer></script>
@@ -47,4 +44,9 @@
 <script src="js/comment.js" defer></script>
 <script src="js/up_comment_event.js" defer></script>
 <script src="js/up_post_event.js"></script>
+
+<script src="/socket.io/socket.io.min.js">
+</script>
+<script src="js/socket-client.js"></script>
+
 </html>

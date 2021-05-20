@@ -16,13 +16,15 @@ document.body.addEventListener("submit", async function (event) {
         }),
     })
         .then(response => {
-            if(response.status == 200){
-                console.log(response)
+            if(response.status === 200){
+                response.json().then(body => {
+                    localStorage.setItem('userId', body.user.id)
+                })
                 window.location.href = '/home';
             }else{
                 document.getElementById("error").innerHTML = "Mật khẩu bạn đã nhập không chính xác.";
                 console.log("Login Error!");
-            } 
+            }
         })
         .catch(error => {
             console.error('Error:', error);

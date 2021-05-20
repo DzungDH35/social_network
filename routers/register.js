@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
             req.body.gender,
             req.body.mssv,
             req.body.major);
+
         res.status(200).send({
             status: 'success',
             msg: 'OK'
