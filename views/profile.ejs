@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/group.css">
+    <link rel="stylesheet" href="/css/post.css">
     <title>Profile</title>
 </head>
 <body>
@@ -15,10 +16,12 @@
             <div class="cover__photo">
                 <div class="photo">
                     <img src="<%= user.background %>" alt="">
-                    <div class="edit-cover-photo">
-                        <img src="/images/camera.png" alt="">
-                        <p>Edit Cover Photo</p>
-                    </div>
+                    <%if (isYourself) { %>
+                        <div class="edit-cover-photo">
+                            <img src="/images/camera.png" alt="">
+                            <p>Edit Cover Photo</p>
+                        </div>
+                    <% } %>
                 </div>
                 <div class="avatar">
                     <div class="edit-avatar">
@@ -34,6 +37,7 @@
         </div>
         <div class="user__name">
             <h2 class="name"><%=user.name%></h2>
+            <p id="userId" data-user-id="<%= user._id %>" style="display: none;"></p>
         </div>
         <div class="information__bar">
             <div class="right__button">
@@ -122,10 +126,21 @@
                 <br>
             </div>
             <div class="right__posts">
-                <%- include('newpost') %>
+                <%if (isYourself) { %>
+                    <%- include('newpost') %>
+                <% } %>
+                <div class="center__post" data-user-id="<%= user._id %>">
+
+                </div>
             </div>
         </div>
     </div>
 
 </body>
+<script src="js/post_profile.js" defer></script>
+<script src="js/preview_img_post.js" defer></script>
+<script src="js/preview_img_cmt.js" defer></script>
+<script src="js/comment.js" defer></script>
+<script src="js/up_post_profile_event.js" defer></script>
+<script src="js/up_comment_event.js" defer></script>
 </html>
