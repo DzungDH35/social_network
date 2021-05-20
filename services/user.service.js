@@ -9,6 +9,7 @@ const schoolService = require('./school.service')
 const groupService = require('./group.service')
 const mongoose = require('mongoose')
 const faker = require('faker')
+const user = require('../models/user')
 module.exports = {
 
     register: async (email, name, pwd, birthDay, gender, mssv, code) => {
@@ -110,4 +111,28 @@ module.exports = {
             throw e
         }
     },
+    
+    changeBackground: async (userId, background) => {
+        try {
+            await User.findByIdAndUpdate(userId, {
+                $set: {
+                    background: background    
+                }        
+            })
+        } catch (e) {
+            throw e
+        }
+    },
+
+    changeAvatar: async (userId, avatar) => {
+        try {
+            await User.findByIdAndUpdate(userId, {
+                $set: {
+                    avatar: avatar
+                }
+            })
+        } catch (e) {
+            throw e
+        }
+    }
 }
