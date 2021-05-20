@@ -1,27 +1,30 @@
 <div class="item-list">
     <% results.forEach(group=> {%>
-        <div class="item">
-            <img src="<%= group.avatar %>" class="item__avatar">
-            <div class="item__text-wrapper">
-                <a class="item__name" href="/group/<%= group._id %>"><%= group.name%></a>
-                <% if (group.contain) { %>
+        <% if (group.contain) { %>
+            <div class="item">
+                <img src="<%= group.avatar %>" class="item__avatar">
+                <div class="item__text-wrapper">
+                    <a class="item__name" href="/group/<%= group._id %>"><%= group.name%></a>
                     <div class="item__description">Joined</div>
-                <% } else { %>
-                    <div class="item__description">Not joined</div>
-                <% } %>
-            </div>
-            <% if (group.contain) { %>
+                </div>
                 <div class="item__icon item__icon--joined item__icon-tooltip-ancestor">
-                    <img src="/images/icons/joined.png">
+                    <img src="/images/icons/joined.png" onclick="leaveGroup('<%- group._id %>')">
                     <div class="item__icon-tooltip">Joined</div>
                 </div>
-            <% } else { %>
+            </div>
+        <% } else { %>
+            <div class="item">
+                <img src="<%= group.avatar %>" class="item__avatar">
+                <div class="item__text-wrapper">
+                    <a class="item__name" href="/group/<%= group._id %>"><%= group.name%></a>
+                    <div class="item__description">Not joined</div>
+                </div>
                 <div class="item__icon item__icon--not-joined item__icon-tooltip-ancestor">
-                    <img src="/images/icons/not_joined.png">
+                    <img src="/images/icons/not_joined.png" onclick="joinGroup('<%- group._id %>')">
                     <div class="item__icon-tooltip">Join group</div>
                 </div>
-            <% } %>
-        </div>
+            </div>
+        <% } %>
     <% }) %>
     <div>You reach the end of results.</div>
 </div>

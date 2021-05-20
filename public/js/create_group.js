@@ -10,7 +10,6 @@ let inputList = document.querySelectorAll('.sidebar__input');
 let groupImgPreview = document.querySelector('.preview-box__group-img');
 let groupNamePrewview = document.querySelector('.preview-box__group-name');
 let submitBtn = document.querySelector('.submit-btn');
-let imgDir = "/images/img/";
 
 inputList[0].addEventListener('input', () => {
 
@@ -45,7 +44,32 @@ inputList[1].addEventListener('change', () => {
     /* ================================================== */
 
     /* ========== event 2 ========== */
-    groupImgPreview.src = imgDir + inputList[1].value.replace("C:\\fakepath\\", "");
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+        groupImgPreview.src = reader.result;
+    }, false);
     previewBox.classList.remove('preview-box--filtered');
+    reader.readAsDataURL(inputList[1].files[0]);
     /* ================================================== */
 });
+
+function handleForm(event) {
+    event.preventDefault();
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target[1].files[0]);
+    let xhttp = new XMLHttpRequest();
+    let body = {
+        name: event.target[0].value,
+        avatar: ""
+    };
+    xhttp.open("POST", "/group", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    reader.onload = function() {
+        body.avatar = reader.result;
+        xhttp.send(JSON.stringify(body));
+    };
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) window.location.replace('/group/' + JSON.parse(this.response).groupId);
+    };
+}

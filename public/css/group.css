@@ -89,6 +89,7 @@ body {
 .side-bar__section-wrapper {
     padding: 0 10px;
     overflow-y: auto;
+    max-height: 75%;
 }
 
 .side-bar__section-wrapper::-webkit-scrollbar {
@@ -184,7 +185,7 @@ body {
 }
 
 .side-bar__item-image {
-    flex: 0 0 60px;
+    width: 60px;
     height: 60px;
     align-self: center;
     border: 1px solid #0000001c;
@@ -290,17 +291,17 @@ body {
     height: 500px;
 }
 
-/*.post-section__post-creator {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    width: 100%;*/
-/*    padding: 10px 20px;*/
-/*    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;*/
-/*    background-color: #fff;*/
-/*    border-radius: 10px;*/
-/*}*/
+.post-section__post-creator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: #fff;
+    border-radius: 10px;
+} 
 
 .post-creator__avatar {
     width: 45px;

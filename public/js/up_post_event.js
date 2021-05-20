@@ -16,7 +16,6 @@ document.getElementById('form').addEventListener("submit", async function (event
         }),
     })
         .then(response => {
-            console.log(response)
             window.location.href = '/home';
         })
         .catch(error => {

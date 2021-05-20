@@ -27,7 +27,7 @@
                         <div class="user-info__sub-info">Admin</div>
                     </div>
                 </div>
-                <form class="sidebar__input-group" id="create-group-form" action="/group" method="POST">
+                <form class="sidebar__input-group" id="create-group-form" onsubmit="handleForm(event)">
                     <input class="sidebar__input" type="text" name="name" placeholder="Group name" required>
                     <input class="sidebar__input" type="file" accept="image/*" name="avatar" required>
                 </form>
