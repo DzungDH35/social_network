@@ -7,6 +7,11 @@ module.exports = {
     // comment
     addComment: async (postId, cmtOwner, content, img) => {
         try {
+            await Post.findByIdAndUpdate(mongoose.Types.ObjectId(postId), {
+                $set:{
+                    updateAt: Date.now()
+                }
+            })
             let comment = await Comment.create({
                 post: postId,
                 owner: cmtOwner,
@@ -21,6 +26,7 @@ module.exports = {
 
     getComment: async (postId, page) => {
         try {
+
             return await
                 Comment.find({post: mongoose.Types.ObjectId(postId)})
                     .populate('owner', 'name avatar')

@@ -9,10 +9,12 @@ router.use(express.static(path.join(process.cwd(), '/public')))
 
 router.get('/:id', (async (req, res) => {
     try {
+        let currentUser = await userService.getProfile(req.user._id)
         let user = await userService.getProfile(req.params.id);
         let isFollow = await friendService.isFollow(req.user._id, req.params.id)
         let isYourself = (req.user._id == req.params.id)
         res.render('profile', {
+            currentUser: currentUser,
             user: user,
             isFollow: isFollow,
             isYourself: isYourself,
