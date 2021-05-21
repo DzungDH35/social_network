@@ -47,7 +47,9 @@ header a{
     word-break: break-word;
     font-weight: bold;
 }
-
+.name a:hover{
+    color: rgb(238, 76, 76);
+}
 /* dot */
 .threedots{
     width: 30px;
@@ -188,6 +190,7 @@ hr{
 .more-comment{
     margin-top: 3px;
     margin-bottom: 3px;
+    cursor: pointer;
 }
 .more-comment span{
     font-weight: bold;
