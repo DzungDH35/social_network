@@ -12,7 +12,8 @@ document.getElementById('form').addEventListener("submit", async function (event
         },
         body: JSON.stringify({
             content: content,
-            img: img
+            img: img,
+            groupId: null
         }),
     })
         .then(response => {

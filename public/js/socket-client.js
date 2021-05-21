@@ -10,7 +10,7 @@ socket.onAny((event, ...args) => {
 
 socket.connect()
 
-socket.emit('home', userId, socket.id)
+socket.emit('home', userId)
 
 socket.on('followingLogin', name => {
     alert(`${name} connected`)

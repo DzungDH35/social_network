@@ -30,14 +30,17 @@
                         </div>
                     <% } %>
                 </div>
-                <div class="avatar_profile">
-                    <div class="edit-avatar">
-                        <a href="">
-                            <img src="/images/camera.png" alt="">
-                        </a>
-                    </div>
+                <div class="avatar_profile" onchange="preview_image_profile_avatar(event)">
+                    <%if (isYourself) { %>
+                        <div class="edit-avatar">
+                            <a href="">
+                                <input type="file" id="imguploadavatar"/>
+                                <img src="/images/camera.png" alt="">
+                            </a>
+                        </div>
+                    <% } %>
                     <div class="photo-avatar">
-                        <img src="<%= user.avatar%>" alt="">
+                        <img src="<%= user.avatar%>" alt="" id="output_image_avatar">
                     </div>
                 </div>
             </div>
@@ -151,4 +154,5 @@
 <script src="js/up_post_profile_event.js" defer></script>
 <script src="js/up_comment_event.js" defer></script>
 <script src="js/preview_img_profile.js" defer></script>
+<script src="js/preview_img_avatar.js" defer></script>
 </html>

@@ -1,10 +1,4 @@
-let secondFlow = document.querySelector(".second-flow");
 let groupSearchingInput = document.querySelector(".search-tool__input");
-let postCreatorArea = document.querySelector(".post-creator__content");
-let modalRemovingIcon = document.querySelector(".modal-box__remove-icon");
-let textArea = document.querySelector(".form__text-input");
-let previewImgUpPost = document.getElementById("output_image").src;
-let formSubmitBtn = document.querySelector(".form__submit-button");
 
 function openPostCreatorModal() {
     secondFlow.style.display = "flex";   

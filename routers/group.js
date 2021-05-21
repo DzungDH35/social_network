@@ -1,11 +1,16 @@
-const router = require('express').Router();
+const express = require('express')
+const router = express.Router();
+const path = require('path')
 const groupService = require('../services/group.service')
 const Group = require('../models/group');
 const { route } = require('./login');
 
+router.use(express.static(path.join(process.cwd(), '/public')))
+
 router.get('/:groupId', async (req, res) => {
     const data = await Group.findById(req.params.groupId)
     res.render('group', {
+        groupId: data._id,
         queryPath: req.path,
         user: req.user,
         groupName: data.name,
