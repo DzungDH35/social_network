@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/post.css">
     <link rel="stylesheet" href="/css/friendlist.css">
     <link rel="stylesheet" href="/css/group.css">
+    <link rel="stylesheet" href="/css/framechat.css">
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
     <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
 </head>
@@ -37,8 +38,8 @@
                 <%- include('listgroupchat'); -%>
             </div>
         </div>
+        <%- include('framechat') %>
     </div>
-
 </body>
 </div>
 <%- include('chat', {current: user}); %>

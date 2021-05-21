@@ -69,8 +69,7 @@ body {
 
     position: sticky;
     top: 0;
-
-    text-align: center;
+    z-index: 100;
 }
 
 .body {
@@ -216,20 +215,55 @@ body {
     padding-bottom: 30px;
 }
 
-.main-page__intro-section > img {
+.main-page__intro-section > * {
+    margin: 30px auto 0 auto;
+    width: 1095px;
+}
+
+.main-page__intro-section > :first-child {
+    margin-top: -30px;
+}
+
+.intro-section__wallpaper {
+    position: relative;
+}
+
+.intro-section__wallpaper > img {
     display: block;
     width: 1095px; height: 405px;
     margin: auto;
 }
 
-.main-page__intro-section > div {
-    margin: 30px auto 0 auto;
-    width: 1095px;
-}
-
-.intro-section__wallpaper {
+.group-wallpaper {
     border-radius: 0 0 10px 10px;
     object-fit: cover;
+}
+
+.change-group-wallpaper {
+    display: flex;
+    align-self: center;
+    position: absolute;
+    bottom: 10%; right: 5%;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.change-group-wallpaper > svg {
+    width: 16px; height: 16px;
+    margin-right: 6px;
+}
+
+.change-group-wallpaper > div {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.change-group-wallpaper:hover {
+    background-color: #eee;
 }
 
 .intro-section__title-wrapper {

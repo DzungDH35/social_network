@@ -1,0 +1,222 @@
+/* css for component "framechat" */
+.framechat-wrapper {
+    background-color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%),0 2px 4px 0 rgb(0 0 0 / 10%);
+}
+
+.framechat-header {
+    display: flex;
+    padding: 4px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%),0 -1px rgb(0 0 0 / 10%) inset,0 2px 1px -1px rgb(255 255 255 / 50%) inset;
+}
+
+.framechat-header > :nth-child(2) {
+    flex-grow: 1;
+}
+
+.framechat-header__user-info-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 5px 12px 5px 5px;
+    border-radius: 5px;
+}
+
+.framechat-header__user-info-wrapper > :first-child {
+    width: 32px; height: 32px;
+}
+
+.framechat-header__user-info-wrapper > :nth-child(2) {
+    margin-left: 8px;
+}
+
+.framechat-header__user-info-wrapper:hover {
+    background-color: #f2f2f2;
+}
+
+.framechat-header__user-avatar {
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.framechat-header__user-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.framechat-header__btn-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 6px;
+}
+
+.framechat-header__btn-group > * {
+    width: 28px; height: 28px;
+    margin-left: 6px;
+}
+
+.btn-group__minimize-icon {
+    padding: 4px;
+    border-radius: 100%;
+}
+
+.btn-group__minimize-icon:hover {
+    background-color: #f2f2f2;
+}
+
+.btn-group__remove-icon {
+    padding: 4px;
+    border-radius: 100%;
+}
+
+.btn-group__remove-icon:hover {
+    background-color: #f2f2f2;
+}
+
+.framechat-body {
+    display: flex;
+    flex-direction: column;
+    height: 355px;
+    max-height: 355px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.framechat-body > .framechat-body__empty-area {
+    flex-grow: 1;
+}
+
+.framechat-body__intro-wrapper {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.framechat-body__intro-wrapper > :first-child {
+    width: 60px;
+    height: 60px;
+}
+
+.framechat-body__intro-wrapper > :nth-child(2) {
+    margin-top: 10px;
+}
+
+.intro-wrapper__avatar {
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.intro-wrapper__user-name {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.framechat-body__msg-area {
+    display: flex;
+    flex-direction: column;
+    padding: 0 12px 0 10px;
+    row-gap: 5px;
+}
+
+.framechat-body__msg-area > .outgoing-message {
+    width: fit-content;
+    max-width: 202px;
+    align-self: flex-end;
+}
+
+.incoming-msg-wrapper {
+    display: flex;
+}
+
+.incoming-msg-wrapper > :first-child {
+    width: 28px; height: 28px;
+    align-self: flex-end;
+}
+
+.incoming-msg-wrapper > :nth-child(2) {
+    max-width: 182px;
+    margin-left: 8px;
+}
+
+.incoming-msg-wrapper__sender-avt {
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 15px;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+.incoming-message {
+    background-color: #e4e6eb;
+    color: #000;
+}
+
+.outgoing-message {
+    background-color: #ca2e2e;
+    color: #fff;
+}
+
+.framechat-footer {
+    display: flex;
+    align-items: center;
+    column-gap: 3px;
+    padding: 12px;
+}
+
+.framechat-footer > :first-child {
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+.framechat-footer > :nth-child(2) {
+    flex-grow: 1;
+    max-height: 110px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.framechat-footer > :nth-child(3) {
+    flex-shrink: 0;
+    align-self: flex-end;
+}
+
+.framechat-footer__icon-wrapper {
+    padding: 6px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.framechat-footer__icon-wrapper:hover {
+    background-color: #ededed;
+}
+
+.framechat-footer__icon-wrapper > input[type="file"] {
+    display: none;
+}
+
+.framechat-footer__icon-wrapper > svg {
+    width: 20px; height: 20px;
+}
+
+.framechat-footer__msg-input {
+    resize: none;
+    padding: 10px 14px;
+    border: none; outline: none;
+    border-radius: 30px;
+    background-color: #f0f2f5;
+    font-size: 15px;
+    cursor: text;
+}
+
+.framechat-footer__msg-input:empty::before {
+    content: attr(data-placeholder);
+    color: #7a7a7a;
+}
+
+/* ============================================================ */

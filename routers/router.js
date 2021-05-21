@@ -11,6 +11,7 @@ router.use('/group', require('./group'));
 router.use('/search_result', require('./search_result'));
 router.use('/create_group', require('./create_group'))
 router.use('/comment', require('./comment'))
+router.use('/framechat', require('./framechat'))
 
 
 module.exports = router;
