@@ -30,6 +30,35 @@ router.get('/:id', (async (req, res) => {
 
 }))
 
+router.put('/background', async (req, res) => {
+    try {
+        await userService.changeBackground(req.user._id, req.body.background);
+        res.status(200).send({
+            status: 'success',
+            msg: 'OK'
+        })
+    } catch (e) {
+        res.status(404).send({
+            status: 'error',
+            msg: e
+        })
+    }
+})
+
+router.put('/avatar', async (req, res) => {
+    try {
+        await userService.changeAvatar(req.user._id, req.body.avatar);
+        res.status(200).send({
+            status: 'success',
+            msg: 'OK'
+        })
+    } catch (e) {
+        res.status(404).send({
+            status: 'error',
+            msg: e
+        })
+    }
+})
 
 
 module.exports = router;

@@ -7,7 +7,7 @@
                 </div>
                 <div class="name">
                     <h1><a href="/profile/<%= post.owner._id %>"><%= post.owner.name %></a>
-                        <% if(post.group != null) { %>
+                        <% if(post.group != null && showGroup) { %>
                             &#9654 <a href="/group/<%= post.group._id %>"><%= post.group.name %></a>
                         <% } %>
                     </h1>

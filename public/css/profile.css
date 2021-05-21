@@ -8,8 +8,7 @@ body{
     -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.51);
     box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.51);
     background-image: linear-gradient(to bottom, #d3d7da, #e7e8e9, #f3f3f7, #fdfdfd, #ffffff);
-    position: sticky;
-    top: -387px;
+    position: relative;
 }
 
 .cover__photo__avatar{
@@ -64,7 +63,7 @@ body{
 }
 
 
-.cover__photo__avatar .cover__photo .avatar{
+.cover__photo__avatar .cover__photo .avatar_profile{
     position: absolute;
     bottom: 0;
     width: 180px;
@@ -75,20 +74,20 @@ body{
 }
 
 
-.cover__photo__avatar .cover__photo .avatar .photo-avatar{
+.cover__photo__avatar .cover__photo .avatar_profile .photo-avatar{
     width: 100%;
     height: 100%;
     border-radius: 50%;
     border: 3px solid white;
     cursor: pointer;
 }
-.cover__photo__avatar .cover__photo .avatar .photo-avatar img{
+.cover__photo__avatar .cover__photo .avatar_profile .photo-avatar img{
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-.cover__photo__avatar .cover__photo .avatar .edit-avatar{
+.cover__photo__avatar .cover__photo .avatar_profile .edit-avatar{
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -98,11 +97,11 @@ body{
     right: 5px;
 }
 
-.cover__photo__avatar .cover__photo .avatar .edit-avatar:hover{
+.cover__photo__avatar .cover__photo .avatar_profile .edit-avatar:hover{
     background-color: rgb(241, 234, 234);
 }
 
-.cover__photo__avatar .cover__photo .avatar .edit-avatar img{
+.cover__photo__avatar .cover__photo .avatar_profile .edit-avatar img{
    width: 30px;
    height: 30px;
    margin-left: 5px;
@@ -118,6 +117,7 @@ body{
 .user__name h2.name{
     font-size: 27px;
     display: inline-block;
+    font-weight: bold;
 }
 .user__name p.sub_name{
     display: inline-block;
@@ -375,9 +375,67 @@ body{
     width: 60%;
 }
 
+/*Add css for input="file"*/
+#imgupload{
+    opacity: 0.0; 
+    -moz-opacity: 0.0; 
+    -khtml-opacity: 0.0; 
+    position: absolute;                    
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height:100%;
+}
+#imguploadavatar{
+    opacity: 0.0; 
+    -moz-opacity: 0.0; 
+    -khtml-opacity: 0.0; 
+    position: absolute;                    
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height:100%;
+}
+/*Add tool bar accept change Image background*/
+#confirm_change_background{
+    width: 100%;
+    height: 60px; 
+    position: absolute;
+    background-color: #8d8d8d;
+    display: none; 
+    justify-content: flex-end;
+    z-index: 1;
+    opacity: 0.9;
+}
 
+.confirm_button{
+    width: 155px;
+    height: 35px;
+    margin-right: 25px;
+    border-radius: 5px;
+    background-color: rgb(248, 70, 70);
+    cursor: pointer;
+    color: #ffffff;
+    border: 1px solid;
+    font-weight: 600;
+    font-size: medium;
+    float: right;
+    margin-top: 12px;
+}
+.save .cancel{
+    margin-top: 10px;
+}
+.cancel:hover{
+    background-color: rgb(241, 63, 63);
+}
+.save:hover{
+    background-color: rgb(241, 63, 63);
 
-
+}
 
 
 
