@@ -81,7 +81,31 @@ module.exports = {
     checkContain: async (userId, groupId) => {
         try {
             const g = await Group.findById(groupId);
-            return g.members.includes(userId)
+            return g.members.includes(userId) 
+        } catch (e) {
+            throw e
+        }
+    },
+
+    changeBackground: async (groupId, background) => {
+        try {
+            await Group.findByIdAndUpdate(groupId, {
+                $set: {
+                    avatar: background
+                }
+            })
+        } catch (e) {
+            throw e
+        }
+    },
+
+    isAdmin: async (userId, groupId) => {
+        try {
+            const g = await Group.findOne({
+                _id: groupId,
+                admin: userId
+            })
+            return (g == null ? false:true)
         } catch (e) {
             throw e
         }

@@ -131,7 +131,9 @@ hr{
     border-radius: 5px;
     border: #57707d;
 }
-
+.fas{
+    color: red;
+}
 .like-cmt-post:hover{
     cursor: pointer;
     background-color: #f5f4f4f5;
@@ -186,6 +188,15 @@ hr{
 }
 .content-text-cmt img{
     max-width: 260px;
+}
+.total-like-post{
+    width: 32px;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+}
+.total-like-post img{
+    width: inherit;
 }
 .more-comment{
     margin-top: 3px;

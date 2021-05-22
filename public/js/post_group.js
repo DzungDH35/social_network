@@ -1,7 +1,6 @@
 var b = 1;
 var tagG = document.getElementById("groupId");
 var groupId = tagG.getAttribute('data-group-id');
-console.log(groupId);
 
 function getData() {
     fetch
