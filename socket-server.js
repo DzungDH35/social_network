@@ -22,6 +22,7 @@ module.exports = io => {
         socket.onAny((event, ...args) => {
             console.log(event, args);
         });
+
         socket.on('disconnect', async (reason) => {
             console.log(`${socket.id} disconnected: ` + reason)
             await socketService.disconnect(socket.id)
@@ -59,6 +60,13 @@ module.exports = io => {
 
         socket.on('message', function (data) {
             socket.broadcast.to(data.room).emit('message', data);
+        })
+
+        // data: from, to, content
+        socket.on('sendMsg', data => {
+            //...
+            io.to(data.to).emit('receive', data)
+            io.to(data.from).emit('receive', data)
         })
     })
 }
