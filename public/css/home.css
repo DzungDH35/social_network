@@ -125,7 +125,7 @@ body{
     overflow-y: scroll;
 }
 
-.home__page > .framechat-wrapper {
+.home__page >#framechat-area {
     position: absolute;
     right: 100px; bottom: 0;
     width: 328px;
