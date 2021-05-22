@@ -9,7 +9,9 @@ router.use(express.static(path.join(process.cwd(), '/public')))
 
 router.get('/:groupId', async (req, res) => {
     const data = await Group.findById(req.params.groupId)
+    const isAdmin = await groupService.isAdmin(req.user._id, data._id)
     res.render('group', {
+        isAdmin: isAdmin,
         groupId: data._id,
         queryPath: req.path,
         user: req.user,
@@ -57,6 +59,22 @@ router.delete('/:groupId', async (req, res) => {
     try {
         await groupService.outGroup(req.user._id, req.params.groupId)
         res.send({msg: 'OK'})
+    } catch (e) {
+        res.status(400).send({
+            status: 'error',
+            msg: e
+        });
+    }
+})
+
+
+router.put('/background', async (req, res) => {
+    try {
+        await groupService.changeBackground(req.body.groupId, req.body.background)
+        res.send({
+            status: 'success',
+            msg: 'OK'
+        })
     } catch (e) {
         res.status(400).send({
             status: 'error',
