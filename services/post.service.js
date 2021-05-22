@@ -12,7 +12,7 @@ module.exports = {
                 Post.find({usersCanSee: mongoose.Types.ObjectId(userId)})
                     .populate('owner', 'name avatar')
                     .populate('group', 'name')
-                    .select('content img reaction group')
+                    .select('content img like group')
                     .sort({updatedAt: -1})
                     .skip(3*pageNumber - 3)  
                     .limit(3);
@@ -28,7 +28,7 @@ module.exports = {
                 Post.find({owner: mongoose.Types.ObjectId(userId)})
                     .populate('owner', 'name avatar')
                     .populate('group', 'name')
-                    .select('content img reaction group')
+                    .select('content img like group')
                     .sort({updatedAt: -1})
                     .skip(3*pageNumber - 3)
                     .limit(3);
@@ -44,7 +44,7 @@ module.exports = {
                 Post.find({group: mongoose.Types.ObjectId(groupId)})
                     .populate('owner', 'name avatar')
                     .populate('group', 'name')
-                    .select('content img reaction group')
+                    .select('content img like group')
                     .sort({updatedAt: -1})
                     .skip(3*pageNumber - 3)
                     .limit(3);
@@ -60,7 +60,7 @@ module.exports = {
                 Post.find({owner: mongoose.Types.ObjectId(userId)})
                     .populate('owner', 'name avatar')
                     .populate('group', 'name')
-                    .select('content img comments reaction group')
+                    .select('content img comments like group')
                     .sort({updatedAt: -1})
                     .skip(3*pageNumber - 3)
                     .limit(1);
@@ -99,6 +99,30 @@ module.exports = {
                     img: (img === null) ? this.img : img
                 }
             )
+        } catch (e) {
+            throw e
+        }
+    },
+
+    likePost: async (userId, postId) => {
+        try {
+            await Post.findByIdAndUpdate(postId, {
+                $addToSet: {
+                    like: userId
+                }
+            })
+        } catch (e) {
+            throw e
+        }
+    },
+
+    dislikePost: async (userId, postId) => {
+        try {
+            await Post.findByIdAndUpdate(postId, {
+                $pull: {
+                    like: userId
+                }
+            })
         } catch (e) {
             throw e
         }

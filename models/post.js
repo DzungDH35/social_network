@@ -12,7 +12,7 @@ const postSchema = new schema({
     // trong nhóm?
     group: {type: schema.Types.ObjectId, ref: 'Group'},
     // reaction
-    reactions: {type: Number, default: 0},
+    like: [{type: schema.Types.ObjectId, ref: 'User'}],
     // những người có thể thấy post này
     usersCanSee: [{type: schema.Types.ObjectId, ref: 'User'}]
 }, {

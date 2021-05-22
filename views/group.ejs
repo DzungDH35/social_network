@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/group.css">
     <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Group</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
                 <div class="main-page__intro-section">
                     <img class="intro-section__wallpaper" src="<%= background %>" alt="group image">
                     <div class="intro-section__title-wrapper">
-                        <div class="title-wrapper__title"><%= groupName %></div>
+                        <div class="title-wrapper__title"><%= groupName %> <%= isAdmin %></div>
                         <div class="title-wrapper__sub-info">
                             <img src="/images/icons/globe.png">
                             <div>Nhóm công khai</div>
@@ -45,5 +46,6 @@
     <script src="js/post_group.js" defer></script>
     <script src="js/up_post_group_event.js"></script>
     <script src="js/up_comment_event.js" defer></script>
+    <script src="js/action_react.js" defer></script>
 </body>
 </html>
