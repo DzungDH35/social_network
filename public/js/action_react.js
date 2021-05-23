@@ -1,11 +1,11 @@
 function toggleLike(post){
     let postId = post.getAttribute("data-like-id");
-    console.log(postId);
+    // console.log(postId);
     let state = document.querySelector("[data-like-id=" + CSS.escape(postId) + "]").className;
-    console.log(state);
+    // console.log(state);
     let numLikeCurrent = post.getAttribute("data-number-like");
     let temp = numLikeCurrent;
-    console.log(numLikeCurrent);
+    // console.log(numLikeCurrent);
     post.classList.toggle("fas");
     if(state == "far fa-heart"){
         fetch
@@ -17,7 +17,7 @@ function toggleLike(post){
             })
             .then(response => {
                 response.json().then(res => {
-                    console.log(res);
+                    // console.log(res);
                 })
             })
             .catch(error => {
@@ -41,7 +41,7 @@ function toggleLike(post){
             })
             .then(response => {
                 response.json().then(res => {
-                    console.log(res);
+                    // console.log(res);
                 })
             })
             .catch(error => {

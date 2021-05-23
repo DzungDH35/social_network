@@ -1,7 +1,7 @@
 document.getElementById('form').addEventListener("submit", async function (event) {
     var tagP = document.getElementById("userId");
     var userId = tagP.getAttribute('data-user-id');
-    console.log(userId);
+    // console.log(userId);
     event.preventDefault();
     var content = event.target.contentPost.value
     var img  = srcImage;
@@ -19,7 +19,7 @@ document.getElementById('form').addEventListener("submit", async function (event
         }),
     })
         .then(response => {
-            console.log(response)
+            // console.log(response)
             window.location.href = `/profile/${userId}`;
         })
         .catch(error => {

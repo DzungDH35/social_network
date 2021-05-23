@@ -1,8 +1,8 @@
 function getIdCmt(post) {
     var postId = post.getAttribute("data-id");
-    console.log(postId);
+    // console.log(postId);
     var content = document.querySelector("[data-id=" + CSS.escape(postId) + "]").value;
-    console.log(content);
+    // console.log(content);
     var img = document.querySelector("[data-preview-id=" + CSS.escape(postId) + "]").src;
     createCmt(postId, content, img);
     //Reset value input box

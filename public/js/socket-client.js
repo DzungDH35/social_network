@@ -4,9 +4,9 @@ const socket = io({
     autoConnect: true
 });
 
-socket.onAny((event, ...args) => {
-    console.log(event, args);
-});
+// socket.onAny((event, ...args) => {
+//     console.log(event, args);
+// });
 
 socket.emit('home', userId)
 

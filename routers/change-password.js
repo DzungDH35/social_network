@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
 
 router.get('/:resetId', (req, res) => {
     try {
-        console.log(req.params.resetId);
         res.render('changePwd');
     } catch (e) {
         console.log(e);
