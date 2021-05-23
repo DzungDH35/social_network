@@ -11,8 +11,8 @@
             <div class="friend__item">
                 <div class="hover__friend__detail">
                 </div>
-                <a href="#" id="<%= f.id %>" class="friend__item_link" >
-                    <div class="item">
+                <a href="#" id="<%= f.id %>" class="friend__item_link">
+                    <div class="item" onclick="openFramechat('<%= user._id %>', '<%= f.id %>', '<%= f.name %>', '<%= f.avatar %>');">
                         <div class="image">
                             <img class="avatar" src="<%= f.avatar %>" alt="">
                         </div>

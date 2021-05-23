@@ -60,5 +60,9 @@ module.exports = io => {
         socket.on('message', function (data) {
             socket.broadcast.to(data.room).emit('message', data);
         })
+
+        // data: from, to, content
+        // data: {from: from, content: content}
+        
     })
 }

@@ -124,3 +124,9 @@ body{
 .home__page .right .friend__container:hover{
     overflow-y: scroll;
 }
+
+.home__page >#framechat-area {
+    position: fixed;
+    right: 100px; bottom: 0;
+    width: 328px;
+}
