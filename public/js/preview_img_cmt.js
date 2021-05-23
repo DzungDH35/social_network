@@ -1,7 +1,7 @@
 //Choose preview image comment
 function preview_image_cmt(event, post){
     var postIdCmt = post.getAttribute("data-cmt-img-id");
-    console.log(postIdCmt);
+    // console.log(postIdCmt);
     var reader = new FileReader();
     reader.onload = function(){
         var output = document.querySelector("[data-preview-id=" + CSS.escape(postIdCmt) + "]");

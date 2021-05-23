@@ -33,7 +33,7 @@ function preview_image_profile_avatar(event){
         })
             .then(response => {
                 response.json().then(body => {
-                    console.log(body)
+                    // console.log(body)
                     window.location.href = `/profile/${userId}`;
                 })
                 

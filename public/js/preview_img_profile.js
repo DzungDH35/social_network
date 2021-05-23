@@ -18,7 +18,7 @@ function preview_image_profile(event){
         document.getElementById('output_image_profile').src = oldSrc;
     })
 
-    console.log(newSrc);
+    // console.log(newSrc);
     document.getElementById("saveBtn").addEventListener('click', ()=>{
         fetch
         ('/profile/background', {
@@ -33,7 +33,7 @@ function preview_image_profile(event){
         })
             .then(response => {
                 response.json().then(body => {
-                    console.log(body)
+                    // console.log(body)
                     window.location.href = `/profile/${userId}`;
                 })
                 

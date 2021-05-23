@@ -23,7 +23,7 @@ function showHintList(data, queryPath) {
 }
 
 // stop form from being submitted if there isn't any input's value
-function handleFormSubmit(event) { console.log(event.target["name"].value); return event.target["name"].value !== ""; }
+function handleFormSubmit(event) { return event.target["name"].value !== ""; }
 /* ======================================================================================================================================= */
 
 

@@ -8,7 +8,7 @@ function preview_image_group(event){
         var output = document.getElementById('output_image_group');
         output.src = reader.result;
         newSrc += output.src;
-        console.log(newSrc);
+        // console.log(newSrc);
     }
     reader.readAsDataURL(event.target.files[0]);
 
@@ -19,7 +19,7 @@ function preview_image_group(event){
         document.getElementById('output_image_group').src = oldSrc;
     })
 
-    console.log(newSrc);
+    // console.log(newSrc);
     document.getElementById("saveBtn").addEventListener('click', ()=>{
         fetch
         ('/group/background', {
@@ -35,7 +35,7 @@ function preview_image_group(event){
         })
             .then(response => {
                 response.json().then(body => {
-                    console.log(body)
+                    // console.log(body)
                     window.location.href = `/group/${groupId}`;
                 })
                 

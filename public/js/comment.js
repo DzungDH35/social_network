@@ -1,7 +1,7 @@
 function showDivCmt(post){
     var z = 1;
     var postId = post.getAttribute("data-swrap-cmt-id");
-    console.log(postId);
+    // console.log(postId);
     document.querySelector("[data-post-id=" + CSS.escape(postId) + "]").style.display = "block";
     var time = post.getAttribute("data-time");
     if(time == 0){

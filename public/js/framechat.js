@@ -4,9 +4,6 @@ const socket = io({
     autoConnect: true
 });
 
-socket.onAny((event, ...args) => {
-    console.log(event, args);
-});
 
 socket.emit('home', userId)
 
@@ -25,13 +22,14 @@ function sendMsg(from, to, content) {
 socket.on("receiveMsg", data => {
     // alert(data.content)
     if (data.from === userId) {
-        console.log("Me: " + userId);
         displaySentMessage(data.to, data.content);
     }
     else displayReceivedMessage(data.from, data.avatar, data.content);
 });
 
 const framechatArea = document.getElementById('framechat-area');
+let page = 1; //used for fetching page of messages, indexed from 1, if page = -1 --> max of page, do not permit to scroll
+const INVALID_PAGE = null;
 
 /* ============================================================ */
 function displaySentMessage(userID, content) {
@@ -52,20 +50,39 @@ function displayReceivedMessage(userID, userAvt, content) {
     if (scroll) scrollToBottom();
 }
 
-
-/* ============================================================ */
-
-/* ============================================================ */
-function openFramechat(contextID, userID, userName, userAvt) {
-    if (framechatArea.hasChildNodes()) framechatArea.removeChild(framechatArea.firstElementChild);
-    framechatArea.insertAdjacentHTML('afterbegin', generateFramechatDOMStr(userID, userName, userAvt));
-    registerEventsInFramechat(contextID, userID);
-    scrollToBottom();
+function displaySentHistory(userID, content) {
+    let msgArea = document.querySelector(`.framechat-body__msg-area[data-userid="${userID}"]`);
+    let messageDOMStr = `<div class="outgoing-message message">${content}</div>`;
+    msgArea.insertAdjacentHTML('afterbegin', messageDOMStr);
 }
 
-function closeFramechat(event) { framechatArea.removeChild(framechatArea.firstElementChild); }
+function displayReceivedHistory(userID, userAvt, content) {
+    let msgArea = document.querySelector(`.framechat-body__msg-area[data-userid="${userID}"]`);
+    let messageDOMStr = `<div class="incoming-msg-wrapper">
+                            <img src="${userAvt}" alt="sender avatar" class="incoming-msg-wrapper__sender-avt">
+                            <div class="incoming-message message">${content}</div>
+                        </div>`;
+    msgArea.insertAdjacentHTML('afterbegin', messageDOMStr);
+}
 
-function registerEventsInFramechat(contextID, userID) {
+/* ============================================================ */
+
+/* ============================================================ */
+async function openFramechat(contextID, userID, userName, userAvt) {
+    if (framechatArea.hasChildNodes()) framechatArea.removeChild(framechatArea.firstElementChild);
+    framechatArea.insertAdjacentHTML('afterbegin', generateFramechatDOMStr(userID, userName, userAvt));
+    await fetchHistory(contextID, userID, userAvt, page);
+    await fetchHistory(contextID, userID, userAvt, ++page);
+    scrollToBottom();
+    registerEventsInFramechat(contextID, userID, userAvt);
+}
+
+function closeFramechat(event) {
+    page = 1;
+    framechatArea.removeChild(framechatArea.firstElementChild);
+}
+
+function registerEventsInFramechat(contextID, userID, userAvt) {
     let msgInput = document.querySelector('.framechat-footer__msg-input');
     let sendMsgButton = document.getElementById("framechat-footer__sendMsg-button");
 
@@ -84,6 +101,39 @@ function registerEventsInFramechat(contextID, userID) {
             msgInput.innerHTML = "";
         }
     };
+
+    // scroll up to fetch more old messages
+    let framechatBody = document.querySelector('.framechat-body');
+    framechatBody.onscroll = async function() {
+        if (framechatBody.scrollTop < 20) {
+            if (page != INVALID_PAGE) {
+                page++;
+                await fetchHistory(contextID, userID, userAvt, page);
+            }
+        }
+    };
+}
+
+async function fetchHistory(contextID, userID, userAvt, page) {
+    let response = await fetch(`/chat/${contextID}/${userID}/${page}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    let responseData =[];
+    if (response.status === 200) responseData = await response.json();
+
+    if (responseData.data == null) {
+        page = INVALID_PAGE;
+        return;
+    }
+    else {
+        for (let message of responseData.data.reverse()) {
+            if (message.from === contextID) displaySentHistory(userID, message.content);
+            else displayReceivedHistory(userID, userAvt, message.content);
+        }
+    }
 }
 
 function scrollToBottom() {
