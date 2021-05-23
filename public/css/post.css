@@ -50,53 +50,50 @@ header a{
 .name a:hover{
     color: rgb(238, 76, 76);
 }
-/* dot */
-.threedots{
-    width: 30px;
-    height: 30px;
+.post-setting{
+    width: 36px;
+    height: 36px;
     text-align: center;
-    margin-top: 2px;
-    border-radius: 50%;
+    border-radius: 100%;
 }
-.dropbtn{
+.post-setting .dots{
+    display: table-cell;
+    vertical-align: middle;
     width: inherit;
     height: inherit;
-    border: none;
 }
-/* Dropdown threedots */
-.dropdown-content {
+.post-setting:hover{
+    background: #e2e2e2;
+}
+.show-dropdown-post{
     display: none;
+    border-radius: 5px;
+    width: 222px;
     position: absolute;
-    background: #57707d;
-    min-width: 60px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    margin-top: 10px;
+    margin-left: -190px;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 50%);
+    background-color: white;
+    text-align: left;
 }
-.dropdown-content a {
-    color: black;
-    display: block;
-    text-decoration: none;
-    padding-top: 10px;
-    color: #fff;
-    font-size: large;
+.show-dropdown-post div{
+    display: flex;
+    margin: 6px;
+    font-size: larger;
 }
-.show {
-    background-color: #e93030;
-    display:block;
-    height: 42px;
+.show-dropdown-post p{
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: medium;
 }
-/* End dropdown threedots */
-
-.fa-ellipsis-h{
-    padding-top: 6px;
+.show-dropdown-post .line{
+    height: 40px ;
+    align-items: center;
 }
-.threedots:hover{
-    background-color: #e4e4e4;
+.show-dropdown-post .line:hover{
     cursor: pointer;
+    background-color: antiquewhite;
 }
-/* End CSS for 3dot */
-
 .content-text-post{
     text-align: justify;
     margin-top: 10px;
