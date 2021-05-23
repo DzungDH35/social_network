@@ -205,7 +205,8 @@
     caret-color: #5A5A5A;
 }
 
-.framechat-footer__msg-input::placeholder {
+.framechat-footer__msg-input:empty:before {
+    content: attr(data-placeholder);
     color: #7a7a7a;
 }
 
