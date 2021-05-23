@@ -48,14 +48,18 @@ module.exports = {
         }
     },
 
-    getSomeMessagesInRoom: async (roomId) => {
+    getSomeMessagesInRoom: async (from, to, page) => {
         try {
+            const room = await module.exports.getSingleChatRoom(from, to);
             let msgBucket = await
-                MessageBucket.find({room: roomId})
+                MessageBucket.find({room: room._id})
                     .sort({updatedAt: -1})
+                    .skip(page - 1)
                     .limit(1)
+            if (msgBucket[0] == null) return null;
             return msgBucket[0].messages
         } catch (e) {
+            console.log(e)
             throw e
         }
     }
