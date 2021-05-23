@@ -7,7 +7,7 @@
     <!-- Box đăng bài -->
     <div class="post-section__post-creator">
         <img src="<%= user.avatar %>" alt="" class="post-creator__avatar">
-        <div class="post-creator__content">Tạo bài viết công khai...</div>
+        <div class="post-creator__content">Create a public post ...</div>
     </div>
     <div class="global-wrapper second-flow" style="display: none">
         <div class="modal-box">
@@ -19,7 +19,7 @@
             </div>
             <form action="" id="form" class="modal-box__form" onchange="preview_image(event)" >
                 <div class="wrap-content-image">
-                    <textarea name="post-content" id="contentPost" class="form__text-input" placeholder="Bạn viết gì đi..."></textarea>
+                    <textarea name="post-content" id="contentPost" class="form__text-input" placeholder="What are you thinking?"></textarea>
                     <div class="wrap-image">
                         <img id="output_image">
                     </div>
@@ -27,7 +27,7 @@
                 <div class="file-upload">
                     <input type="file" name="file" id="file">
                 </div>
-                <button type="submit" class="form__submit-button form__submit-button--not-allowed">Đăng</button>
+                <button type="submit" class="form__submit-button form__submit-button--not-allowed">Post</button>
             </form>
         </div>
     </div>

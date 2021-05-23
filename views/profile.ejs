@@ -65,9 +65,9 @@
                             <!-- da add friend -->
                             <li class="active">
                                 <a href="">
-                                    <div id="friend">
+                                    <div id="friend" onclick="unfollowUser('<%- user._id %>')">
                                         <img src="/images/friends.png" alt="">
-                                        <p>Friends</p>
+                                        <p>Unfollow</p>
                                     </div>
                                 </a>
                             </li>
@@ -80,9 +80,9 @@
                         <%}else{%>
                             <!-- chua add friend -->
                             <li class="active">
-                                <div id="add-friend">
+                                <div id="add-friend" onclick="followUser('<%- user._id %>')">
                                     <img src="/images/addfriend.png" alt="">
-                                    <p>Add friend</p>
+                                    <p>Follow</p>
                                 </div>
                             </li>
                             <li class="active">
@@ -157,4 +157,6 @@
 <script src="js/preview_img_profile.js" defer></script>
 <script src="js/preview_img_avatar.js" defer></script>
 <script src="js/action_react.js" defer></script>
+<script src="js/follow_request.js" defer></script>
+<script src="js/delete_post.js" defer></script>
 </html>

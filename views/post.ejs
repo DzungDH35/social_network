@@ -12,6 +12,18 @@
                         <% } %>
                     </h1>
                 </div>
+                <div class="post-setting">
+                    <span class="dots" data-id="<%= post._id %>" onclick="dropdownSetting(this)">
+                        <div class="icon-dots">
+                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                        </div>
+                        <div class="show-dropdown-post" data-show-dropdown="<%= post._id %>">
+                            <div class="line"><i class="fa fa-pencil" aria-hidden="true"></i><p>Edit post</p></div>
+                            
+                            <div class="line"><i class="fa fa-trash" aria-hidden="true"></i><p>Delete post</p></div>
+                        </div>
+                    </span>
+                </div>
                 <!-- <div class="threedots">
                      <i class="fa fa-ellipsis-h dropbtn" onclick="deleteStatus()"></i>
                     <div id="myDropdown" class="dropdown-content">
@@ -48,7 +60,7 @@
                     <% for(i = 0; i < post.like.length; i++){ %>   
                         <% if(post.like[i]._id+0 == user._id+0){ %>
                             <section class="like-cmt-post like">
-                                <i onclick="toggleLike(this)" data-like-id="<%= post._id %>" data-number-like="<%= post.like.length %>" class="far fa-heart fas">&nbsp;&nbsp;<span>Thích</span></i>
+                                <i onclick="toggleLike(this)" data-like-id="<%= post._id %>" data-number-like="<%= post.like.length %>" class="far fa-heart fas">&nbsp;&nbsp;<span data-text="<%= post._id %>">Like</span></i>
                             </section>
                             <% break; %>
                         <% } else { %>  
@@ -57,14 +69,14 @@
                     <% } %>
                     <% if(count >= post.like.length){ %> 
                         <section class="like-cmt-post like">
-                            <i onclick="toggleLike(this)" data-like-id="<%= post._id %>" class="far fa-heart" >&nbsp;&nbsp;<span>Thích</span></i>
+                            <i onclick="toggleLike(this)" data-like-id="<%= post._id %>" class="far fa-heart" >&nbsp;&nbsp;<span>Like</span></i>
                         </section>
                     <% } %>
                     &nbsp;
                     <section class="like-cmt-post cmt" data-swrap-cmt-id="<%= post._id %>" data-time="0"
                              onclick="showDivCmt(this)">
                         <i class="far fa-comment"></i>&nbsp;&nbsp;
-                        <span>Bình luận</span>
+                        <span>Comment</span>
                     </section>
                 </div>
             </div>
@@ -75,7 +87,7 @@
                 <!-- Viết comment -->
                 <div class="up-new-comment" data-new-cmt-id="<%= post._id %>"></div>
                 <div class="more-comment" data-more-id="<%= post._id %>" data-page="2" style="display: none;">
-                    <span style="cursor: pointer;">Xem thêm bình luận</span>
+                    <span style="cursor: pointer;">See more comments</span>
                 </div>
                 <div class="new-comment">
                     <div class="avatar">
@@ -89,7 +101,7 @@
                             <div class="wrap-comment_image-cmt">
                                 <div id="wrap-textarea">
                                     <textarea name="cmt-content" data-id="<%= post._id %>" class="form__text-comment"
-                                              placeholder="Viết bình luận ..."></textarea>
+                                              placeholder="Write a comment ..."></textarea>
                                 </div>
                                 <div class="wrap_button_send">
                                     <button data-id="<%= post._id %>" onclick="getIdCmt(this)" style="cursor: pointer;">
