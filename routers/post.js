@@ -7,12 +7,12 @@ const path = require('path');
 const { ok } = require('assert');
 require('dotenv').config();
 
-
 router.get('/home/:page', async (req, res) => {
     try {
         let postList = await postService.getPostsInHome(req.user._id, req.params.page);
         let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
             {
+                showGroup: true,
                 postList: postList,
                 user: req.user
             })
@@ -29,6 +29,7 @@ router.get('/group/:groupId/:page', async (req, res) => {
         let postList = await postService.getPostsInGroups(req.params.groupId, req.params.page);
         let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
             {
+                showGroup: false,
                 postList: postList,
                 user: req.user
             })
@@ -44,6 +45,7 @@ router.get('/profile/:userId/:page', async (req, res) => {
         let postList = await postService.getPostsInProfile(req.params.userId, req.params.page);
         let html = await ejs.renderFile(path.join(process.cwd(), '/views/post.ejs'),
             {
+                showGroup: true,
                 postList: postList,
                 user: req.user
             })
@@ -60,7 +62,7 @@ router.post('/', async (req, res) => {
             req.user._id,
             req.body.content,
             req.body.img,
-            req.body.groupId
+            req.body.groupId 
         )
         res.send({msg: 'OK', r})
     } catch (e) {

@@ -1,7 +1,6 @@
 document.getElementById('form').addEventListener("submit", async function (event) {
-    var tagP = document.getElementById("userId");
-    var userId = tagP.getAttribute('data-user-id');
-    console.log(userId);
+    var tagG = document.getElementById("groupId");
+    var groupId = tagG.getAttribute('data-group-id');
     event.preventDefault();
     var content = event.target.contentPost.value
     var img  = srcImage;
@@ -15,12 +14,12 @@ document.getElementById('form').addEventListener("submit", async function (event
         body: JSON.stringify({
             content: content,
             img: img,
-            groupId: null
+            groupId: groupId
         }),
     })
         .then(response => {
             console.log(response)
-            window.location.href = `/profile/${userId}`;
+            window.location.href = `/group/${groupId}`;
         })
         .catch(error => {
             console.error('Error:', error);

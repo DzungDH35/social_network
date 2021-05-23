@@ -1,11 +1,13 @@
+const User = require('./models/user')
+const socketService = require('./services/socket.service');
 
 let clientSocketIds = [];
-let connectedUsers= [];
+let connectedUsers = [];
 
-const getSocketByUserId = (userId) =>{
+const getSocketByUserId = (userId) => {
     let socket = '';
-    for(let i = 0; i<clientSocketIds.length; i++) {
-        if(clientSocketIds[i].userId === userId) {
+    for (let i = 0; i < clientSocketIds.length; i++) {
+        if (clientSocketIds[i].userId === userId) {
             socket = clientSocketIds[i].socket;
             break;
         }
@@ -14,13 +16,12 @@ const getSocketByUserId = (userId) =>{
 }
 
 module.exports = io => {
-    io.on("connection", socket => {
+    io.on("connection", async socket => {
         console.log(`${socket.id} is online`)
 
         socket.onAny((event, ...args) => {
             console.log(event, args);
         });
-
         socket.on('disconnect', async (reason) => {
             console.log(`${socket.id} disconnected: ` + reason)
             await socketService.disconnect(socket.id)

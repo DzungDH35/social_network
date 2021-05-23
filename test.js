@@ -14,20 +14,6 @@ require('dotenv').config();
 require('./config/db');
 try {
 
-    Group.find().then( async gs => {
-        let j = 0;
-        for (let g of gs) {
-            for (let u of g.members) {
-                for (let i = 0; i < 4; i++) {
-                    let gId = (i === 0 || i === 2)?g._id:null;
-                    let img = (i === 0 || i === 2)?faker.internet.avatar():null;
-                    await postService.createPost(u._id, faker.lorem.paragraphs(), img, gId)
-                    console.log(j++);
-                }
-            }
-        }
-    })
-
 } catch (e) {
     console.log(e)
 }
