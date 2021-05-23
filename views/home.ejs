@@ -23,8 +23,6 @@
         </div>
         <div class="center">
             <%- include('newpost') %>
-            <div id="loading" style="display: flex">
-            <p>Loading...</p></div>
         </div>
         <div class="right">
             <div class="friend__container">
@@ -49,8 +47,8 @@
 <script src="js/comment.js" defer></script>
 <script src="js/up_comment_event.js" defer></script>
 <script src="js/up_post_event.js"></script>
-<script src="/socket.io/socket.io.min.js"></script>
+<script src="/socket.io/socket.io.min.js">
+</script>
 <script src="/js/framechat.js"></script>
-<!--<script src="js/socket-client.js"></script>-->
 <script src="js/action_react.js" defer></script>
 </html>

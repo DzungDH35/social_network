@@ -89,7 +89,7 @@ function scrollToBottom() {
 
 function shouldScroll() {
     let framechatBody = document.querySelector('.framechat-body');
-    return framechatBody.scrollHeight - framechatBody.scrollTop < 10;
+    return framechatBody.scrollHeight - framechatBody.scrollTop < 100;
 }
 /* ============================================================ */
 

@@ -1,5 +1,6 @@
 const User = require('./models/user')
 const socketService = require('./services/socket.service');
+const chatService = require('./services/chat.service')
 module.exports = io => {
     io.on("connection", async socket => {
         console.log(`${socket.id} is online`)
@@ -28,6 +29,7 @@ module.exports = io => {
         socket.on('sendMsg', async data => {
             let userTo = await User.findById(data.to);
             let userFrom = await User.findById(data.from);
+            await chatService.sendMessage(data.from, data.to, data.content, '')
             data.avatar = userFrom.avatar
             console.log(`from ${userFrom.socketId} to ${userTo.socketId}`)
             io.to(`${userTo.socketId}`).emit('receiveMsg', data);
