@@ -9,7 +9,7 @@ module.exports = {
         try {
             await Post.findByIdAndUpdate(mongoose.Types.ObjectId(postId), {
                 $set:{
-                    updateAt: Date.now()
+                    updatedAt: Date.now()
                 }
             })
             let comment = await Comment.create({
@@ -26,11 +26,10 @@ module.exports = {
 
     getComment: async (postId, page) => {
         try {
-
             return await
                 Comment.find({post: mongoose.Types.ObjectId(postId)})
                     .populate('owner', 'name avatar')
-                    .sort({createAt: 1})
+                    .sort({createdAt: 1})
                     .skip(10*page - 10)
                     .limit(10);
         } catch (e) {

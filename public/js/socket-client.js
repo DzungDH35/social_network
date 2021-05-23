@@ -8,11 +8,15 @@ socket.onAny((event, ...args) => {
     console.log(event, args);
 });
 
-socket.connect()
-
 socket.emit('home', userId)
 
 socket.on('followingLogin', name => {
     alert(`${name} connected`)
 })
+
+
+
+
+
+
 

@@ -1,31 +1,54 @@
+let userId = localStorage.getItem('userId')
+const socket = io({
+    transports: ['websocket'],
+    autoConnect: true
+});
+
+socket.onAny((event, ...args) => {
+    console.log(event, args);
+});
+
+socket.emit('home', userId)
+
+socket.on('followingLogin', name => {
+    alert(`${name} connected`)
+})
+
+function sendMsg(from, to, content) {
+    socket.emit("sendMsg", {from, to, content});
+}
+
+socket.on("receiveMsg", data => {
+    // alert(data.content)
+    if (data.from === userId) {
+        console.log("Me: " + userId);
+        displaySentMessage(data.to, data.content);
+    }
+    else displayReceivedMessage(data.from, data.avatar, data.content);
+});
+
 const framechatArea = document.getElementById('framechat-area');
 
 /* ============================================================ */
 function displaySentMessage(userID, content) {
-    let scroll = shouldScroll();
     let msgArea = document.querySelector(`.framechat-body__msg-area[data-userid="${userID}"]`);
     let messageDOMStr = `<div class="outgoing-message message">${content}</div>`;
     msgArea.insertAdjacentHTML('beforeend', messageDOMStr);
-    if (scroll) scrollToBottom(); 
+    scrollToBottom();
 }
 
 function displayReceivedMessage(userID, userAvt, content) {
+    let scroll = shouldScroll();
     let msgArea = document.querySelector(`.framechat-body__msg-area[data-userid="${userID}"]`);
     let messageDOMStr = `<div class="incoming-msg-wrapper">
                             <img src="${userAvt}" alt="sender avatar" class="incoming-msg-wrapper__sender-avt">
                             <div class="incoming-message message">${content}</div>
                         </div>`;
     msgArea.insertAdjacentHTML('beforeend', messageDOMStr);
+    if (scroll) scrollToBottom();
 }
 
-function sendMsg(from, to, content) {
-    socket.emit("sendMsg", {from, to, content});
-}
 
-socket.on("receiveMsg", (from, content) => {
-    if (from === userId) displaySentMessage(userID, content);
-    else displayReceivedMessage(userID, content);
-});
 /* ============================================================ */
 
 /* ============================================================ */

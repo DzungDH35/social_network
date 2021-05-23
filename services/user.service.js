@@ -23,7 +23,7 @@ module.exports = {
                 name: name,
                 pwd: pwd,
                 birthDay: birthDay,
-                avatar: "",
+                avatar: `images/default_avatar_${gender}.jpeg`,
                 gender: gender,
                 mssv: mssv,
                 major: major._id,
@@ -41,7 +41,7 @@ module.exports = {
                 await followService.follow(newUser._id, m)
                 await followService.follow(m, newUser._id)
             }
-            
+
             return newUser;
         } catch (e) {
             throw e
@@ -111,13 +111,13 @@ module.exports = {
             throw e
         }
     },
-    
+
     changeBackground: async (userId, background) => {
         try {
             await User.findByIdAndUpdate(userId, {
                 $set: {
-                    background: background    
-                }        
+                    background: background
+                }
             })
         } catch (e) {
             throw e
