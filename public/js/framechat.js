@@ -5,7 +5,7 @@ const socket = io({
 });
 
 socket.onAny((event, ...args) => {
-    console.log(event, args);
+    // console.log(event, args);
 });
 
 socket.emit('home', userId)
@@ -21,7 +21,6 @@ function sendMsg(from, to, content) {
 socket.on("receiveMsg", data => {
     // alert(data.content)
     if (data.from === userId) {
-        console.log("Me: " + userId);
         displaySentMessage(data.to, data.content);
     }
     else displayReceivedMessage(data.from, data.avatar, data.content);
@@ -89,7 +88,7 @@ function scrollToBottom() {
 
 function shouldScroll() {
     let framechatBody = document.querySelector('.framechat-body');
-    return framechatBody.scrollHeight - framechatBody.scrollTop < 10;
+    return framechat.scrollHeight - framechat.scrollTop - framechat.clientHeight < 25;
 }
 /* ============================================================ */
 
