@@ -126,7 +126,7 @@ body{
 }
 
 .home__page >#framechat-area {
-    position: absolute;
+    position: fixed;
     right: 100px; bottom: 0;
     width: 328px;
 }

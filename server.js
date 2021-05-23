@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-// const io = require('socket.io')(server);
-// require('./socket-server')(io)
+const io = require('socket.io')(server);
+require('./socket-server')(io)
 
 const path = require('path');
 const morgan = require('morgan');
