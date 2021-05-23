@@ -18,14 +18,14 @@ function displayReceivedMessage(userID, userAvt, content) {
     msgArea.insertAdjacentHTML('beforeend', messageDOMStr);
 }
 
-function sendMsg(from, to, content) { socket.emit("sendMsg", {from, to, content}); }
-
-function receiveMsg(from, content) {
-    socket.on("receiveMsg", (from, content) => {
-        if (from === userId) displaySentMessage(userID, content);
-        else displayReceivedMessage(userID, content);
-    });
+function sendMsg(from, to, content) {
+    socket.emit("sendMsg", {from, to, content});
 }
+
+socket.on("receiveMsg", (from, content) => {
+    if (from === userId) displaySentMessage(userID, content);
+    else displayReceivedMessage(userID, content);
+});
 /* ============================================================ */
 
 /* ============================================================ */
@@ -46,8 +46,7 @@ function registerEventsInFramechat(contextID, userID) {
         if (event.keyCode == 13 && !event.shiftKey) {
             event.preventDefault();
             if (msgInput.innerHTML !== "") {
-                displaySentMessage(userID, msgInput.innerHTML);
-                // sendMsg(contextID, userID, msgInput.innerHTML);
+                sendMsg(contextID, userID, msgInput.innerHTML);
                 msgInput.innerHTML = "";
             }
         }
@@ -66,7 +65,8 @@ function scrollToBottom() {
 }
 
 function shouldScroll() {
-    return scrollHeight - scrollTop < 10;
+    let framechatBody = document.querySelector('.framechat-body');
+    return framechatBody.scrollHeight - framechatBody.scrollTop < 10;
 }
 /* ============================================================ */
 
