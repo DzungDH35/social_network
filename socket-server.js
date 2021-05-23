@@ -11,6 +11,14 @@ module.exports = io => {
 
         socket.on('disconnect', async (reason) => {
             console.log(`${socket.id} disconnected: ` + reason)
+            User.findOne({socketId: socket._id}).populate('followers').then(async u => {
+                for (let f of u.followers) {
+                    if (f.online) {
+                        console.log('Emit logout to:' + f.socketId)
+                        io.to(`${f.socketId}`).emit('followingLogout', u._id)
+                    }
+                }
+            })
             await socketService.disconnect(socket.id)
         });
 
@@ -20,7 +28,7 @@ module.exports = io => {
             User.findById(userId).populate('followers').then(async u => {
                 for (let f of u.followers) {
                     if (f.online) {
-                        io.to(`${f.socketId}`).emit('followingLogin', u.name)
+                        io.to(`${f.socketId}`).emit('followingLogin', u._id)
                     }
                 }
             })

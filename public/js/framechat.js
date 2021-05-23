@@ -10,8 +10,12 @@ socket.onAny((event, ...args) => {
 
 socket.emit('home', userId)
 
-socket.on('followingLogin', name => {
-    alert(`${name} connected`)
+socket.on('followingLogin', fId => {
+    document.getElementById(`${fId}_state`).style.color = 'LimeGreen'
+})
+
+socket.on('followingLogout', fId => {
+    document.getElementById(`${fId}_state`).style.color = 'SlateGray'
 })
 
 function sendMsg(from, to, content) {
@@ -89,7 +93,7 @@ function scrollToBottom() {
 
 function shouldScroll() {
     let framechatBody = document.querySelector('.framechat-body');
-    return framechatBody.scrollHeight - framechatBody.scrollTop < 100;
+    return framechatBody.scrollHeight - framechatBody.scrollTop - framechatBody.clientHeight < 25;
 }
 /* ============================================================ */
 
