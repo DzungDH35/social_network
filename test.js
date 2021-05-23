@@ -15,8 +15,6 @@ const Room = require('./models/room')
 require('dotenv').config();
 require('./config/db');
 try {
-    chatService.getSomeMessagesInRoom('60a8d48c8faa570264dde0c6')
-            .then(r => console.log(r))
 
 } catch (e) {
     console.log(e)

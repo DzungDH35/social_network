@@ -7,7 +7,8 @@ const messageBucketSchema = new schema({
     messages: [{
         from: {type: schema.Types.ObjectId, ref: 'User'},
         content: {type: String},
-        img: {type: String}
+        img: {type: String},
+        createdAt: {type: Date, default: Date.now()}
     }]
 }, {
     timestamps: true,

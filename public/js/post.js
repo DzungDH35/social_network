@@ -21,7 +21,7 @@ function getData() {
         });
 }
 window.addEventListener('scroll', () => {
-    
+
     const { scrollTop, scrollHeight, clientHeight} = document.documentElement;
     //console.log({scrollTop, scrollHeight, clientHeight});
     if(window.scrollY + window.innerHeight >= scrollHeight){

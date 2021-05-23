@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/css/post.css">
     <link rel="stylesheet" href="/css/friendlist.css">
     <link rel="stylesheet" href="/css/group.css">
+    <link rel="stylesheet" href="/css/framechat.css">
+    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css">-->
+    <!--    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/js/all.js">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -20,6 +23,8 @@
         </div>
         <div class="center">
             <%- include('newpost') %>
+            <div id="loading" style="display: flex">
+            <p>Loading...</p></div>
         </div>
         <div class="right">
             <div class="friend__container">
@@ -29,11 +34,10 @@
                 <%- include('followinglist', {following: following}); %>
             </div>
         </div>
+        <div id="framechat-area"></div>
     </div>
-
 </body>
 </div>
-<%- include('chat', {current: user}); %>
 </body>
 
 <script src="/js/livesearch.js"></script>
@@ -45,8 +49,8 @@
 <script src="js/comment.js" defer></script>
 <script src="js/up_comment_event.js" defer></script>
 <script src="js/up_post_event.js"></script>
-
 <script src="/socket.io/socket.io.min.js"></script>
-<script src="js/socket-client.js"></script>
+<script src="/js/framechat.js"></script>
+<!--<script src="js/socket-client.js"></script>-->
 <script src="js/action_react.js" defer></script>
 </html>
