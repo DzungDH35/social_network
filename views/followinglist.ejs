@@ -1,10 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <link rel="stylesheet" href="/css/friendlist.css">-->
-<!--</head>-->
-<!--<body>-->
 <ul>
     <% following.forEach(f=> { %>
         <li>
@@ -18,6 +11,7 @@
                         </div>
                         <div class="friend--name">
                             <p><%= f.name %></p>
+                            <span id="<%= f.id %>_state" style="color:<%= (f.online === true)?'LimeGreen':'SlateGray' %>">&#9673</span>
                         </div>
                     </div>
                 </a>
@@ -25,5 +19,3 @@
         </li>
     <% }) %>
 </ul>
-<!--</body>-->
-<!--</html>-->
